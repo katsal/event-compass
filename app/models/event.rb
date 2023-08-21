@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :category
+  has_many :comments, dependent: :destroy
+  has_many :event_lists, dependent: :destroy
 
   validates :name, :location, :description, :latitude, :longitude, :category, presence: true
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
