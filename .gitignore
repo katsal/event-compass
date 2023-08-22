@@ -35,3 +35,7 @@
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+.env*
+database.yml
+*database.yml
+*database.yml*
