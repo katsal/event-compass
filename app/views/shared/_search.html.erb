@@ -1,0 +1,20 @@
+<div class="search">
+  <!-- Text Search Bar -->
+  <%= form_with url: @events_path, method: :get, class: "search" do |f| %>
+    <div class="search-bar-container">
+      <%= f.text_field :q,
+          class: "form-control",
+          placeholder: "Tokyo..."
+        %>
+      <!-- Other text search inputs here (max price, min rating, min capacity) -->
+    </div>
+    <%= f.text_field :opening_date,
+            as: :string,
+            data: { controller: "datepicker" },
+             class: "form-control" %>
+    <div class="d-flex flex-column justify-content-center">
+      <button id="combined-search-btn" class="btn btn-flat-search">Search</button>
+    </div>
+  <% end %>
+  <!-- Submit Button -->
+</div>
