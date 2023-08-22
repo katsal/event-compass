@@ -82,3 +82,5 @@ group :test do
 end
 
 gem "nokogiri", "~> 1.15"
+
+gem "faker", "~> 3.2"
