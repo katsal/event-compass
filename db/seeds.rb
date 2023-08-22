@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'nokogiri'
+require 'open-uri'
+
+event =
+url = 'https://tokyocheapo.com/events/'
+html = URI.open(url).read
+doc = Nokogiri::HTML(html)
+
+paragraphs = doc.css('p')
+paragraphs.each do |paragraph|
+  puts paragraph.text
+end
