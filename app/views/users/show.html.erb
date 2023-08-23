@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render 'shared/user_banner'%>
+<div class="container">
+  <div class="d-flex flex-row justify-content-evenly">
+    <div>
+      <h3><%= @user.name %></h3>
+      <h3><%= @user.location %></h3>
+      <h3><%= @user.date_of_birth %></h3>
+      <%= link_to "Edit Photo", user_path %>
+    </div>
+    <div>
+      <h2>About</h2>
+      <h3><%= @user.introduction %></h3>
+    </div>
+  </div>
+  <div>
+
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :photo, as: :file %>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Lists</h2>
+    <% @user.lists.each do |list| %>
+      <%= list.name %>
+    <% end %>
+
+  </div>
+</div>
