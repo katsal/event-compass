@@ -177,5 +177,20 @@ url_array.each do |url|
   end
 end
 
+
+event_ids = Event.all.map(&:id)
+list_ids = List.all.map(&:id)
+
+100.times do
+    event_id = event_ids.sample
+    list_id = list_ids.sample
+    event_list = EventList.new
+    event_list.list_id = list_id
+    event_list.event_id = event_id
+    event_list.save
+
+end
+
 puts "Created #{Event.count} events!"
+puts "Created #{EventList.count} event lists!"
 puts "Created #{Category.count} categories!"

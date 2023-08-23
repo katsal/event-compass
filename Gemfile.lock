@@ -127,6 +127,7 @@ GEM
       sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    htmlbeautifier (1.4.2)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -297,6 +298,7 @@ DEPENDENCIES
   dotenv-rails
   faker (~> 3.2)
   font-awesome-sass (~> 6.1)
+  htmlbeautifier
   importmap-rails
   jbuilder
   nokogiri (~> 1.15)
