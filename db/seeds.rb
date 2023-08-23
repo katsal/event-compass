@@ -106,7 +106,11 @@ url_array.each do |url|
 
   doc.search(".card--event").each do |element|
     name = element.search(".card__title").text.strip
-    location = element.search(".location").text.strip || 'Tokyo' # defaults to Tokyo if no location
+
+    location_element = element.search(".location")
+    location_text = location_element.empty? ? "Tokyo" : location_element.text.strip
+    encoded_location_text = URI.encode_www_form_component(location_text)
+
     description = element.search(".card__excerpt").text.strip
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
 
@@ -148,7 +152,6 @@ url_array.each do |url|
     arrayDates = date.split('~')
     if arrayDates.count == 1
       dateInfo = date.match(/(\w{3})(\d+|\w+)/)
-      # p dateInfo
       if dateInfo[2].to_i != 0
         parsed_start_date = DateTime.parse("#{dateInfo[2]} #{dateInfo[1]} #{start_time}")
 
@@ -167,20 +170,26 @@ url_array.each do |url|
       parsed_end_date = DateTime.parse("#{end_date_info[2]} #{end_date_info[1]} #{end_time}")
     end
 
-    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
+    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{encoded_location_text}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
     data = URI.open(url).read
     response = JSON.parse(data)
-    coordinates = response['features'][0]['center']
-    longitude = coordinates[0]
-    latitude = coordinates[0]
+    if response['features'] && response['features'][0] && response['features'][0]['geometry'] && response['features'][0]['geometry']['coordinates']
+      coordinates = response['features'][0]['center']
+    else
+      coordinates = [139.6503, 35.6762]
+    end
 
-    event = Event.new(name: name, location: location, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
+    longitude = coordinates[0]
+    latitude = coordinates[1]
+
+    event = Event.new(name: name, location: encoded_location_text, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
     # event.latitude = rand(-90.000..90.000)
     event.url = "https://www.bbc.com/"
     # event.longitude = rand(-180.000..180.000)
     event.category = Category.new
     # event.location = "Canberra"
     event.save!
+
   end
 end
 
