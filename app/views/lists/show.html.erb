@@ -1,2 +1,8 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<%= render 'shared/list_banner'%>
+<div class="container">
+<% @list.event_lists.each do |eventfinder| %>
+  <div>
+    <%= eventfinder.event.name %>
+  </div>
+<% end %>
+</div>
