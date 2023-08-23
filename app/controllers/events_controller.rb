@@ -13,9 +13,9 @@ class EventsController < ApplicationController
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
-        lng: event.longitude
-    #     popup_html: render_to_string(partial: "shared/map_popup", locals: { event: event }),
-    #     marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
+        lng: event.longitude,
+        popup_html: render_to_string(partial: "shared/map_popup", locals: { event: event }),
+        marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
       }
     end
   end
