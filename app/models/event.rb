@@ -12,8 +12,8 @@ class Event < ApplicationRecord
   validate :validate_url
   # validate :end_date_after_start_date
 
-  # geocoded_by :location
-  # after_validation :geocode, if: :will_save_change
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   private
 

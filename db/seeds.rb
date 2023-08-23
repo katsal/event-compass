@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'faker'
+require 'json'
 
 List.destroy_all
 User.destroy_all
@@ -105,7 +106,7 @@ url_array.each do |url|
 
   doc.search(".card--event").each do |element|
     name = element.search(".card__title").text.strip
-    location = element.search(".location").text.strip
+    location = element.search(".location").text.strip || 'Tokyo' # defaults to Tokyo if no location
     description = element.search(".card__excerpt").text.strip
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
 
@@ -145,34 +146,40 @@ url_array.each do |url|
     end
 
     arrayDates = date.split('~')
-      if arrayDates.count == 1
-        dateInfo = date.match(/(\w{3})(\d+|\w+)/)
-        # p dateInfo
-        if dateInfo[2].to_i != 0
-          parsed_start_date = DateTime.parse("#{dateInfo[2]} #{dateInfo[1]} #{start_time}")
+    if arrayDates.count == 1
+      dateInfo = date.match(/(\w{3})(\d+|\w+)/)
+      # p dateInfo
+      if dateInfo[2].to_i != 0
+        parsed_start_date = DateTime.parse("#{dateInfo[2]} #{dateInfo[1]} #{start_time}")
 
-          parsed_end_date = DateTime.parse("#{dateInfo[2]} #{dateInfo[1]} #{end_time}")
-        else
-          parsed_start_date = DateTime.parse("01 #{dateInfo[1]} #{start_time}")
-
-          parsed_end_date = DateTime.parse("01 #{dateInfo[1]} #{end_time}")
-        end
-
+        parsed_end_date = DateTime.parse("#{dateInfo[2]} #{dateInfo[1]} #{end_time}")
       else
-        start_date_info = arrayDates[0].match(/(\w{3})(\d+)/)
-        parsed_start_date = DateTime.parse("#{start_date_info[2]} #{start_date_info[1]} #{start_time}")
+        parsed_start_date = DateTime.parse("01 #{dateInfo[1]} #{start_time}")
 
-        end_date_info = arrayDates[1].match(/(\w{3})(\d+)/)
-        parsed_end_date = DateTime.parse("#{end_date_info[2]} #{end_date_info[1]} #{end_time}")
+        parsed_end_date = DateTime.parse("01 #{dateInfo[1]} #{end_time}")
       end
 
+    else
+      start_date_info = arrayDates[0].match(/(\w{3})(\d+)/)
+      parsed_start_date = DateTime.parse("#{start_date_info[2]} #{start_date_info[1]} #{start_time}")
 
-    event = Event.new(name: name, location: location, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
-    event.latitude = rand(-90.000..90.000)
+      end_date_info = arrayDates[1].match(/(\w{3})(\d+)/)
+      parsed_end_date = DateTime.parse("#{end_date_info[2]} #{end_date_info[1]} #{end_time}")
+    end
+
+    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
+    data = URI.open(url).read
+    response = JSON.parse(data)
+    coordinates = response['features'][0]['center']
+    longitude = coordinates[0]
+    latitude = coordinates[0]
+
+    event = Event.new(name: name, location: location, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
+    # event.latitude = rand(-90.000..90.000)
     event.url = "https://www.bbc.com/"
-    event.longitude = rand(-180.000..180.000)
+    # event.longitude = rand(-180.000..180.000)
     event.category = Category.new
-    event.location = "Canberra"
+    # event.location = "Canberra"
     event.save!
   end
 end
