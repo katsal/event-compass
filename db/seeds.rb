@@ -108,8 +108,13 @@ url_array.each do |url|
     location = element.search(".location").text.strip
     description = element.search(".card__excerpt").text.strip
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
-
+    card_url = element.search(".card__image").attr("href").value
     attributes = element.search(".card--event__attribute")
+
+    card_html = URI.open(card_url).read
+    card_doc = Nokogiri::HTML(card_html)
+
+    img_url = card_doc.search(".hero-img").attr("src").value
 
     category = false
     price = false
@@ -167,7 +172,7 @@ url_array.each do |url|
       end
 
 
-    event = Event.new(name: name, location: location, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
+    event = Event.new(name: name, location: location, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date, img_url: img_url)
     event.latitude = rand(-90.000..90.000)
     event.url = "https://www.bbc.com/"
     event.longitude = rand(-180.000..180.000)
