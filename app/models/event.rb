@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :validate_url
-  validate :end_date_after_start_date
+  # validate :end_date_after_start_date
 
   private
 
@@ -28,8 +28,8 @@ class Event < ApplicationRecord
   def end_date_after_start_date
     return unless start_date.present? && end_date.present?
 
-    if end_date <= start_date
-      errors.add(:end_date, "must be after the start date")
+    if end_date < start_date
+      errors.add(:end_date, "can not be before the start date")
     end
   end
 end
