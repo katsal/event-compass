@@ -13,7 +13,8 @@ barry_acc = User.new(
   password: "password1",
   name: "Admin Barry",
   location: "location One",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/138180537?v=4"
@@ -26,7 +27,8 @@ karthika_acc = User.new(
   password: "password2",
   name: "Admin Karthika",
   location: "location Two",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/129238177?v=4"
@@ -39,7 +41,8 @@ caitlyn_acc = User.new(
   password: "password3",
   name: "Admin Caitlyn",
   location: "location Three",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 
@@ -53,7 +56,8 @@ kostas_acc = User.new(
   password: "password4",
   name: "Admin kostas",
   location: "location Four",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/133198548?v=4"
