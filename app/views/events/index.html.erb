@@ -1,1 +1,35 @@
-INDEX PAGE
+ <%= render 'shared/banner' %>
+<div class="container">
+  <h2 class="subheader-card-packs">Search results</h2>
+  <div class="cards">
+    <%if @events.any?%>
+      <% @events.all.each do |event| %>
+        <div class="card-trip">
+          <h2 class="card-trip-pricing">
+            <% if event.price =~ /free/i || event.price !~ /\d/ %>
+              Free
+            <% else %>
+              $<%= event.price %>
+            <% end %>
+          </h2>
+          <%= image_tag "summer.jpg" %>
+          <div class="card-trip-infos">
+            <div class="card-trip-header">
+              <h2><%= event.name %></h2>
+              <div class="d-flex">
+                <span><%= event.start_date.strftime('%d %B') %></span>
+                <% if event.end_date %>
+                  <span> - <%= event.end_date.strftime('%d %B') %></span>
+                <% end %>
+              </div>
+            </div>
+            <p><%= truncate(event.description, length: 200) %></p>
+          </div>
+          <%= link_to "", event_path(event), class: 'card-link' %>
+        </div>
+      <% end %>
+    <% else %>
+      <em>Sorry, no events found.</em>
+    <% end %>
+  </div>
+</div>

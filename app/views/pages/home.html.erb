@@ -1,1 +1,32 @@
- <%= render 'shared/banner' %>
+<%= render 'shared/banner' %>
+<div class="container">
+  <h2 class="subheader-card-packs">Most popular events</h2>
+  <p class="explanation-text-card-packs">The most popular events amongst other users</p>
+  <div class="cards">
+    <% @events.first(6).each do |event| %>
+      <div class="card-trip">
+        <h2 class="card-trip-pricing">
+          <% if event.price =~ /free/i || event.price !~ /\d/ %>
+            Free
+          <% else %>
+            $<%= event.price %>
+          <% end %>
+        </h2>
+        <%= image_tag "summer.jpg" %>
+        <div class="card-trip-infos">
+          <div class="card-trip-header">
+            <h2><%= event.name %></h2>
+            <div class="d-flex">
+              <span><%= event.start_date.strftime('%d %B') %></span>
+              <% if event.end_date %>
+                <span> - <%= event.end_date.strftime('%d %B') %></span>
+              <% end %>
+            </div>
+          </div>
+          <p><%= truncate(event.description, length: 200) %></p>
+        </div>
+        <%= link_to "", event_path(event), class: 'card-link' %>
+      </div>
+    <% end %>
+  </div>
+</div>
