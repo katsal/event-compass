@@ -1,15 +1,14 @@
 class EventsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
-    @events = policy_scope(Event)
-
+  @events = Event.all
+  @events = @events.where.not(user: current_user) if current_user&.admin?
+  @events = policy_scope(@events)
 
     if params[:q].present?
       @events = @events.global_search(params[:q])
     end
-
 
     if params[:opening_date].present?
       date_range = params[:opening_date].split(' - ')
