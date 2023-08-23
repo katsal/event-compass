@@ -1,12 +1,15 @@
 class EventsController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [ :index ]
 
   def index
-    @events = policy_scope(Event) # Apply Pundit policy scope
+    @events = policy_scope(Event)
+
 
     if params[:q].present?
       @events = @events.global_search(params[:q])
     end
+
 
     if params[:opening_date].present?
       date_range = params[:opening_date].split(' - ')
