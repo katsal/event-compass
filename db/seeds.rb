@@ -182,14 +182,19 @@ url_array.each do |url|
     longitude = coordinates[0]
     latitude = coordinates[1]
 
-    event = Event.new(name: name, location: encoded_location_text, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date)
-    # event.latitude = rand(-90.000..90.000)
+    event = Event.new(
+      name: name,
+      location: encoded_location_text,
+      longitude: longitude,
+      latitude: latitude,
+      description: description,
+      price: price, start_date:
+      parsed_start_date, end_date:
+      parsed_end_date
+    )
     event.url = "https://www.bbc.com/"
-    # event.longitude = rand(-180.000..180.000)
     event.category = Category.new
-    # event.location = "Canberra"
     event.save!
-
   end
 end
 
