@@ -1,0 +1,16 @@
+<div class="container">
+  <h1><%= User.find(params[:id]).name%></h1>
+  <%# <p><strong>Test:  </strong><%=User.find(params[:id]) = current_user ? 1 : 2 %></p>
+ %>
+<p><strong>Location:  </strong><%=User.find(params[:id]).location%></p>
+<p><strong>Date Joined:  </strong><%=User.find(params[:id]).created_at.strftime("%e %B %Y")%></p>
+<p><strong>Email Address:  </strong><%=User.find(params[:id]).email%></p>
+<p><strong>Date of Birth:  </strong><%=User.find(params[:id]).date_of_birth ? User.find(params[:id]).date_of_birth.strftime("%e %B %Y") : "Unknown"%></p>
+<p><strong>Introduction:  </strong><%=User.find(params[:id]).introduction%></p>
+<%= link_to events_path, class: "btn btn-primary" do %>Add New Event List
+<% end %>
+<br>
+<br>
+<%= link_to events_path, class: "btn btn-primary" do %>View Your Event Lists
+<% end %>
+</div>
