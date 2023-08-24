@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     @events = @events.where.not(user: current_user) if current_user&.admin?
     @events = policy_scope(@events)
 
+
     if params[:q].present?
       @events = @events.global_search(params[:q])
     end
@@ -20,6 +21,15 @@ class EventsController < ApplicationController
         end_date = Date.parse(date_range[1])
         @events = @events.starts_within_range(start_date, end_date)
       end
+    end
+
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        popup_html: render_to_string(partial: "shared/map_popup", locals: { event: event }),
+        marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
+      }
     end
   end
   

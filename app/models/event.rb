@@ -13,6 +13,8 @@ class Event < ApplicationRecord
   validate :validate_url
   # validate :end_date_after_start_date
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -24,6 +26,7 @@ class Event < ApplicationRecord
     scope :starts_within_range, ->(start_date, end_date) {
       where('start_date >= ? AND start_date <= ?', start_date, end_date)
     }
+
 
   private
 
