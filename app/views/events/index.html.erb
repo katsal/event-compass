@@ -9,12 +9,16 @@
           <% @events.all.each do |event| %>
             <div class="card-trip-index">
               <h2 class="card-trip-index-pricing">
-                <span><%= event.start_date.strftime('%e') %></span>
-                <% if event.end_date %>
-                  <% if event.start_date.month == event.end_date.month %>
-                    <span>- <%= event.end_date.strftime('%e %b') %></span>
-                  <% else %>
-                    <span>- <%= event.end_date.strftime('%e %b') %></span>
+                <% if event.start_date == event.end_date %>
+                  <span><%= event.start_date.strftime('%e %b') %></span>
+                <% else %>
+                  <span><%= event.start_date.strftime('%e') %></span>
+                  <% if event.end_date %>
+                    <% if event.start_date.month == event.end_date.month && event.start_date.day == event.end_date.day %>
+                      <span><%= event.start_date.strftime('%b') %></span>
+                    <% else %>
+                      <span>- <%= event.end_date.strftime('%e %b') %></span>
+                    <% end %>
                   <% end %>
                 <% end %>
               </h2>
@@ -23,10 +27,10 @@
                 <div class="card-trip-index-header">
                   <h2><%= event.name %></h2>
                   <div class="d-flex">
-                    <% if event.price =~ /free/i || event.price !~ /\d/ %>
-                      Free
-                    <% else %>
+                    <% if event.price && event.price.match?(/\A\d+(\.\d{1,2})?\z/) %>
                       $<%= event.price %>
+                    <% elsif event.price =~ /free/i %>
+                      Free
                     <% end %>
                   </div>
                 </div>
