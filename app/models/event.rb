@@ -13,6 +13,18 @@ class Event < ApplicationRecord
   validate :validate_url
   # validate :end_date_after_start_date
 
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :name, :description, :location ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+    scope :starts_within_range, ->(start_date, end_date) {
+      where('start_date >= ? AND start_date <= ?', start_date, end_date)
+    }
+
   private
 
   def validate_url

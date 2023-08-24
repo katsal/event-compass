@@ -125,6 +125,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.4.2)
       sassc (~> 2.0)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     htmlbeautifier (1.4.2)
@@ -298,7 +299,7 @@ DEPENDENCIES
   dotenv-rails
   faker (~> 3.2)
   font-awesome-sass (~> 6.1)
-  htmlbeautifier
+  geocoder (~> 1.8)
   importmap-rails
   jbuilder
   nokogiri (~> 1.15)
