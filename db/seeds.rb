@@ -11,7 +11,7 @@ puts "Destroyed Users and Lists and Events!"
 barry_acc = User.new(
   email: "Barry@eventcompass.com",
   password: "password1",
-  name: "Admin Barry",
+  name: "Barry",
   location: "location One",
   introduction: "We are the admins",
   admin: true
@@ -25,7 +25,7 @@ barry_acc.save!
 karthika_acc = User.new(
   email: "karthika@eventcompass.com",
   password: "password2",
-  name: "Admin Karthika",
+  name: "Karthika",
   location: "location Two",
   introduction: "We are the admins",
   admin: true
@@ -39,7 +39,7 @@ karthika_acc.save!
 caitlyn_acc = User.new(
   email: "Caitlyn@eventcompass.com",
   password: "password3",
-  name: "Admin Caitlyn",
+  name: "Caitlyn",
   location: "location Three",
   introduction: "We are the admins",
   admin: true
@@ -54,7 +54,7 @@ caitlyn_acc.save!
 kostas_acc = User.new(
   email: "Kostas@eventcompass.com",
   password: "password4",
-  name: "Admin kostas",
+  name: "Kostas",
   location: "location Four",
   introduction: "We are the admins",
   admin: true
@@ -206,34 +206,5 @@ lists = List.all
     puts "Created event_list"
   else
     puts "Failed to create event_list Errors: #{event_list.errors.full_messages.join(', ')}"
-  end
-end
-
-5.times do
-  event_id = events.sample.id
-  list_id = 123
-
-  event_list = EventList.new(event_id: event_id, list_id: list_id)
-
-  if event_list.save!
-    puts "Created my event_list"
-  else
-    puts "Failed to my create event_list Errors: #{event_list.errors.full_messages.join(', ')}"
-  end
-end
-
-5.times do
-  user_id = 146
-  name = Faker::JapaneseMedia::StudioGhibli.character
-  location = Faker::Address.city
-  start_date = Date.today + rand(1..10)
-  end_date = start_date + rand(1..10)
-
-  list = List.new(user_id: user_id, name: name, location: location, start_date: start_date, end_date: end_date)
-
-  if list.save!
-    puts "Created list: #{list.name}"
-  else
-    puts "Failed to create list: #{list.name} - Errors: #{list.errors.full_messages.join(', ')}"
   end
 end

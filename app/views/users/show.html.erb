@@ -2,28 +2,37 @@
 <div class="container">
   <div class="d-flex flex-row justify-content-evenly">
     <div>
-      <h3><%= @user.name %></h3>
+      <h3><%= @user.name.capitalize %></h3>
       <h3><%= @user.location %></h3>
       <h3><%= @user.date_of_birth %></h3>
-      <%= link_to "Edit Photo", user_path %>
+      <div data-controller="photo-toggle">
+        <%= link_to "Edit Photo", user_path, data: {action: "click->photo-toggle#upload"} %>
+        <div data-photo-toggle-target="photoUpload" class="d-none">
+        <%= simple_form_for @user do |f| %>
+          <%= f.input :photo, as: :file, label: false %>
+          <%= f.submit "Upload", class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+  </div>
     </div>
     <div>
       <h2>About</h2>
       <h3><%= @user.introduction %></h3>
     </div>
   </div>
-  <div>
 
-    <%= simple_form_for @user do |f| %>
-      <%= f.input :photo, as: :file %>
-    <% end %>
-  </div>
 
-  <div>
-    <h2>Lists</h2>
+  <h2>Lists</h2>
+
     <% @user.lists.each do |list| %>
-      <%= list.name %>
+      <div class="d-flex row-direction">
+        <div class="card shadow-sm" style="width: 18rem;">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+          <div class="card-body">
+              <h5 class="card-title text-center text-dark-emphasis"><%= list.name %></h5>
+          </div>
+        </div>
+      </div>
     <% end %>
 
-  </div>
 </div>

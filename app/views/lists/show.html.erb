@@ -1,8 +1,37 @@
 <%= render 'shared/list_banner'%>
-<div class="container">
-<% @list.event_lists.each do |eventfinder| %>
-  <div>
-    <%= eventfinder.event.name %>
-  </div>
-<% end %>
+<div class="container d-flex flex-row flex-wrap">
+
+  <% @list.event_lists.each do |eventfinder| %>
+      <%if eventfinder.event%>
+        <div class="cards">
+          <div class="card-trip-list">
+            <h2 class="card-trip-pricing">
+              <% if eventfinder.event.price =~ /free/i || eventfinder.event.price !~ /\d/ %>
+                Free
+              <% else %>
+                $<%= eventfinder.event.price %>
+              <% end %>
+            </h2>
+
+            <div class="card-trip-infos">
+              <div class="card-trip-header">
+                <h2><%= eventfinder.event.name %></h2>
+                <div class="d-flex">
+                  <span><%= eventfinder.event.start_date.strftime('%d %B') %></span>
+                  <% if eventfinder.event.end_date %>
+                    <span> - <%= eventfinder.event.end_date.strftime('%d %B') %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <%= link_to "", event_path(eventfinder.event), class: 'card-link' %>
+          </div>
+          </div>
+      <% end %>
+  <% end %>
+
+  <% unless @list.event_lists.any? %>
+    <h1>Sorry, no events found.</h1>
+  <% end %>
+
 </div>
