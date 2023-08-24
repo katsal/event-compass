@@ -14,7 +14,8 @@ barry_acc = User.new(
   password: "password1",
   name: "Admin Barry",
   location: "location One",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/138180537?v=4"
@@ -27,7 +28,8 @@ karthika_acc = User.new(
   password: "password2",
   name: "Admin Karthika",
   location: "location Two",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/129238177?v=4"
@@ -40,7 +42,8 @@ caitlyn_acc = User.new(
   password: "password3",
   name: "Admin Caitlyn",
   location: "location Three",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 
@@ -54,7 +57,8 @@ kostas_acc = User.new(
   password: "password4",
   name: "Admin kostas",
   location: "location Four",
-  introduction: "We are the admins"
+  introduction: "We are the admins",
+  admin: true
 )
 
 # # photo_url = "https://avatars.githubusercontent.com/u/133198548?v=4"
@@ -113,8 +117,13 @@ url_array.each do |url|
 
     description = element.search(".card__excerpt").text.strip
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
-
+    card_url = element.search(".card__image").attr("href").value
     attributes = element.search(".card--event__attribute")
+
+    card_html = URI.open(card_url).read
+    card_doc = Nokogiri::HTML(card_html)
+
+    img_url = card_doc.search(".hero-img").attr("src").value
 
     category = false
     price = false
@@ -188,15 +197,33 @@ url_array.each do |url|
       longitude: longitude,
       latitude: latitude,
       description: description,
-      price: price, start_date:
-      parsed_start_date, end_date:
-      parsed_end_date
+      price: price, 
+      start_date: parsed_start_date, 
+      end_date: parsed_end_date
     )
+
+    event = Event.new(name: name, location: location, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date, img_url: img_url)
+    event.latitude = rand(-90.000..90.000)
     event.url = "https://www.bbc.com/"
     event.category = Category.new
     event.save!
   end
 end
 
+
+event_ids = Event.all.map(&:id)
+list_ids = List.all.map(&:id)
+
+100.times do
+    event_id = event_ids.sample
+    list_id = list_ids.sample
+    event_list = EventList.new
+    event_list.list_id = list_id
+    event_list.event_id = event_id
+    event_list.save
+
+end
+
 puts "Created #{Event.count} events!"
+puts "Created #{EventList.count} event lists!"
 puts "Created #{Category.count} categories!"

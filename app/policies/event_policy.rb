@@ -3,10 +3,17 @@ class EventPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
-      user.admin? ? scope.all : scope.where(user: user)
     end
   end
 
+  def show?
+    true
+  end
+
+  def index?
+    true
+  end
+  
   private
 
   def user_is_admin?
