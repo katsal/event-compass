@@ -18,3 +18,29 @@
 .card-trip-index:hover {
   animation: shadowAnimation 2s infinite linear;
 }
+
+.banner {
+  position: relative;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.container {
+  position: relative;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  width: calc(33.33% - 20px); /* Adjust the width and margin as needed */
+  margin: 0 10px;
+  border-radius: 5px;
+  object-fit: cover;
+  height: 200px; /* Set a fixed height or adjust as needed */
+}

@@ -55,6 +55,9 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
 }
 
+.category-filters {
+  text-align: center; /* Center the buttons horizontally */
+}
 
 .btn-flat-category {
   color: black;
@@ -63,10 +66,13 @@
   background: #FF914D;
   transition: background 0.3s ease;
   margin-top: 15px;
+  border: none; /* Remove the border */
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .btn-flat-category:hover {
-  background: #F08400; /* Adjusted orange color */
+  background: #F08400;
   color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
