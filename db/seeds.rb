@@ -113,6 +113,7 @@ url_array.each do |url|
 
     location_element = element.search(".location")
     location_text = location_element.empty? ? "Tokyo" : location_element.text.strip
+    separated_location = location_text.scan(/[A-Z][a-z]+/).join(" ")
     encoded_location_text = URI.encode_www_form_component(location_text)
 
     description = element.search(".card__excerpt").text.strip
@@ -205,16 +206,16 @@ url_array.each do |url|
 
     event = Event.new(
       name: name,
-      location: encoded_location_text,
+      location: separated_location,
       longitude: longitude,
       latitude: latitude,
       description: description,
       price: price,
       start_date: parsed_start_date,
-      end_date: parsed_end_date
+      end_date: parsed_end_date,
+      img_url: img_url
     )
 
-    event = Event.new(name: name, location: encoded_location_text, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date, img_url: img_url)
     event.url = "https://www.bbc.com/"
     event.category = category_instance || no_category
     event.save!
