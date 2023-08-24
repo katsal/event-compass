@@ -15,5 +15,36 @@
   <body><%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
+    <footer>
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-lg-4 footer-about wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+              <%= image_tag "EventCompass (3).svg", class: "logo-footer", alt: "logo-footer", width: 74, height: 84 %>
+              <p>
+                Discover exciting events with EventCompass, your go-to app for exploring entertainment, culture, and more. Our dedicated team is committed to helping you find the best music festivals, art shows, sports events, and community gatherings. Let EventCompass be your guide to unforgettable experiences and memorable moments.
+              </p>
+              <p><a href="#">Our Team</a></p>
+            </div>
+            <div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+              <h3>Contact</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Meguro, Tokyo</p>
+              <p><i class="fas fa-phone"></i> Phone: +81 333 12 68 347</p>
+              <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@eventcompass.com">hello@domain.com</a></p>
+            </div>
+            <div class="col-md-4 col-lg-3 footer-social wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+              <h3>Follow us</h3>
+              <p>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
