@@ -54,3 +54,19 @@
   color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
 }
+
+
+.btn-flat-category {
+  color: black;
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: #FF914D;
+  transition: background 0.3s ease;
+  margin-top: 15px;
+}
+
+.btn-flat-category:hover {
+  background: #F08400; /* Adjusted orange color */
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+}

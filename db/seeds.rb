@@ -119,6 +119,8 @@ url_array.each do |url|
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
     card_url = element.search(".card__image").attr("href").value
     attributes = element.search(".card--event__attribute")
+    categories = element.search("a[href^='/event-category/']").map { |anchor| anchor.text }
+
 
     card_html = URI.open(card_url).read
     card_doc = Nokogiri::HTML(card_html)
@@ -140,14 +142,24 @@ url_array.each do |url|
       end
     end
 
-    if category
-      category_instance = Category.find_by(name: category)
-        unless category_instance
-          category_instance = Category.create!(name: category)
-        end
-    else
-      category_instance = no_category
+    category_instance = nil
+
+    categories.each do |cat|
+      category_instance = Category.find_by(name: cat)
+      unless category_instance.present?
+        category_instance = Category.create!(name: cat)
+      end
     end
+
+
+    # if category
+    #   category_instance = Category.find_by(name: category)
+    #     unless category_instance
+    #       category_instance = Category.create!(name: category)
+    #     end
+    # else
+    #   category_instance = no_category
+    # end
 
     start_time = ""
     end_time = ""
@@ -204,7 +216,7 @@ url_array.each do |url|
 
     event = Event.new(name: name, location: encoded_location_text, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date, img_url: img_url)
     event.url = "https://www.bbc.com/"
-    event.category = Category.new
+    event.category = category_instance || no_category
     event.save!
   end
 end
