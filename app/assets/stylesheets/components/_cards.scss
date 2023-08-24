@@ -261,9 +261,6 @@
    grid-gap: 16px;
  }
 
-
-
-
  // Smallest device
  @media (min-width: 100px) and (max-width: 575px) {
    .cards {
@@ -298,3 +295,22 @@
      grid-template-columns: 1fr 1fr;
    }
  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card-trip-list {
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  position: relative;
+  border-radius: 5px;
+  // background-size: contain;
+  backdrop-filter: blur(20px);
+  transition: box-shadow 0.3s; /* Added transition */
+}
+

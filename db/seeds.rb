@@ -12,7 +12,7 @@ puts "Destroyed Users and Lists and Events!"
 barry_acc = User.new(
   email: "Barry@eventcompass.com",
   password: "password1",
-  name: "Admin Barry",
+  name: "Barry",
   location: "location One",
   introduction: "We are the admins",
   admin: true
@@ -26,7 +26,7 @@ barry_acc.save!
 karthika_acc = User.new(
   email: "karthika@eventcompass.com",
   password: "password2",
-  name: "Admin Karthika",
+  name: "Karthika",
   location: "location Two",
   introduction: "We are the admins",
   admin: true
@@ -40,7 +40,7 @@ karthika_acc.save!
 caitlyn_acc = User.new(
   email: "Caitlyn@eventcompass.com",
   password: "password3",
-  name: "Admin Caitlyn",
+  name: "Caitlyn",
   location: "location Three",
   introduction: "We are the admins",
   admin: true
@@ -55,7 +55,7 @@ caitlyn_acc.save!
 kostas_acc = User.new(
   email: "Kostas@eventcompass.com",
   password: "password4",
-  name: "Admin kostas",
+  name: "Kostas",
   location: "location Four",
   introduction: "We are the admins",
   admin: true
@@ -238,3 +238,23 @@ end
 puts "Created #{Event.count} events!"
 puts "Created #{EventList.count} event lists!"
 puts "Created #{Category.count} categories!"
+
+###Event list
+
+puts "Cleaning up event_list"
+EventList.destroy_all
+events = Event.all
+lists = List.all
+
+20.times do
+  event_id = events.sample.id
+  list_id = lists.sample.id
+
+  event_list = EventList.new(event_id: event_id, list_id: list_id)
+
+  if event_list.save!
+    puts "Created event_list"
+  else
+    puts "Failed to create event_list Errors: #{event_list.errors.full_messages.join(', ')}"
+  end
+end
