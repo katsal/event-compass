@@ -1,25 +1,36 @@
 <%= render 'shared/banner' %>
 <div class="container">
-  <h2 class="subheader-card-packs">Most popular events</h2>
+  <h2 class="subheader-card-packs">popular events</h2>
   <p class="explanation-text-card-packs">The most popular events amongst other users</p>
   <div class="cards">
     <% @events.first(6).each do |event| %>
       <div class="card-trip">
         <h2 class="card-trip-pricing">
-          <% if event.price =~ /free/i || event.price !~ /\d/ %>
-            Free
+          <% if event.start_date == event.end_date %>
+            <span><%= event.start_date.strftime('%e %b') %></span>
           <% else %>
-            $<%= event.price %>
+            <span><%= event.start_date.strftime('%e') %></span>
+            <% if event.end_date %>
+              <% if event.start_date.month == event.end_date.month && event.start_date.day == event.end_date.day %>
+                <span><%= event.start_date.strftime('%b') %></span>
+              <% else %>
+                <span>- <%= event.end_date.strftime('%e %b') %></span>
+              <% end %>
+            <% end %>
           <% end %>
         </h2>
         <%= image_tag event.img_url %>
         <div class="card-trip-infos">
+          <div class="d-flex">
+            <p><%=event.location %></p>
+          </div>
           <div class="card-trip-header">
             <h2><%= event.name %></h2>
             <div class="d-flex">
-              <span><%= event.start_date.strftime('%d %B') %></span>
-              <% if event.end_date %>
-                <span> - <%= event.end_date.strftime('%d %B') %></span>
+              <% if event.price =~ /free/i || event.price !~ /\d/ %>
+                Free
+              <% else %>
+                <%= event.price %>
               <% end %>
             </div>
           </div>
