@@ -73,20 +73,18 @@
  }
 
  .card-trip {
-   overflow: hidden;
-   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-   margin: 20px;
-   position: relative;
-   border-radius: 5px;
-   // background-size: contain;
-   backdrop-filter: blur(20px);
-   transition: box-shadow 0.3s; /* Added transition */
- }
+  overflow: hidden;
+  margin: 20px;
+  position: relative;
+  border-radius: 5px;
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s, background-color 0.3s;
+}
 
- .card-trip:hover {
-   animation: shadowAnimation 2s infinite linear;
- }
-
+.card-trip:hover {
+  transform: scale(1.05);
+  background-color: rgba(229, 229, 229, 0.5); /* Change the background color on hover */
+}
 
  @keyframes shadowAnimation {
    0%, 100% {
@@ -144,6 +142,7 @@
    height: 250px;
    width: 100%;
    object-fit: cover;
+   border-radius: 30px;
  }
 
  .card-trip h2 {
@@ -187,6 +186,67 @@
    padding-top: 10px;
  }
 
+ .card-trip-index {
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  position: relative;
+  border-radius: 5px;
+  // background-size: contain;
+  backdrop-filter: blur(20px);
+  transition: box-shadow 0.3s; /* Added transition */
+}
+
+.card-trip-index:hover {
+  animation: shadowAnimation 2s infinite linear;
+}
+
+ .card-trip-index > img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip-index h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card-trip-index p {
+  font-size: 12px;
+  // opacity: .7;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card-trip-index-pricing {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FF914D;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip-index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-trip-index .card-trip-index-infos {
+  padding: 10px;
+  // position: relative;
+  min-height: 100px;
+  color: #14213d;
+}
+
+.card-trip-index .card-trip-index-infos p{
+  padding-top: 10px;
+}
 
  .cards {
    display: grid;

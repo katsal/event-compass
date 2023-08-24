@@ -7,8 +7,8 @@
       <div class="cards_index_page">
         <%if @events.any?%>
           <% @events.all.each do |event| %>
-            <div class="card-trip">
-              <h2 class="card-trip-pricing">
+            <div class="card-trip-index">
+              <h2 class="card-trip-index-pricing">
                 <span><%= event.start_date.strftime('%e') %></span>
                 <% if event.end_date %>
                   <% if event.start_date.month == event.end_date.month %>
@@ -19,8 +19,8 @@
                 <% end %>
               </h2>
               <%= image_tag event.img_url %>
-              <div class="card-trip-infos">
-                <div class="card-trip-header">
+              <div class="card-trip-index-infos">
+                <div class="card-trip-index-header">
                   <h2><%= event.name %></h2>
                   <div class="d-flex">
                     <% if event.price =~ /free/i || event.price !~ /\d/ %>

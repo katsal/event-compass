@@ -4,3 +4,17 @@
   padding-left: 15px;
 
 }
+.card-trip-index {
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  position: relative;
+  border-radius: 5px;
+  // background-size: contain;
+  backdrop-filter: blur(20px);
+  transition: box-shadow 0.3s; /* Added transition */
+}
+
+.card-trip-index:hover {
+  animation: shadowAnimation 2s infinite linear;
+}
