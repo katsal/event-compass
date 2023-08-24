@@ -5,34 +5,34 @@
     <div class="col-md-6">
       <div class="cards">
         <%if @events.any?%>
-      <% @events.all.each do |event| %>
-        <div class="card-trip">
-          <h2 class="card-trip-pricing">
-            <% if event.price =~ /free/i || event.price !~ /\d/ %>
-              Free
-            <% else %>
-              $<%= event.price %>
-            <% end %>
-          </h2>
-          <%= image_tag event.img_url %>
-          <div class="card-trip-infos">
-            <div class="card-trip-header">
-              <h2><%= event.name %></h2>
-              <div class="d-flex">
-                <span><%= event.start_date.strftime('%d %B') %></span>
-                <% if event.end_date %>
-                  <span> - <%= event.end_date.strftime('%d %B') %></span>
+          <% @events.all.each do |event| %>
+            <div class="card-trip">
+              <h2 class="card-trip-pricing">
+                <% if event.price =~ /free/i || event.price !~ /\d/ %>
+                  Free
+                <% else %>
+                  $<%= event.price %>
                 <% end %>
+              </h2>
+              <%= image_tag event.img_url %>
+              <div class="card-trip-infos">
+                <div class="card-trip-header">
+                  <h2><%= event.name %></h2>
+                  <div class="d-flex">
+                    <span><%= event.start_date.strftime('%d %B') %></span>
+                    <% if event.end_date %>
+                      <span> - <%= event.end_date.strftime('%d %B') %></span>
+                    <% end %>
+                  </div>
+                </div>
+                <p><%= truncate(event.description, length: 200) %></p>
               </div>
+              <%= link_to "", event_path(event), class: 'card-link' %>
             </div>
-            <p><%= truncate(event.description, length: 200) %></p>
-          </div>
-          <%= link_to "", event_path(event), class: 'card-link' %>
-        </div>
-      <% end %>
-    <% else %>
-      <em>Sorry, no events found.</em>
-    <% end %>
+          <% end %>
+        <% else %>
+          <em>Sorry, no events found.</em>
+        <% end %>
 
       </div>
     </div>
@@ -40,6 +40,5 @@
     <div class="col-md-6">
       <%= render 'shared/map', markers: @markers%>
     </div>
- </div>
+  </div>
 </div>
-    
