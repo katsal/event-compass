@@ -6,6 +6,14 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
+  def index?
+    true
+  end
+  
   private
 
   def user_is_admin?

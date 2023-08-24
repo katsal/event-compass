@@ -1,8 +1,10 @@
- <%= render 'shared/banner' %>
-<div class="container">
-  <h2 class="subheader-card-packs">Search results</h2>
-  <div class="cards">
-    <%if @events.any?%>
+<%= render 'shared/banner' %>
+<div class="container mt-3">
+  <div class="row">
+    <h2 class="subheader-card-packs">Search results</h2>
+    <div class="col-md-6">
+      <div class="cards">
+        <%if @events.any?%>
       <% @events.all.each do |event| %>
         <div class="card-trip">
           <h2 class="card-trip-pricing">
@@ -31,5 +33,13 @@
     <% else %>
       <em>Sorry, no events found.</em>
     <% end %>
-  </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= render 'shared/map', markers: @markers%>
+    </div>
+ </div>
 </div>
+    

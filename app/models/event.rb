@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :event_lists, dependent: :destroy
+  has_many :lists, through: :event_lists
 
   validates :name, :location, :description, :latitude, :longitude, :category, presence: true
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
@@ -12,6 +13,8 @@ class Event < ApplicationRecord
   validate :validate_url
   # validate :end_date_after_start_date
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -23,6 +26,7 @@ class Event < ApplicationRecord
     scope :starts_within_range, ->(start_date, end_date) {
       where('start_date >= ? AND start_date <= ?', start_date, end_date)
     }
+
 
   private
 
