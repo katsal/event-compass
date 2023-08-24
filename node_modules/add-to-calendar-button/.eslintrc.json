@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:security/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "xss/no-mixed-html": [
+      2,
+      {
+        "functions": {
+          ".encodeURIComponent": {
+            "passthrough": { "obj": true, "args": true }
+          }
+        }
+      }
+    ]
+  },
+  "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["*.min.*", "Gruntfile.js", "set-release.js", "demo/dist/*"],
+  "rules": {
+    // TO-DO: Enable rules to find and optimize code style
+    "eqeqeq": 0,
+    "curly": 0
+  }
+}
