@@ -28,3 +28,30 @@
     @extend .fw-bold;
   }
 }
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px; /* Create space for the line */
+  color: #333; /* Set the default text color */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fca311;
+  transition: width 0.3s; /* Animation duration */
+}
+
+.nav-link:hover {
+  color: #fca311; /* Change text color on hover */
+}
+
+.nav-link:hover::before {
+  width: 100%; /* Expand the line width on hover */
+}
