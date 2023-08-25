@@ -113,9 +113,7 @@ url_array.each do |url|
 
     location_element = element.search(".location")
     location_text = location_element.empty? ? "Tokyo" : location_element.text.strip + ", Tokyo"
-    p location_text
     separated_location = location_text.scan(/[A-Z][a-z]+/).join(" ")
-    p separated_location
     encoded_location_text = URI.encode_www_form_component(location_text)
 
     description = element.search(".card__excerpt").text.strip
