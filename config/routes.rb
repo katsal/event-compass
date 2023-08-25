@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new, :create, :show, :index] do
     resources :comments, only: [:create]
+    resources :event_lists, only: [:create]
   end
 end
