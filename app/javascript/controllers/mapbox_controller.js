@@ -22,10 +22,10 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    // this.#fitMapToJapan()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl }))
+
 
   }
 
@@ -39,10 +39,22 @@ export default class extends Controller {
       const customMarker = document.createElement("div")
       customMarker.innerHTML = marker.marker_html
 
+      const currentURL = window.location.href
+      const lastChar = currentURL.charAt(currentURL.length-1)
+      // const includedRoute = 'http://localhost:3000/events'
+
       new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
+
+      if (Number.isInteger(parseInt(lastChar, 10))) {
+        new mapboxgl.Marker(customMarker)
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map)
+        .togglePopup()
+      }
     })
   }
 
@@ -51,15 +63,5 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 })
   }
-
-  // #fitMapToJapan() {
-  //   // Define bounds that encompass Japan's geographical area
-  //   const bounds = [
-  //     [122.9382, 20.4183], // Southwest coordinates of Japan
-  //     [153.9867, 45.5515]  // Northeast coordinates of Japan
-  //   ];
-
-  //   this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
-  // }
 
 }
