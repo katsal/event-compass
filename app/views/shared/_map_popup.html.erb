@@ -1,18 +1,8 @@
-<%# <div class="card" style="width: 18rem;"> %>
-  <%#= image_tag event.img_url, class: "card-img-top" %>
-  <%# <div class="card-body"> %>
-   <%# <p class="card-text"><strong><%#= event.name %><%#</strong></p>
-   <%# <p class="card-text"><%#= event.location %><%#</p>
-   <%# <p class="card-text"><strong><%#= event.price %><%#</strong></p>
-  <%# </div> %>
-<div class=" rounded">
-  <h2>
-    <%= event.name %>
-  </h2>
-  <p>
-    Location: <%= event.location %>
-  </p>
-  <p>
-    Price: <%= event.price %>
-  </p>
+<div class="card">
+  <%= image_tag event.img_url, class: "card-img-top" %>
+  <div class="card-body">
+    <p class="card-text"><strong><%= event.name %></strong></p>
+    <p class="card-text"><strong>Location: </strong><%= event.location %></p>
+    <p class="card-text"><strong>Price: </strong><%= event.price %></p>
+  </div>
 </div>

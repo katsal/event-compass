@@ -16,15 +16,17 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      // center: [139.6917, 35.6895],
-      // zoom: 4
+      center: [139.6917, 35.6895],
+      zoom: 4
     })
 
     this.#addMarkersToMap()
-    // this.#fitMapToMarkers()
+    this.#fitMapToMarkers()
+    // this.#fitMapToJapan()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl }))
+
   }
 
   #addMarkersToMap() {
@@ -50,5 +52,14 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 })
   }
 
+  // #fitMapToJapan() {
+  //   // Define bounds that encompass Japan's geographical area
+  //   const bounds = [
+  //     [122.9382, 20.4183], // Southwest coordinates of Japan
+  //     [153.9867, 45.5515]  // Northeast coordinates of Japan
+  //   ];
+
+  //   this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
+  // }
 
 }
