@@ -31,14 +31,12 @@
         <i class="fa-solid fa-user"></i>
         <%= pluralize(@event.event_lists.count, "user") %> <%= users_verb(@event.event_lists.count) %> attending
       </div>
-      <%= link_to events_path, class: "btn btn-secondary btn-sm btn-fill" do %>
+      <%= link_to '#', class: "btn btn-secondary btn-sm btn-fill", data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } do %>
         See who else is going
       <% end %>
-      <% @event.lists.flat_map(&:user).each do |x|%>
-        <li><%= x.name %></li>
-      <%end%>
+      <%= render 'modal_attendees' %>
+
     </div>
-  </div>
   <div class="similar-events">
     <h3>Similar Events</h3>
   </div>
@@ -47,7 +45,7 @@
     <h3>Map</h3>
     <%= render 'shared/map', markers: @markers%>
   </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     +
   </button>
   <%= render 'modal' %>
