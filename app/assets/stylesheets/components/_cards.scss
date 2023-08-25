@@ -195,6 +195,10 @@
   // background-size: contain;
   backdrop-filter: blur(20px);
   transition: box-shadow 0.3s; /* Added transition */
+
+  &.w-480 {
+    width: 480px;
+  }
 }
 
 .card-trip-index:hover {
@@ -244,9 +248,17 @@
   color: #14213d;
 }
 
-.card-trip-index .card-trip-index-infos p{
+
+.event-dates {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.card-trip .card-trip-infos p{
   padding-top: 10px;
 }
+
 
  .cards {
    display: grid;
@@ -304,6 +316,8 @@
 }
 
 .card-trip-list {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 20px;
@@ -312,5 +326,6 @@
   // background-size: contain;
   backdrop-filter: blur(20px);
   transition: box-shadow 0.3s; /* Added transition */
+  @extend .p-3
 }
 
