@@ -25,6 +25,6 @@
 
   &:hover{
     color:black;
-    text-decoration: underline;
+    @extend .fw-bold;
   }
 }
