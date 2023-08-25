@@ -48,13 +48,13 @@ export default class extends Controller {
         .setPopup(popup)
         .addTo(this.map)
 
-      if (Number.isInteger(parseInt(lastChar, 10))) {
-        new mapboxgl.Marker(customMarker)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
-        .togglePopup()
-      }
+      // if (Number.isInteger(parseInt(lastChar, 10))) {
+      //   new mapboxgl.Marker(customMarker)
+      //   .setLngLat([ marker.lng, marker.lat ])
+      //   .setPopup(popup)
+      //   .addTo(this.map)
+      //   // .togglePopup()
+      // }
     })
   }
 
