@@ -8,7 +8,7 @@
         <%if @events.any?%>
           <% @events.all.each do |event| %>
             <div class="card-trip-index">
-              <h2 class="card-trip-index-pricing">
+              <h2 class="card-trip-pricing">
                 <% if event.start_date == event.end_date %>
                   <span><%= event.start_date.strftime('%e %b') %></span>
                 <% else %>
@@ -23,16 +23,25 @@
                 <% end %>
               </h2>
               <%= image_tag event.img_url %>
-              <div class="card-trip-index-infos">
-                <div class="card-trip-index-header">
-                  <h2><%= event.name %></h2>
-                  <div class="d-flex">
-                    <% if event.price && event.price.match?(/\A\d+(\.\d{1,2})?\z/) %>
-                      $<%= event.price %>
-                    <% elsif event.price =~ /free/i %>
-                      Free
-                    <% end %>
-                  </div>
+              <div class="card-trip-infos">
+                <div class="d-flex justify-between mt-1 mb-2 px-2">
+                  <p><%=event.location %></p>
+                  <% if event.price =~ /free/i || event.price !~ /\d/ %>
+                    <strong>
+                      <p>Free</p>
+                    </strong>
+                  <% else %>
+                    <p>
+                      <% prices = event.price.scan(/\d[\d.,]*/).map { |num| "¥#{num}" } %>
+                      <% formatted_price = prices.size > 1 ? "#{prices.first} ~ #{prices.last}" : prices.first %>
+                      <%= formatted_price %>
+                    </p>
+                  <% end %>
+                </div>
+                <div class="card-trip-header mb-2 d-flex justify-content-center">
+                  <strong>
+                    <h2><%= event.name %></h2>
+                  </strong>
                 </div>
               </div>
               <%= link_to "", event_path(event), class: 'card-link' %>
