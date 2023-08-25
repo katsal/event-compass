@@ -263,7 +263,7 @@
 ### FOR THE MID DEMO. HEROKU ONLY.
 
 5.times do
-  user_id = 219
+  user_id = 243
   name = Faker::JapaneseMedia::StudioGhibli.character
   location = Faker::Address.city
   start_date = Date.today + rand(1..10)
@@ -279,7 +279,7 @@
 end
 
 5.times do
-  user_id = 220
+  user_id = 244
   name = Faker::JapaneseMedia::StudioGhibli.character
   location = Faker::Address.city
   start_date = Date.today + rand(1..10)
