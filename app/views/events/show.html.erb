@@ -1,9 +1,8 @@
 <div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 300px;">
-  <div>Menu Button Here</div>
   <%= render "shared/add_to_calendar", event: @event%>
   <h1 style="text-align:center"><%= @event.name %></h1>
   <div class="ticket-lnk">
-    <div ticket price>Ticket Price: <%=@event.price%>
+    <div ticket price style="color: black">Ticket Price: <%=@event.price%>
     </div>
     <div>
       <%= link_to events_path, class: "btn btn-danger btn-fill" do %>Click Here
@@ -11,7 +10,7 @@
     </div>
   </div>
   <div class="location-marker">
-    <div>
+    <div style="color: black">
       <h2><%= @event.location %></h2>
     </div>
     <div>&nbsp&nbsp-&nbsp 15 minutes</div>
@@ -38,10 +37,10 @@
 
     </div>
   <div class="similar-events">
-    <h3>Similar Events</h3>
+    <%# <h3>Similar Events</h3>
   </div>
   THE ABOVE IS A CAROUSEL
-  <div>
+  <div> %>
     <h3>Map</h3>
     <%= render 'shared/map', markers: @markers%>
   </div>
