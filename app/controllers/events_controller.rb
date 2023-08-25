@@ -12,13 +12,13 @@ class EventsController < ApplicationController
     end
 
     if params[:opening_date].present?
-      date_range = params[:opening_date].split(' - ')
+      date_range = params[:opening_date].split(' to ')
       if date_range.length == 1
-        selected_date = Date.parse(date_range[0])
-        @events = @events.where("start_date <= ? AND (end_date >= ? OR end_date IS NULL)", selected_date, selected_date)
+        selected_date = Date.parse(date_range[0]).to_datetime
+        @events = @events.starts_within_range(selected_date, selected_date)
       elsif date_range.length == 2
-        start_date = Date.parse(date_range[0])
-        end_date = Date.parse(date_range[1])
+        start_date = Date.parse(date_range[0]).to_datetime
+        end_date = (Date.parse(date_range[1])+1).to_datetime
         @events = @events.starts_within_range(start_date, end_date)
       end
     end

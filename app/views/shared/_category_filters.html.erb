@@ -13,5 +13,17 @@
     <%= f.button "Market", class: "btn-flat-category", name: "category", value: "Market" %>
     <%= f.button "Festival", class: "btn-flat-category", name: "category", value: "Festival" %>
     <%= f.button "Fireworks", class: "btn-flat-category", name: "category", value: "Fireworks" %>
+    <%= f.text_field :q,
+          class: "form-control",
+          placeholder: "Tokyo...",
+          value: params[:q],
+          hidden: true
+        %>
+    <%= f.text_field :opening_date,
+            as: :string,
+            value: params[:opening_date],
+            data: { controller: "datepicker" },
+            class: "form-control",
+            hidden: true %>
   <% end %>
 </div>
