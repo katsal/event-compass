@@ -1,0 +1,35 @@
+# THE .gitignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+
+
+# PLUS what else should not be on npm
+
+/.github
+/demo
+/assets
+/src
+*.png
+*.ico
+*.gif
+*.svg
+*.ics
+Gruntfile.js
+security.md
+package-lock.json
+set-release.js
+.prettierignore
+.prettierrc.json
+.stylelintrc.json
+.gitattributes
+*.min.js
+*.map
+.eslintrc.cjs
+CNAME
