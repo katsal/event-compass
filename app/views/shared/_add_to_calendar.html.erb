@@ -1,0 +1,10 @@
+<add-to-calendar-button
+  name= <%= @event.name %>
+  options= "'Apple','Google','Outlook.com'"
+  location= <%= @event.location %>
+  startDate= <%= @event.start_date.strftime('%Y-%m-%d') %>
+  startTime= <%= @event.start_date.strftime('%H:%M') %>
+  endDate= <%= @event.end_date.strftime('%Y-%m-%d') %>
+  endTime= <%= @event.end_date.strftime('%H:%M') %>
+  timeZone= "Japan/Tokyo"
+></add-to-calendar-button>

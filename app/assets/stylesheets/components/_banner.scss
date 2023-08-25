@@ -1,17 +1,7 @@
-/* Rest of your CSS */
 .banner {
   background-size: cover;
   background-position: center;
-  height: 600px;
-  position: relative;
-}
-
-.banner .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  padding: 150px 0;
 }
 
 .banner h1 {
@@ -20,8 +10,6 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
-  top: 20%; /* Adjust this value to control the vertical position of the h1 */
-  position: relative; /* Set relative positioning */
 }
 
 .banner p {
@@ -29,8 +17,4 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  top: 30px; /* Adjust this value to control the vertical position of the p */
-  position: relative; /* Set relative positioning */
 }
-
-/* Rest of your CSS */

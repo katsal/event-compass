@@ -1,5 +1,16 @@
 <div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 300px;">
+
   <div>Menu Button Here</div>
+  <add-to-calendar-button
+  name= <%=@event.name%>
+  options="'Apple','Google'"
+  location="World Wide Web"
+  startDate="2023-08-27"
+  endDate="2023-08-27"
+  startTime="10:15"
+  endTime="23:30"
+  timeZone="America/Los_Angeles"
+></add-to-calendar-button>
   <h1 style="text-align:center"><%= @event.name %></h1>
   <div class="ticket-lnk">
     <div ticket price>Ticket Price: <%=@event.price%>
@@ -34,7 +45,7 @@
         See who else is going
       <% end %>
       <% @event.lists.flat_map(&:user).each do |x|%>
-      <li><%= x.name %></li>
+        <li><%= x.name %></li>
       <%end%>
     </div>
   </div>
@@ -44,7 +55,7 @@
   THE ABOVE IS A CAROUSEL
   <div>
     <h3>Map</h3>
-    INSERT MAP HERE
+    <%= render 'shared/map', markers: @markers%>
   </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     +

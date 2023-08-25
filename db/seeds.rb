@@ -12,7 +12,7 @@ puts "Destroyed Users and Lists and Events!"
 barry_acc = User.new(
   email: "Barry@eventcompass.com",
   password: "password1",
-  name: "Admin Barry",
+  name: "Barry",
   location: "location One",
   introduction: "We are the admins",
   admin: true
@@ -26,7 +26,7 @@ barry_acc.save!
 karthika_acc = User.new(
   email: "karthika@eventcompass.com",
   password: "password2",
-  name: "Admin Karthika",
+  name: "Karthika",
   location: "location Two",
   introduction: "We are the admins",
   admin: true
@@ -40,7 +40,7 @@ karthika_acc.save!
 caitlyn_acc = User.new(
   email: "Caitlyn@eventcompass.com",
   password: "password3",
-  name: "Admin Caitlyn",
+  name: "Caitlyn",
   location: "location Three",
   introduction: "We are the admins",
   admin: true
@@ -55,7 +55,7 @@ caitlyn_acc.save!
 kostas_acc = User.new(
   email: "Kostas@eventcompass.com",
   password: "password4",
-  name: "Admin kostas",
+  name: "Kostas",
   location: "location Four",
   introduction: "We are the admins",
   admin: true
@@ -113,12 +113,15 @@ url_array.each do |url|
 
     location_element = element.search(".location")
     location_text = location_element.empty? ? "Tokyo" : location_element.text.strip
+    separated_location = location_text.scan(/[A-Z][a-z]+/).join(" ")
     encoded_location_text = URI.encode_www_form_component(location_text)
 
     description = element.search(".card__excerpt").text.strip
     date = element.search(".card--event__date-box").text.strip.gsub(/\s+/, "")
     card_url = element.search(".card__image").attr("href").value
     attributes = element.search(".card--event__attribute")
+    categories = element.search("a[href^='/event-category/']").map { |anchor| anchor.text }
+
 
     card_html = URI.open(card_url).read
     card_doc = Nokogiri::HTML(card_html)
@@ -140,14 +143,24 @@ url_array.each do |url|
       end
     end
 
-    if category
-      category_instance = Category.find_by(name: category)
-        unless category_instance
-          category_instance = Category.create!(name: category)
-        end
-    else
-      category_instance = no_category
+    category_instance = nil
+
+    categories.each do |cat|
+      category_instance = Category.find_by(name: cat)
+      unless category_instance.present?
+        category_instance = Category.create!(name: cat)
+      end
     end
+
+
+    # if category
+    #   category_instance = Category.find_by(name: category)
+    #     unless category_instance
+    #       category_instance = Category.create!(name: category)
+    #     end
+    # else
+    #   category_instance = no_category
+    # end
 
     start_time = ""
     end_time = ""
@@ -193,18 +206,18 @@ url_array.each do |url|
 
     event = Event.new(
       name: name,
-      location: encoded_location_text,
+      location: separated_location,
       longitude: longitude,
       latitude: latitude,
       description: description,
       price: price,
       start_date: parsed_start_date,
-      end_date: parsed_end_date
+      end_date: parsed_end_date,
+      img_url: img_url
     )
 
-    event = Event.new(name: name, location: encoded_location_text, longitude: longitude, latitude: latitude, description: description, price: price, start_date: parsed_start_date, end_date: parsed_end_date, img_url: img_url)
     event.url = "https://www.bbc.com/"
-    event.category = Category.new
+    event.category = category_instance || no_category
     event.save!
   end
 end
@@ -226,3 +239,23 @@ end
 puts "Created #{Event.count} events!"
 puts "Created #{EventList.count} event lists!"
 puts "Created #{Category.count} categories!"
+
+###Event list
+
+puts "Cleaning up event_list"
+EventList.destroy_all
+events = Event.all
+lists = List.all
+
+20.times do
+  event_id = events.sample.id
+  list_id = lists.sample.id
+
+  event_list = EventList.new(event_id: event_id, list_id: list_id)
+
+  if event_list.save!
+    puts "Created event_list"
+  else
+    puts "Failed to create event_list Errors: #{event_list.errors.full_messages.join(', ')}"
+  end
+end

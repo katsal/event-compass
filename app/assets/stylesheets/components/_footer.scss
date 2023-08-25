@@ -1,0 +1,82 @@
+.footer-top {
+  padding: 60px 0;
+  background: black; /* Changed background color to black */
+  text-align: left;
+  color: white; /* Changed regular text color to white */
+}
+
+.footer-top h3 {
+  padding-bottom: 10px;
+  color: #FF914D; /* Changed header text color to orange (#FF914D) */
+}
+
+.footer-about img.logo-footer {
+  max-width: 74px;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.footer-about p a {
+  color: #aaa;
+  border-bottom: 1px dashed #666;
+}
+
+.footer-about p a:hover,
+.footer-about p a:focus {
+  color: white; /* Changed link text color to white */
+  border-color: #aaa;
+}
+
+.footer-contact p {
+  word-wrap: break-word;
+}
+
+.footer-contact i {
+  padding-right: 10px;
+  font-size: 18px;
+  color: #666;
+}
+
+.footer-contact p a {
+  color: #aaa;
+  border-bottom: 1px dashed #666;
+}
+
+.footer-contact p a:hover,
+.footer-contact p a:focus {
+  color: white; /* Changed link text color to white */
+  border-color: #aaa;
+}
+
+.footer-social a {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 8px;
+  color: #777;
+  border: 0;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+  color: #FF914D; /* Changed link text color to orange (#FF914D) */
+  border: 0;
+}
+
+.footer-social i {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.footer-bottom {
+  padding: 15px 0;
+  background: black; /* Changed background color to black */
+  text-align: left;
+  color: white; /* Changed regular text color to white */
+}
+/* Rest of the CSS code remains the same */
+
+.footer-bottom { padding: 15px 0; background: #444; text-align: left; color: #aaa; }
+
+/* Footer link color */
+.footer-bottom a { color: white; border: 0; }
+.footer-bottom a:hover, .footer-bottom a:focus { color: #FF914D; border: 0; }
