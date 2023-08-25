@@ -23,6 +23,10 @@ class EventsController < ApplicationController
       end
     end
 
+    if params[:category].present?
+      @events = @events.joins(:category).where(category: { name: params[:category] })
+    end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -32,7 +36,7 @@ class EventsController < ApplicationController
       }
     end
   end
-  
+
   def show
     @event = Event.find(params[:id])
     authorize @event

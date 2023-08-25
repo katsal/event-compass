@@ -1,5 +1,4 @@
 <div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 300px;">
-  <div>Menu Button Here</div>
   <h1 style="text-align:center"><%= @event.name %></h1>
   <div class="ticket-lnk">
     <div ticket price>Ticket Price: <%=@event.price%>
@@ -46,4 +45,8 @@
     <h3>Map</h3>
     INSERT MAP HERE
   </div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    +
+  </button>
+  <%= render 'modal' %>
 </div>
