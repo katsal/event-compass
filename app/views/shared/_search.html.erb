@@ -3,7 +3,8 @@
     <div class="search-bar-container">
       <%= f.text_field :q,
           class: "form-control",
-          placeholder: "Tokyo..."
+          placeholder: "Tokyo...",
+          value: params[:q]
         %>
     </div>
     <%= f.text_field :opening_date,

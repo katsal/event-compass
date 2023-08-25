@@ -21,18 +21,22 @@
         </h2>
         <%= image_tag event.img_url %>
         <div class="card-trip-infos">
-          <div class="d-flex">
+          <div class="d-flex justify-between">
             <p><%=event.location %></p>
+            <% if event.price =~ /free/i || event.price !~ /\d/ %>
+              <strong>
+                <p>Free</p>
+              </strong>
+            <% else %>
+              <p>
+                <% prices = event.price.scan(/\d[\d.,]*/).map { |num| "¥#{num}" } %>
+                <% formatted_price = prices.size > 1 ? "#{prices.first} ~ #{prices.last}" : prices.first %>
+                <%= formatted_price %>
+              </p>
+            <% end %>
           </div>
           <div class="card-trip-header">
             <h2><%= event.name %></h2>
-            <div class="d-flex">
-              <% if event.price =~ /free/i || event.price !~ /\d/ %>
-                Free
-              <% else %>
-                <%= event.price %>
-              <% end %>
-            </div>
           </div>
           <p><%= truncate(event.description, length: 200) %></p>
         </div>
