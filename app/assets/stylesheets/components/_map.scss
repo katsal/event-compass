@@ -5,4 +5,15 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  padding: 0px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-radius: 4px !important;
+}
+
+
+.mapboxgl-popup-close-button {
+  right: 4px !important;
+  top: 4px !important;
+  background-color: orange !important;
+  color: black !important;
 }
