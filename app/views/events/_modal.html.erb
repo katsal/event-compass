@@ -2,15 +2,25 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Add to list</h5>
+        <h5 class="modal-title" id="staticBackdropLabel"><%= current_user ? "Add to list" : "Please log in to add to a list!"%></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <p>Add to which list?</p>
+        <div class="event-buttons">
+          <% if current_user%>
+            <% current_user.lists.each do |list|%>
+              <%= link_to list.name, event_event_lists_path(@event, list_id: list.id), class: "btn event-button", data: { turbo_method: :post } %>
+            <%end%>
+          <%end%>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Create new list</button>
-      </div>
+      ...
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Create new list</button>
     </div>
   </div>
 </div>
+</div>
+
