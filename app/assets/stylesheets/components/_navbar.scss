@@ -19,3 +19,12 @@
 .navbar-lewagon a {
   color: white;
 }
+
+.dropdown-menu a {
+  color: grey;
+
+  &:hover{
+    color:black;
+    text-decoration: underline;
+  }
+}
