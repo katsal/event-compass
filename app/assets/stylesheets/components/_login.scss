@@ -1,0 +1,34 @@
+.form-login {
+  background: white;
+  padding: 20px 20px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    color: black;
+    padding: 8px 24px;
+    border-radius: 30px;
+    background: #FF914D;
+    transition: background 0.3s ease;
+    margin: 15px auto;
+    display: block;
+    justify-content: center;
+  }
+  .btn:hover {
+    background: #F08400; /* Adjusted orange color */
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  }
+}
+
+.form-control  {
+  max-width: 100%;
+  position: center;
+}

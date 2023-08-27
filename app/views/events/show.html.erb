@@ -1,5 +1,4 @@
 <div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 300px;">
-  <div>Menu Button Here</div>
   <%= render "shared/add_to_calendar", event: @event%>
   <h1 style="text-align:center"><%= @event.name %></h1>
   <div class="ticket-lnk">
@@ -35,18 +34,17 @@
         See who else is going
       <% end %>
       <%= render 'modal_attendees' %>
-
     </div>
-  <div class="similar-events">
-    <h3>Similar Events</h3>
+    <div class="similar-events">
+      <h3>Similar Events</h3>
+    </div>
+    THE ABOVE IS A CAROUSEL
+    <div>
+      <h3>Map</h3>
+      <%= render 'shared/map', markers: @markers%>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToList">
+      +
+    </button>
+    <%= render 'modal' %>
   </div>
-  THE ABOVE IS A CAROUSEL
-  <div>
-    <h3>Map</h3>
-    <%= render 'shared/map', markers: @markers%>
-  </div>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToList">
-    +
-  </button>
-  <%= render 'modal' %>
-</div>
