@@ -7,7 +7,7 @@
   left: 34.1%;
   top: 100%;
   margin-bottom: 48px;
-  padding: 4px;
+  padding: 5px;
   color:black
 }
 
@@ -56,9 +56,11 @@
   border-radius: 5px;
   position: absolute;
   text-align: center;
-  left: 80%;
+  left: 75%;
   top: 75%;
   padding: 15px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .info-box{
