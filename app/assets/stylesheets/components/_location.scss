@@ -3,31 +3,29 @@
   // justify-content: space-between;
   margin-top: 8px;
   align-items: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   position: absolute;
   left: 34.1%;
   top: 100%;
   margin-bottom: 48px;
   padding: 4px;
+  color:black
 }
 
 .event-summary {
-  border: solid;
-  border-radius: 5px;
+
+
   padding: 4px;
-  margin-top: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .attendance {
   margin-top: 8px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
 }
 
 .similar-events {
   margin-top: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-fill {
@@ -51,13 +49,20 @@
 }
 
 .ticket-lnk {
-  width: 180px;
+  width: auto;
   background: white;
   align-items: center;
   border: solid;
   border-radius: 5px;
   position: absolute;
   text-align: center;
-  left: 53%;
-  top: 85%;
+  left: 80%;
+  top: 75%;
+  padding: 15px;
+}
+
+.info-box{
+text-align: start;
+color: black;
+
 }
