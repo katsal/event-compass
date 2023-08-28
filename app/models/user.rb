@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def admin
     @admin
   end
+
+  def messages(recipient)
+    Message.where(sender: self, recipient: recipient).or(Message.where(sender: recipient, recipient: self))
+  end
 end
