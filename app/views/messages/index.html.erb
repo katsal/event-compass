@@ -1,11 +1,9 @@
 <div class="container">
-<h1>Conversition with: <%= @recipient.name %></h1>
-  <ul>
+<h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
+  <ul class="message-list">
   <% @messages.each do |message| %>
-    <li>
-      <strong>From:</strong> <%= message.sender.name %><br>
-      <strong>To:</strong> <%= message.recipient.name %><br>
-      <strong>Content:</strong> <%= message.content %>
+    <li class="message <%= message.sender == current_user ? 'sender' : 'recipient' %>">
+      <%= message.content %>
     </li>
   <% end %>
 </ul>
