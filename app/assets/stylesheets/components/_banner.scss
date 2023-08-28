@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.banner p {
+.banner-text {
   font-size: 20px;
   color: white;
   opacity: .8;
@@ -21,7 +21,7 @@
   display: inline-block; /* Ensures the pseudo-element width matches the text */
 }
 
-.banner p::after {
+.banner-text::after {
   content: ""; /* Create a pseudo-element for the underline */
   position: absolute;
   left: 0;

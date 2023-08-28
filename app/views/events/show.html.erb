@@ -1,51 +1,65 @@
-<div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 300px;">
-  <%= render "shared/add_to_calendar", event: @event%>
+<div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=@event.img_url%>); height: 500px;">
   <h1 style="text-align:center"><%= @event.name %></h1>
+  <p class="banner-text">
+    <% if @event.start_date.day == @event.end_date.day && @event.start_date.month == @event.end_date.month && @event.start_date.year == @event.end_date.year %>
+      <%= @event.start_date.strftime('%b %d') %>
+    <% else %>
+      <%= @event.start_date.strftime('%b %d') %> - <%= @event.end_date.strftime('%b %d') %>
+    <% end %>
+  </p>
   <div class="ticket-lnk">
-    <div ticket price style="color: black">Ticket Price: <%=@event.price%>
-    </div>
     <div>
-      <%= link_to events_path, class: "btn btn-danger btn-fill" do %>Click Here
+      <%= render "shared/add_to_calendar", event: @event%>
+      <p class="info-box"><i class="fa-solid fa-yen-sign mt-3" style="color: #fd904c;"></i>: <strong><%=@event.price%></strong></p>
+      <p class="info-box"><i class="fa-solid fa-tag" style="color: #ff914d;"></i>: <strong><%=@event.category.name%></strong></p>
+      <p class="info-box"><i class="fa-solid fa-location-dot" style="color: #ff914d;">: </i> <%= @event.location %></p>
+      <%= link_to '#', class: "btn-flat-search", data: { bs_toggle: "modal", bs_target: "#addToList" } do %>
+        Attend
       <% end %>
+      <%= link_to 'More info', events_path, class: "btn-flat-external m-1 mb-3" %>
     </div>
-  </div>
-  <div class="location-marker">
-    <div style="color: black">
-      <h2><%= @event.location %></h2>
-    </div>
-    <div>&nbsp&nbsp-&nbsp 15 minutes</div>
   </div>
 </div>
-<div class="container col-4" style="margin-top: 64px;">
-  <div class="icons">
-    <%= render 'shared/icons' %>
-  </div>
+<div class="container col-6">
   <div class="event-summary">
-    <h3>Event Summary</h3>
+    <a href="javascript:history.go(-1);" style="display: inline-flex; align-items: flex-start; margin: 5px 0; text-decoration: none;">
+      <i class="fa-solid fa-arrow-left" style="color: #000000; font-size: 150%;"></i>
+      <span style="margin-left: 5px; font-size: 80%; text-decoration: underline; color: #ff914d;">Previous Page</span>
+    </a>
+    <h2>Event Summary</h2>
     <p><%=@event.description%></p>
   </div>
   <div class="attendance">
     <div>
       <div>
-        <i class="fa-solid fa-user"></i>
-        <%= pluralize(@event.event_lists.count, "user") %> <%= users_verb(@event.event_lists.count) %> attending
+        <div class="avatar-container">
+          <% @event.event_lists.limit(3).each do |event_list| %>
+            <div class="avatar attending">
+              <% user = event_list.list.user %>
+              <% if user.my_photo.attached? %>
+                <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
+              <% else %>
+                <%= image_tag 'default_avatar.svg', alt: 'Default Avatar', class: 'avatar' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <% attending_count = @event.event_lists.count %>
+        <%= pluralize(attending_count, "user") %> <%= users_verb(attending_count) %> attending
       </div>
-      <%= link_to '#', class: "btn btn-secondary btn-sm btn-fill", data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } do %>
-        See who else is going
-      <% end %>
-      <%= render 'modal_attendees' %>
-
     </div>
+  </div>
+  <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } do %>
+    See who else is going
+  <% end %>
+  <%= render 'modal_attendees' %>
   <div class="similar-events">
-    <%# <h3>Similar Events</h3>
   </div>
   THE ABOVE IS A CAROUSEL
-  <div> %>
-    <h3>Map</h3>
+  <div class="show-map">
+    <h3> Event Location</h3>
     <%= render 'shared/map', markers: @markers%>
   </div>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToList">
-    +
-  </button>
   <%= render 'modal' %>
+</div>
 </div>
