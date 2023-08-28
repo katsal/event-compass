@@ -1,7 +1,7 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
-  border: #fca311 1px solid;
+
 }
 .avatar-large {
   width: 56px;
@@ -11,7 +11,6 @@
   width: 40px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: #fca311 1px solid;
 }
 .avatar-square {
   width: 40px;
@@ -20,11 +19,20 @@
   border: white 1px solid;
 }
 
-.avatar:hover {
+.avatar img {
+  border: #fca311 1px solid;
+}
+
+.avatar img:hover {
   box-shadow: 0 0 10px 2px #fca311;
 }
 
-
 i.primary {
   color:#fca311;
+}
+
+.avatar-container{
+  position: relative;
+
+  display: flex; /* Adjust the size as needed */
 }
