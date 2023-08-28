@@ -2,10 +2,11 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @events = Event.all
+    date_today = Date.today.to_datetime
+    # Condition to make sure to select events that has come to an end by today.
+    @events = Event.all.where("end_date >= ?", date_today)
     @events = @events.where.not(user: current_user) if current_user&.admin?
     @events = policy_scope(@events)
-
 
     if params[:q].present?
       @events = @events.global_search(params[:q])
@@ -18,23 +19,15 @@ class EventsController < ApplicationController
         @events = @events.starts_within_range(selected_date, selected_date)
       elsif date_range.length == 2
         start_date = Date.parse(date_range[0]).to_datetime
-        end_date = (Date.parse(date_range[1])+1).to_datetime
+        end_date = (Date.parse(date_range[1]) + 1).to_datetime
         @events = @events.starts_within_range(start_date, end_date)
       end
     end
-
     if params[:category].present?
       @events = @events.joins(:category).where(category: { name: params[:category] })
     end
 
-    @markers = @events.geocoded.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        popup_html: render_to_string(partial: "shared/map_popup", locals: { event: event }),
-        marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
-      }
-    end
+    @markers = get_markers(@events)
   end
 
   def show
@@ -51,13 +44,25 @@ class EventsController < ApplicationController
     end
   end
 
-
   def ical_calendar_url(event)
     start_date = event.date.strftime('%Y%m%dT%H%M%S') + 'Z'
     end_date = (event.date + event.duration.hours).strftime('%Y%m%dT%H%M%S') + 'Z'
 
     # Build the iCal Calendar URL with formatted start and end dates
     # Example: "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20291231T210000Z\nDTEND:20300101T205900Z\n..."
+  end
+
+  private
+
+  def get_markers(events)
+    events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        popup_html: render_to_string(partial: "shared/map_popup", locals: { event: event }),
+        marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
+      }
+    end
   end
 
 end
