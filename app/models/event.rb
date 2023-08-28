@@ -24,10 +24,12 @@ class Event < ApplicationRecord
     }
 
     scope :starts_within_range, ->(start_date, end_date) {
-      where('start_date >= ? AND start_date <= ?', start_date, end_date)
+      where('to_char(start_date,\'YYYY-MM-DD\') >= ? AND to_char(end_date,\'YYYY-MM-DD\') <= ?', start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
     }
 
-
+    scope :search_and_date_range, ->(query, start_date, end_date) {
+      global_search(query).starts_within_range(start_date, end_date)
+    }
   private
 
   def validate_url
