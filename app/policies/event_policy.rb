@@ -13,7 +13,7 @@ class EventPolicy < ApplicationPolicy
   def index?
     true
   end
-  
+
   private
 
   def user_is_admin?
