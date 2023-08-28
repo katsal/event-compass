@@ -1,0 +1,23 @@
+<div class="modal fade" id="eventPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventPostLabel" style="color: black">Comment on an Event!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+    <%= simple_form_for [@comment] do |f| %>
+      <%= f.association :event, collection: @past_events, include_blank: false%>
+      <%= f.input :comment, as: :text%>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+     <%= f.button :submit , class: "btn-flat "%>
+    <% end %>
+
+
+        <div class="event-buttons">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
