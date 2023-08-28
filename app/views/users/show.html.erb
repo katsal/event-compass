@@ -5,23 +5,22 @@
       <div class="card p-3 gap-4" style="width: 18rem; background-color:#fefefe">
         <div class="m-auto">
           <div class="d-flex gap-3 align-items-center flex-column" style="position:relative">
-            <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:120px" %>
+            <% if @user.my_photo.attached? %>
+              <%= cl_image_path(@user.my_photo.key) %>
+            <% else %>
+              <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:80px" %>
+            <% end %>
             <h5 class="card-title fw-bold"><%= @user.name.capitalize %></h5>
             <div>
               <p class="text-muted"><%= @user.location %></p>
-              <p class="text-muted"><%= @user.date_of_birth %></p>
             </div>
           </div>
-          <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
-            <%= link_to user_path, data: {action: "click->photo-toggle#upload"} do %>
-              <i class="primary fa-solid fa-pen"></i>
-            <% end %>
-            <div data-photo-toggle-target="photoUpload" class="d-none">
-              <%= simple_form_for @user do |f| %>
-                <%= f.input :photo, as: :file, label: false %>
-                <%= f.submit "Upload", class: 'btn btn-flat' %>
-              <% end %>
-            </div>
+        </div>
+        <div>
+          <h6 class="fw-bold">About</h6>
+          <hr />
+          <div class="d-flex gap-2">
+            <p><%= @user.introduction %></p>
           </div>
         </div>
         <div>
@@ -30,18 +29,17 @@
           <div class="d-flex gap-2">
             <i class="primary fa-regular fa-comment-dots" title="Lets chat"></i>
             <i class="primary fa-regular fa-envelope" title="Email"></i>
+            <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
+              <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
+                <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
+              <% end %>
+              <%= render 'modal_user_edit' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="d-flex flex-column flex-fill gap-4">
-      <div class="card p-3"  style="background-color:#fefefe">
-        <h5 class="fw-bold">About</h5>
-        <hr />
-        <div>
-          <p><%= @user.introduction %></p>
-        </div>
-      </div>
       <div>
         <h5 class="fw-bold">My Lists</h5>
         <div class="d-flex row-direction gap-4">
@@ -64,45 +62,8 @@
           <% end %>
         </div>
       </div>
-      <% if @user == current_user%>
-        <div class="btn btn-secondary" style="margin-top: 8px; width: 18rem; position:relative">
-          <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#eventPostModal" } do %>
-            Post About a Recent Event!
-          <% end %>
-          <%= render 'modal_comment' %>
-        </div>
-      <% end%>
       <div>
-        <h5 class="fw-bold">Events</h5>
-        <% @past_events.each do |past_event| %>
-          <div class="py-3">
-            <div class="card-trip w-480 m-auto">
-              <h2 class="card-trip-pricing">
-                <% if past_event.price =~ /free/i || past_event.price !~ /\d/ %>
-                  Free
-                <% else %>
-                  $<%= past_event.price %>
-                <% end %>
-              </h2>
-              <div class="card-trip-infos">
-                <div class="card-trip-header">
-                  <h2><%= past_event.name %></h2>
-                </div>
-                <div class="pt-3">
-                  <div class="event-dates">
-                    <i class="primary fa-regular fa-calendar"></i>
-                    <div>
-                      <span><%= past_event.start_date.strftime('%d %B') %></span>
-                      <% if past_event.end_date %>
-                        <span> - <%= past_event.end_date.strftime('%d %B') %></span>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'shared/past_events' %>
       </div>
     </>
   </div>
