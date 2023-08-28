@@ -7,5 +7,6 @@ class UsersController < ApplicationController
                         .where('lists.id IN (?) AND events.start_date < ?', user_lists.pluck(:id), Date.today)
                         .order(start_date: :desc)
                         .distinct
+    @comment = Comment.new
   end
 end
