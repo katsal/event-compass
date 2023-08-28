@@ -13,12 +13,13 @@
               <%= link_to list.name, event_event_lists_path(@event, list_id: list.id), class: "btn event-button", data: { turbo_method: :post } %>
             <%end%>
           <%end%>
+          <%= link_to "Create New List", new_list_path, class: "btn btn-secondary"%>
         </div>
       </div>
       ...
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Create new list</button>
+      <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Create new list</button> %>
     </div>
   </div>
 </div>
