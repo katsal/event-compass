@@ -1,1 +1,18 @@
-<div>Hello</div>
+<div class="container">
+<h1>Conversition with: <%= @recipient.name %></h1>
+  <ul>
+  <% @messages.each do |message| %>
+    <li>
+      <strong>From:</strong> <%= message.sender.name %><br>
+      <strong>To:</strong> <%= message.recipient.name %><br>
+      <strong>Content:</strong> <%= message.content %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_with url: "messages", method: :post do |form| %>
+  <%= form.text_area :content, size: "70x5" %>
+  <%= form.submit "Send Message" %>
+<% end %>
+
+</div>
