@@ -1,18 +1,19 @@
 <div class="category-filters" data-controller="category-filter">
   <%= form_with(url: events_path, method: "get") do |f| %>
-    <%= f.button "Food", class: "btn-flat-category", name: "category", value: "Food", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Art", class: "btn-flat-category", name: "category", value: "Art", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Illumination", class: "btn-flat-category", name: "category", value: "Illumination", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Nature", class: "btn-flat-category", name: "category", value: "Nature", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Beer", class: "btn-flat-category", name: "category", value: "Beer", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Drinks", class: "btn-flat-category", name: "category", value: "Drinks", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Talk", class: "btn-flat-category", name: "category", value: "Talk", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Parade", class: "btn-flat-category", name: "category", value: "Parade", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Comedy", class: "btn-flat-category", name: "category", value: "Comedy", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Music", class: "btn-flat-category", name: "category", value: "music", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Market", class: "btn-flat-category", name: "category", value: "Market", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Festival", class: "btn-flat-category", name: "category", value: "Festival", data: { categoryFilterTarget: "button" } %>
-    <%= f.button "Fireworks", class: "btn-flat-category", name: "category", value: "Fireworks", data: { categoryFilterTarget: "button" } %>
+    <%= f.button "Food", class: "btn-flat-category", name: "category", value: "Food", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Art", class: "btn-flat-category", name: "category", value: "Art", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Illumination", class: "btn-flat-category", name: "category", value: "Illumination", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Nature", class: "btn-flat-category", name: "category", value: "Nature", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Beer", class: "btn-flat-category", name: "category", value: "Beer", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Drinks", class: "btn-flat-category", name: "category", value: "Drinks", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Talk", class: "btn-flat-category", name: "category", value: "Talk", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Parade", class: "btn-flat-category", name: "category", value: "Parade", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Comedy", class: "btn-flat-category", name: "category", value: "Comedy", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Music", class: "btn-flat-category", name: "category", value: "music", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Market", class: "btn-flat-category", name: "category", value: "Market", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Festival", class: "btn-flat-category", name: "category", value: "Festival", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Fireworks", class: "btn-flat-category", name: "category", value: "Fireworks", data: { controller: "category-filter", category_filter_target: "button" } %>
+    <%= f.button "Clear filters", class: "btn-flat-category-clear", name: "category", value: nil, data: { controller: "category-filter", category_filter_target: "button" } %>
     <%= f.text_field :q,
           class: "form-control",
           placeholder: "Tokyo...",

@@ -41,7 +41,7 @@
 }
 
 .btn-flat-search {
-  color: black;
+  color: white;
   padding: 8px 24px;
   border-radius: 30px;
   background: #FF914D;
@@ -87,32 +87,50 @@
 }
 
 .btn-flat-category {
-  color: black;
+  color: #FF914D; /* Orange text color */
   padding: 8px 24px;
   border-radius: 30px;
-  background: #FF914D;
-  transition: background 0.3s ease;
+  background: white; /* White background */
+  transition: background 0.3s ease, box-shadow 0.3s ease; /* Transition background and box-shadow */
   margin-top: 15px;
-  border: none; /* Remove the border */
+  border: 1px solid #FF914D; /* Orange border */
   margin-left: 5px;
   margin-right: 5px;
 }
 
 .btn-flat-category:hover {
-  background: #F08400;
-  color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #FF914D; /* Orange background on hover */
+  color: white; /* White text color on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow on hover */
 }
 
 .selected-category {
-  color: black;
+  color: white; /* White text color for selected */
   padding: 8px 24px;
   border-radius: 30px;
-  background: #CC6D38;
-  transition: background 0.3s ease;
+  background: #FF914D; /* Orange background for selected */
+  transition: background 0.3s ease, box-shadow 0.3s ease; /* Transition background and box-shadow */
   margin-top: 15px;
-  border: none; /* Remove the border */
+  border: none; /* Remove border for selected */
   margin-left: 5px;
   margin-right: 5px;
-  box-shadow: inset;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for selected */
+}
+
+.btn-flat-category-clear {
+  color: #FF914D; /* Orange text color */
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: black; /* Black background */
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transition background, border-color, and box-shadow */
+  margin-top: 15px;
+  border: 1px solid #FF914D; /* Orange border */
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-flat-category-clear:hover {
+  color: #FF914D; /* White text color on hover */
+  background: white; /* Light gray background on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
