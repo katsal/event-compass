@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users, only: [:show] do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:create, :index]
   end
+
   resources :lists, only: [:new, :create, :show]
 
   # resources :user_chats, only: [:index, :destroy]
