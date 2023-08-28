@@ -39,16 +39,18 @@ export default class extends Controller {
       const customMarker = document.createElement("div")
       customMarker.innerHTML = marker.marker_html
 
-      const currentURL = window.location.href
-      const lastChar = currentURL.charAt(currentURL.length-1)
+      // const currentURL = window.location.href
+      // const lastChar = currentURL.charAt(currentURL.length-1)
       // const includedRoute = 'http://localhost:3000/events'
+      const path = window.location.pathname
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
 
-      if (Number.isInteger(parseInt(lastChar, 10))) {
+      // if (Number.isInteger(parseInt(lastChar, 10))) {
+      if (path !== '/events') {
         new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
