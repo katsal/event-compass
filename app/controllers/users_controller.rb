@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     authorize @user
     user_lists = current_user.lists
     @past_events = Event.joins(event_lists: :list)
-                        .where('lists.id IN (?) AND events.end_date < ?', user_lists.pluck(:id), Date.today)
-                        .order(end_date: :desc)
+                        .where('lists.id IN (?) AND events.start_date < ?', user_lists.pluck(:id), Date.today)
+                        .order(start_date: :desc)
                         .distinct
   end
 end
