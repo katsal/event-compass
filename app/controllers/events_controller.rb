@@ -2,9 +2,8 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    date_today = Date.today.to_datetime
     # Condition to make sure to select events that has come to an end by today.
-    @events = Event.all.where("end_date >= ?", date_today)
+    @events = Event.all.where("end_date >= ?", Event.date_today)
     @events = @events.where.not(user: current_user) if current_user&.admin?
     @events = policy_scope(@events)
 
@@ -16,7 +15,7 @@ class EventsController < ApplicationController
       date_range = params[:opening_date].split(' to ')
       if date_range.length == 1
         selected_date = Date.parse(date_range[0]).to_datetime
-        @events = @events.starts_within_range(selected_date, selected_date)
+        @events = @events.for_a_day(selected_date)
       elsif date_range.length == 2
         start_date = Date.parse(date_range[0]).to_datetime
         end_date = (Date.parse(date_range[1]) + 1).to_datetime
