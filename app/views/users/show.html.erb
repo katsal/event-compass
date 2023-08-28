@@ -43,25 +43,59 @@
         </div>
       </div>
       <div>
-        <h5 class="fw-bold">My Lists</h5>
-        <div class="d-flex row-direction gap-4">
-          <% @user.lists.each do |list| %>
-            <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
-              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <p class="card-title text-center text-dark-emphasis"><%= list.name %></p>
+        <% if @user == current_user || current_user.admin %>
+          <h5 class="fw-bold">My Lists</h5>
+          <div class="d-flex row-direction flex-wrap gap-4">
+            <% @user.lists.each do |list| %>
+              <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <div class="card-body">
+                  <p class="card-title text-center text-dark-emphasis"><%= list.name %></p>
+                </div>
+                <%= link_to "", list_path(list), class: 'card-link' %>
               </div>
-              <%= link_to "", list_path(list), class: 'card-link' %>
+            <% end %>
+            <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
+              <div class="card-body">
+                <p class="card-title text-center text-dark-emphasis"><i class="fa-solid fa-plus" style="color: #4f668d;"></i></p>
+              </div>
+              <%= link_to "", new_list_path, class: 'card-link' %>
             </div>
-          <% end %>
-          <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
-            <div class="card-body">
-              <p class="card-title text-center text-dark-emphasis"><i class="fa-solid fa-plus" style="color: #4f668d;"></i></p>
-            </div>
-            <%= link_to "", new_list_path, class: 'card-link' %>
           </div>
-        </div>
+        <% end %>
       </div>
-    </div>
+      <div>
+        <h5 class="fw-bold">Events</h5>
+        <% @past_events.each do |past_event| %>
+          <div class="py-3">
+            <div class="card-trip w-480 m-auto">
+              <h2 class="card-trip-pricing">
+                <% if past_event.price =~ /free/i || past_event.price !~ /\d/ %>
+                  Free
+                <% else %>
+                  $<%= past_event.price %>
+                <% end %>
+              </h2>
+              <div class="card-trip-infos">
+                <div class="card-trip-header">
+                  <h2><%= past_event.name %></h2>
+                </div>
+                <div class="pt-3">
+                  <div class="event-dates">
+                    <i class="primary fa-regular fa-calendar"></i>
+                    <div>
+                      <span><%= past_event.start_date.strftime('%d %B') %></span>
+                      <% if past_event.end_date %>
+                        <span> - <%= past_event.end_date.strftime('%d %B') %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </>
   </div>
 </div>
