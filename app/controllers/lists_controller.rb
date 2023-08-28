@@ -19,7 +19,6 @@ class ListsController < ApplicationController
       # redirect_to list_path(@list.id)
       redirect_to events_path
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end
