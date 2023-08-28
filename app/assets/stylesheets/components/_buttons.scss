@@ -103,3 +103,16 @@
   color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.selected-category {
+  color: black;
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: #CC6D38;
+  transition: background 0.3s ease;
+  margin-top: 15px;
+  border: none; /* Remove the border */
+  margin-left: 5px;
+  margin-right: 5px;
+  box-shadow: inset;
+}
