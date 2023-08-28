@@ -64,9 +64,13 @@
           </div>
         <% end%>
         <% if @user == current_user%>
-          <div class="btn btn-secondary" style="margin-top: 8px; width: 18rem; position:relative">
-            <%= link_to "Create New List", new_list_path %>
+          <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
+            <div class="card-body">
+              <p class="card-title text-center text-dark-emphasis"><i class="fa-solid fa-plus" style="color: #4f668d;"></i></p>
+            </div>
+            <%= link_to "", new_list_path, class: 'card-link' %>
           </div>
+        </div>
         <% end%>
       </div>
     </div>

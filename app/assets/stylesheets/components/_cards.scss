@@ -167,6 +167,7 @@
   border-radius: 30px;
   backdrop-filter: blur(20px);
   transition: box-shadow 0.3s; /* Added transition */
+  text-align: center;
 }
 
 .card-trip-index:hover {
@@ -209,6 +210,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .card-trip-index .card-trip-index-infos {
