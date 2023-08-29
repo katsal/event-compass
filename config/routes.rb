@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      post 'follow' => 'follows#create'
+      delete 'unfollow' => 'follows#destroy'
+    end
+  end
+
   resources :comments, only: [:create]
   resources :lists, only: [:new, :create, :show]
 

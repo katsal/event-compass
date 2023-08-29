@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_one_attached :my_photo
+  acts_as_favoritor favoritable_class_name: 'User'
+  acts_as_favoritable favoritor_class_name: 'User'
 
   def admin
     @admin
