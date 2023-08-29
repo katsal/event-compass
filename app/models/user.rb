@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_one_attached :my_photo
+  acts_as_favoritor
+  acts_as_favoritable
 
   def admin
     @admin

@@ -65,8 +65,19 @@
               <%= link_to "", new_list_path, class: 'card-link' %>
             </div>
           <% end %>
+
         </div>
+
       </div>
+      <% if @user == current_user%>
+        <div class="btn btn-secondary" style="margin-top: 8px; width: 18rem; position:relative">
+          <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#eventPostModal" } do %>
+            Post About a Recent Event!
+          <% end %>
+          <%= render 'modal_comment' %>
+        </div>
+      <% end%>
     </div>
   </div>
+</div>
 </div>

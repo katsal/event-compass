@@ -10,4 +10,13 @@ class UserPolicy < ApplicationPolicy
     # return record == user
     return true
   end
+
+def follow?
+  return true
+end
+
+def unfollow?
+  return true
+end
+
 end
