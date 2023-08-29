@@ -27,9 +27,9 @@
               </div>
             </div>
           </div>
+          <%= link_to "", event_path(eventfinder.event), class: 'card-link' %>
         </div>
       </div>
-      <%= link_to "", event_path(eventfinder.event), class: 'card-link' %>
     <% end %>
     <% unless @list.event_lists.any? %>
       <h1>Sorry, no events found.</h1>

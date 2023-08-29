@@ -44,18 +44,18 @@
         <%= render 'tabs_comments_events' %>
       </div>
       <div>
-        <h5 class="fw-bold">My Lists</h5>
-        <div class="d-flex row-direction flex-wrap gap-2">
-          <% @user.lists.each do |list| %>
-            <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
-              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-              <div class="card-body">
-                <p class="card-title text-center text-dark-emphasis"><%= list.name %></p>
+        <% if @user == current_user%>
+          <h5 class="fw-bold">My Lists</h5>
+          <div class="d-flex row-direction flex-wrap gap-2">
+            <% @user.lists.each do |list| %>
+              <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <div class="card-body">
+                  <p class="card-title text-center text-dark-emphasis"><%= list.name %></p>
+                </div>
+                <%= link_to "", list_path(list), class: 'card-link' %>
               </div>
-              <%= link_to "", list_path(list), class: 'card-link' %>
-            </div>
-          <% end %>
-          <% if @user == current_user%>
+            <% end %>
             <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
               <div class="card-body">
                 <p class="card-title text-center text-dark-emphasis"><i class="fa-solid fa-plus" style="color: #4f668d;"></i></p>
