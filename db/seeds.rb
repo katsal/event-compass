@@ -171,7 +171,7 @@ url_array.each do |url|
       end_time = time_array[2]
     end
 
-    p arrayDates = date.split('~')
+    arrayDates = date.split('~')
     if arrayDates.count == 1
       dateInfo = date.match(/(\w{3})(\d+|\w+)/)
       if dateInfo[2].to_i != 0
