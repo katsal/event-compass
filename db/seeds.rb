@@ -191,8 +191,6 @@ url_array.each do |url|
       parsed_end_date = DateTime.parse("28 #{arrayDates[1].downcase.gsub(/(mid)|(late)|(early)/, "")} #{end_time}")
 
     else
-      # p arrayDates
-
       start_date_info = arrayDates[0].match(/(\w{3})(\d+)/)
       parsed_start_date = DateTime.parse("#{start_date_info[2]} #{start_date_info[1]} #{start_time}")
 
