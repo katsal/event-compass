@@ -1,0 +1,3 @@
+<li class="message <%= message.sender == current_user ? 'sender' : 'recipient' %>">
+  <%= message.content %>
+</li>

@@ -1,16 +1,14 @@
-<div class="container">
-<h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
-  <ul class="message-list">
-  <% @messages.each do |message| %>
-    <li class="message <%= message.sender == current_user ? 'sender' : 'recipient' %>">
-      <%= message.content %>
-    </li>
-  <% end %>
-</ul>
+<div class="container" data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
+  <h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
+    <ul class="message-list" data-messages-subscription-target="messages">
+    <% @messages.each do |message| %>
+      <%= render "message", message: message %>
+    <% end %>
+  </ul>
 
-<%= form_with url: "messages", method: :post do |form| %>
-  <%= form.text_area :content, size: "70x5" %>
-  <%= form.submit "Send Message" %>
-<% end %>
+  <%= form_with url: "messages", method: :post do |form| %>
+    <%= form.text_area :content, size: "70x5" %>
+    <%= form.submit "Send Message" %>
+  <% end %>
 
 </div>

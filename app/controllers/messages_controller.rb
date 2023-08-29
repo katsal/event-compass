@@ -14,12 +14,17 @@ class MessagesController < ApplicationController
     # raise
     @message = Message.new(sender: current_user, recipient: @recipient, content: params[:content])
     authorize @message
-    if @message.save!
-      redirect_to user_messages_path
+    if @message.save
+      MessagesChannel.broadcast_to(
+        @recipient,
+        render_to_string(partial: "messages/message", locals: {message: @message})
+      )
+      head :ok
     else
-      # flash[:error] = "Message could not be sent."
-      # puts "Message errors: #{message.errors.full_messages.inspect}"
-      render "messages", status: :unprocessable_entity
+
+    # flash[:error] = "Message could not be sent."
+    # puts "Message errors: #{message.errors.full_messages.inspect}"
+    render "messages", status: :unprocessable_entity
     end
   end
 
