@@ -8,5 +8,6 @@ class UsersController < ApplicationController
                         .order(start_date: :desc)
                         .distinct
     @comment = Comment.new
+    @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
   end
 end
