@@ -16,6 +16,10 @@ class MessagesController < ApplicationController
     authorize @message
     if @message.save
       MessagesChannel.broadcast_to(
+        current_user,
+        render_to_string(partial: "messages/message", locals: {message: @message})
+      )
+      MessagesChannel.broadcast_to(
         @recipient,
         render_to_string(partial: "messages/message", locals: {message: @message})
       )
