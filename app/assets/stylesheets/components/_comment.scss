@@ -1,0 +1,64 @@
+.card-comment {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 400px;
+  border-radius: 5px;
+  border-width: light;
+  margin-bottom: 8px;
+}
+
+.card-comment > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-comment-infos > img {
+  margin-right: 16px;
+}
+
+
+.card-comment h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-comment p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-comment .card-comment-infos {
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  // align-items: top;
+  }
+
+.avatar {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.avatar-square {
+  width: 40px;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}

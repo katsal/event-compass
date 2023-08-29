@@ -1,0 +1,9 @@
+<div class="d-flex gap-2">
+  <% if @user == current_user%>
+    <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" } do %>
+      <h2 class="card-trip-pricing">Post</h2>
+      <!--i class="primary fa-solid fa-comment-medical" title="Add comments"><i> -->
+    <% end %>
+    <%= render 'modal_comment' %>
+  <% end%>
+</div>

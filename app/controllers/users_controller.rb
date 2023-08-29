@@ -7,12 +7,15 @@ class UsersController < ApplicationController
     authorize @user
     user_lists = current_user.lists
     @past_events = Event.joins(event_lists: :list)
-                       .where('lists.id IN (?) AND events.start_date <= ?', user_lists.pluck(:id), Date.today)
-                       .order(start_date: :desc)
-                       .distinct
+                        .where('lists.id IN (?) AND events.start_date < ?', user_lists.pluck(:id), Date.today)
+                        .order(start_date: :desc)
+                        .distinct
+    @upcoming_events = Event.joins(event_lists: :list)
+                            .where('lists.id IN (?) AND events.start_date >= ?', user_lists.pluck(:id), Date.today)
+                            .order(start_date: :desc)
+                            .distinct
     @comment = Comment.new
-
-  end
+    @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
 
   def follow
     puts "following"
