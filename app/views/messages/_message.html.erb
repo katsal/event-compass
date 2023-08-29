@@ -1,3 +1,4 @@
 <li class="message <%= message.sender == current_user ? 'sender' : 'recipient' %>">
-  <%= message.content %>
+  <div class="msgcontent"><%= message.content %></div>
+  <div class="msgdatetime"><%= message.created_at %></div>
 </li>

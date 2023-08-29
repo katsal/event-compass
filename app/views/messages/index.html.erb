@@ -1,4 +1,4 @@
-<div class="container" data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
+<div class="container col-6" data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
   <h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
     <ul class="message-list" data-messages-subscription-target="messages">
     <% @messages.each do |message| %>
