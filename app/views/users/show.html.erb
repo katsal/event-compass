@@ -5,23 +5,22 @@
       <div class="card p-3 gap-4" style="width: 18rem; background-color:#fefefe">
         <div class="m-auto">
           <div class="d-flex gap-3 align-items-center flex-column" style="position:relative">
-            <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:120px" %>
+            <% if @user.my_photo.attached? %>
+              <%= cl_image_path(@user.my_photo.key) %>
+            <% else %>
+              <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:80px" %>
+            <% end %>
             <h5 class="card-title fw-bold"><%= @user.name.capitalize %></h5>
             <div>
               <p class="text-muted"><%= @user.location %></p>
-              <p class="text-muted"><%= @user.date_of_birth %></p>
             </div>
           </div>
-          <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
-            <%= link_to user_path, data: {action: "click->photo-toggle#upload"} do %>
-              <i class="primary fa-solid fa-pen"></i>
-            <% end %>
-            <div data-photo-toggle-target="photoUpload" class="d-none">
-              <%= simple_form_for @user do |f| %>
-                <%= f.input :photo, as: :file, label: false %>
-                <%= f.submit "Upload", class: 'btn btn-flat' %>
-              <% end %>
-            </div>
+        </div>
+        <div>
+          <h6 class="fw-bold">About</h6>
+          <hr />
+          <div class="d-flex gap-2">
+            <p><%= @user.introduction %></p>
           </div>
         </div>
         <div>
@@ -32,23 +31,25 @@
               <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
             <% end %>
               <i class="primary fa-regular fa-envelope" title="Email"></i>
+            <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
+              <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
+                <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
+              <% end %>
+              <%= render 'modal_user_edit' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="d-flex flex-column flex-fill gap-4">
-      <div class="card p-3"  style="background-color:#fefefe">
-        <h5 class="fw-bold">About</h5>
-        <hr />
-        <div>
-          <p><%= @user.introduction %></p>
-        </div>
+      <div>
+        <%= render 'tabs_comments_events' %>
       </div>
       <div>
         <h5 class="fw-bold">My Lists</h5>
-        <div class="d-flex row-direction gap-4">
+        <div class="d-flex row-direction flex-wrap gap-2">
           <% @user.lists.each do |list| %>
-            <div class="card shadow-sm" style="width: 18rem; background-color:#fefefe; position:relative">
+            <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
               <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
               <div class="card-body">
                 <p class="card-title text-center text-dark-emphasis"><%= list.name %></p>
@@ -56,9 +57,14 @@
               <%= link_to "", list_path(list), class: 'card-link' %>
             </div>
           <% end %>
-        </div>
-        <div class="btn btn-secondary" style="margin-top: 8px; width: 18rem; position:relative">
-          <%= link_to "Create New List", new_list_path %>
+          <% if @user == current_user%>
+            <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
+              <div class="card-body">
+                <p class="card-title text-center text-dark-emphasis"><i class="fa-solid fa-plus" style="color: #4f668d;"></i></p>
+              </div>
+              <%= link_to "", new_list_path, class: 'card-link' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

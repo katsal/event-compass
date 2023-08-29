@@ -1,14 +1,12 @@
 <div class="banner" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://blog.studyabroad.wisc.edu/wp-content/uploads/sites/529/2012/11/summer.jpg); height: 200px;">
   <h1 style="text-align:center">Create a new list!</h1>
 </div>
-<div class="container">
+<div class="container col-6" style="margin-bottom: 8px; margin-top: 8px">
   <div class="col-4">
-<%= simple_form_for [ @list ] do |f| %>
-  <%= f.input :name, as: :string %>
-  <%= f.input :location, as: :string %>
-  <%= f.button :submit, class: 'btn-flat' %>
-
-<% end %>
-
+    <%= simple_form_for [ @list ] do |f| %>
+      <%= f.input :name, as: :string %>
+      <%= f.input :location, as: :string %>
+      <%= f.button :submit, class: 'btn-flat' %>
+    <% end %>
   </div>
 </div>

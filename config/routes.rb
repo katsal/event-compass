@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :messages, only: [:create, :index]
   end
-
+  
+  resources :comments, only: [:create]
   resources :lists, only: [:new, :create, :show]
 
   # resources :user_chats, only: [:index, :destroy]
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
   # end
 
   resources :events, only: [:new, :create, :show, :index] do
-    resources :comments, only: [:create]
     resources :event_lists, only: [:create]
   end
 end

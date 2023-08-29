@@ -24,7 +24,15 @@ class Event < ApplicationRecord
     }
 
     scope :starts_within_range, ->(start_date, end_date) {
-      where('to_char(start_date,\'YYYY-MM-DD\') >= ? AND to_char(end_date,\'YYYY-MM-DD\') <= ?', start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
+      if start_date > Event.date_today
+        where('to_char(start_date,\'YYYY-MM-DD\') >= ? AND to_char(end_date,\'YYYY-MM-DD\') <= ?', start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
+      else
+        where('to_char(end_date,\'YYYY-MM-DD\') <= ?', end_date.strftime("%Y-%m-%d"))
+      end
+    }
+
+    scope :for_a_day, ->(event_date) {
+      where('? BETWEEN to_char(start_date,\'YYYY-MM-DD\') AND to_char(end_date,\'YYYY-MM-DD\')', event_date.strftime("%Y-%m-%d"))
     }
 
     scope :search_and_date_range, ->(query, start_date, end_date) {
@@ -49,5 +57,9 @@ class Event < ApplicationRecord
     if end_date < start_date
       errors.add(:end_date, "can not be before the start date")
     end
+  end
+
+  def self.date_today
+    Date.today.to_datetime
   end
 end
