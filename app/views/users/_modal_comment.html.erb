@@ -8,6 +8,7 @@
       <div class="modal-body">
         <%= simple_form_for [@comment] do |f| %>
           <%= f.association :event, collection: @past_events, include_blank: false%>
+          <%= f.association :event, collection:  @upcoming_events, include_blank: false%>
           <%= f.input :comment, as: :text%>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.button :submit , class: "btn-flat "%>

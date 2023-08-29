@@ -16,7 +16,7 @@
       <%= render 'modal_comment' %>
     <% end%>
     <% @user_comments.each do |comment| %>
-      <% if comment.user.is_followed_by?(current_user) && comment.act.is_favorited_by?(current_user) %>
+      <% if comment.user.is_favorited_by?(current_user) && comment.act.is_favorited_by?(current_user) %>
         <%= render 'shared/comment', comment: comment %>
       <% end %>
     <% end %>
