@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_many :user_chats, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :messages, dependent: :destroy
   has_many :messages_as_sender, class_name: "Message", foreign_key: :sender_id
   has_many :messages_as_recipient, class_name: "Message", foreign_key: :recipient_id
   has_many :user_categories, dependent: :destroy

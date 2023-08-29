@@ -27,8 +27,10 @@
           <h6 class="fw-bold">Contact</h6>
           <hr />
           <div class="d-flex gap-2">
-            <i class="primary fa-regular fa-comment-dots" title="Lets chat"></i>
-            <i class="primary fa-regular fa-envelope" title="Email"></i>
+            <%= link_to user_messages_path(@user) do %>
+              <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
+            <% end %>
+              <i class="primary fa-regular fa-envelope" title="Email"></i>
             <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
               <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
                 <i class="primary fa-solid fa-pen" title="Edit Profile"></i>

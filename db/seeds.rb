@@ -3,6 +3,7 @@ require 'open-uri'
 require 'faker'
 require 'json'
 
+Message.destroy_all
 List.destroy_all
 User.destroy_all
 Event.destroy_all
@@ -93,7 +94,7 @@ users = User.all
 
   list = List.new(user_id: user_id, name: name, location: location, start_date: start_date, end_date: end_date)
 
-  if list.save!
+  if list.save
     puts "Created list: #{list.name}"
   else
     puts "Failed to create list: #{list.name} - Errors: #{list.errors.full_messages.join(', ')}"
@@ -152,7 +153,6 @@ url_array.each do |url|
       end
     end
 
-
     # if category
     #   category_instance = Category.find_by(name: category)
     #     unless category_instance
@@ -171,7 +171,7 @@ url_array.each do |url|
       end_time = time_array[2]
     end
 
-    arrayDates = date.split('~')
+    p arrayDates = date.split('~')
     if arrayDates.count == 1
       dateInfo = date.match(/(\w{3})(\d+|\w+)/)
       if dateInfo[2].to_i != 0
@@ -184,13 +184,22 @@ url_array.each do |url|
         parsed_end_date = DateTime.parse("01 #{dateInfo[1]} #{end_time}")
       end
 
+    elsif arrayDates[0].downcase.match(/(mid)|(late)|(early)/)
+
+      parsed_start_date = DateTime.parse("01 #{arrayDates[1].downcase.gsub(/(mid)|(late)|(early)/, "")} #{start_time}")
+
+      parsed_end_date = DateTime.parse("28 #{arrayDates[1].downcase.gsub(/(mid)|(late)|(early)/, "")} #{end_time}")
+
     else
+      # p arrayDates
+
       start_date_info = arrayDates[0].match(/(\w{3})(\d+)/)
       parsed_start_date = DateTime.parse("#{start_date_info[2]} #{start_date_info[1]} #{start_time}")
 
       end_date_info = arrayDates[1].match(/(\w{3})(\d+)/)
       parsed_end_date = DateTime.parse("#{end_date_info[2]} #{end_date_info[1]} #{end_time}")
     end
+
 
     url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{encoded_location_text}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
     data = URI.open(url).read
