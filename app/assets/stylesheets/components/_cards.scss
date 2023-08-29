@@ -1,78 +1,78 @@
-
 .custom-row-padding {
   margin-left: 0px;
   margin-right: 0px;
- }
+}
 
- .card-category {
-   background-size: cover;
-   background-position: center;
-   height: 180px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: rgba(229, 229, 229, 0.2);
-   font-size: 24px;
-   font-weight: bold;
-   font-family: 'Montserrat', sans-serif;
-   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-   border-radius: 5px;
-   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-   margin: 20px;
-   border: solid;
-   border-color: #fca311;
- }
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(229, 229, 229, 0.2);
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  border: solid;
+  border-color: #fca311;
+}
 
- .card-product {
-   overflow: hidden;
-   height: 120px;
-   background-color: rgba(229, 229, 229, 0.2);
-   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-   display: flex;
-   align-items: center;
-   margin: 20px;
- }
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background-color: rgba(229, 229, 229, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
 
- .card-product img {
-   height: 100%;
-   width: 120px;
-   object-fit: fill;
- }
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: fill;
+}
 
- .card-product h2 {
-   font-size: 16px;
-   font-weight: bold;
-   margin: 0;
-   position: absolute;
- }
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+}
 
- .card-product p {
-   font-size: 12px;
-   line-height: 1.4;
-   opacity: .7;
-   margin-bottom: 0;
-   margin-top: 8px;
- }
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
 
- .card-product .card-product-infos {
-   padding: 10px;
-   position: relative;
- }
+.card-product .card-product-infos {
+  padding: 10px;
+  position: relative;
+}
 
- .card-link {
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left:-5px;
-   width: 102%;
-   text-decoration: none;
- }
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -5px;
+  width: 102%;
+  text-decoration: none;
+}
 
- .card-link:hover {
-   color: #fca311; /* Add a background color on hover for visual feedback */
- }
+.card-link:hover {
+  color: #fca311;
+  /* Add a background color on hover for visual feedback */
+}
 
- .card-trip {
+.card-trip {
   overflow: hidden;
   margin: 20px;
   position: relative;
@@ -83,100 +83,115 @@
 
 .card-trip:hover {
   transform: scale(1.05);
-  background-color: rgba(229, 229, 229, 0.5); /* Change the background color on hover */
+  background-color: rgba(229, 229, 229, 0.5);
+  /* Change the background color on hover */
 }
 
- .subheader-card-packs {
-   margin-top: 30px;
-   margin-bottom: 15px;
-   margin-left: 16px;
-   position: relative;
- }
+.subheader-card-packs {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 16px;
+  position: relative;
+}
 
- .explanation-text-card-packs {
-   margin-bottom: 20px;
-   margin-left: 16px;
-   position: relative;
- }
+.explanation-text-card-packs {
+  margin-bottom: 20px;
+  margin-left: 16px;
+  position: relative;
+}
 
- .card-trip > img {
-   height: 250px;
-   width: 100%;
-   object-fit: cover;
-   border-radius: 30px;
- }
+.card-trip>img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
 
- .card-trip h2 {
-   font-size: 16px;
-   font-weight: bold;
-   margin: 0;
-   font-family: 'Montserrat', sans-serif;
- }
-
- .card-trip p {
-   font-size: 12px;
-   // opacity: .7;
-   margin: 0;
-   font-family: 'Montserrat', sans-serif;
- }
-
- .card-trip-pricing {
-   position: absolute;
-   top: 10px;
-   right: 10px;
-   background-color: #FF914D;
-   border-radius: 15px;
-   padding: 8px;
-   box-shadow: 0 0 15px rgba(0,0,0,0.2);
- }
-
- .card-trip-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
- }
-
- .card-trip-header p {
+.card-trip h2 {
   font-size: 16px;
   font-weight: bold;
- }
- .card-trip .card-trip-infos {
-   padding: 10px;
-   // position: relative;
-   height: auto;
-   color: #14213d;
- }
-
- .card-trip .card-trip-infos p{
-   padding-top: 2px;
-
- }
-
- .price {
-  font-size: inherit; /* Inherit the font size from the parent element */
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
- .justify-between {
+
+.card-trip p {
+  font-size: 12px;
+  // opacity: .7;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card-trip-pricing {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FF914D;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-trip-create-comment {
+  background-color: #FF914D;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-trip-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Align vertically centered */
+  align-items: flex-start;
 }
- .card-trip-index {
+
+.card-trip-header p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-trip .card-trip-infos {
+  padding: 10px;
+  // position: relative;
+  height: auto;
+  color: #14213d;
+}
+
+.card-trip .card-trip-infos p {
+  padding-top: 2px;
+
+}
+
+.price {
+  font-size: inherit;
+  /* Inherit the font size from the parent element */
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Align vertically centered */
+}
+
+.card-trip-index {
   overflow: hidden;
   margin: 20px;
   position: relative;
   border-radius: 30px;
   backdrop-filter: blur(20px);
-  transition: box-shadow 0.3s; /* Added transition */
+  transition: box-shadow 0.3s;
+  /* Added transition */
   text-align: center;
 }
 
 .card-trip-index:hover {
   transform: scale(1.05);
-  background-color: rgba(229, 229, 229, 0.5); /* Change the background color on hover */
+  background-color: rgba(229, 229, 229, 0.5);
+  /* Change the background color on hover */
 }
 
 
- .card-trip-index > img {
+.card-trip-index>img {
   height: 250px;
   width: 100%;
   object-fit: cover;
@@ -221,57 +236,57 @@
   color: #14213d;
 }
 
-.card-trip-index .card-trip-index-infos p{
+.card-trip-index .card-trip-index-infos p {
   padding-top: 10px;
 }
 
- .cards {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   grid-gap: 16px;
- }
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
 
 
- .cards_index_page {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   grid-gap: 16px;
- }
+.cards_index_page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
 
- // Smallest device
- @media (min-width: 100px) and (max-width: 575px) {
-   .cards {
-     grid-template-columns: 1fr;
-   }
- }
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
 
- // Small devices (landscape phones, 576px and up)
- @media (min-width: 576px) {
-   .cards {
-     grid-template-columns: 1fr;
-   }
- }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
 
- // Medium devices (tablets, 768px and up)
- @media (min-width: 768px) {
-   .cards {
-     grid-template-columns: 1fr 1fr;
-   }
- }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
- // Large devices (desktops, 992px and up)
- @media (min-width: 992px) {
-   .cards {
-     grid-template-columns: 1fr 1fr;
-   }
- }
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
- // Extra large devices (large desktops, 1200px and up)
- @media (min-width: 1200px) {
-   .cards {
-     grid-template-columns: 1fr 1fr;
-   }
- }
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
@@ -288,5 +303,6 @@
   border-radius: 5px;
   // background-size: contain;
   backdrop-filter: blur(20px);
-  transition: box-shadow 0.3s; /* Added transition */
+  transition: box-shadow 0.3s;
+  /* Added transition */
 }
