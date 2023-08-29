@@ -6,7 +6,7 @@
     <% end %>
   </ul>
 
-  <%= form_with url: "messages", method: :post do |form| %>
+  <%= form_with url: "messages", html: { data: { action: "turbo:submit-end->messages-subscription#resetForm" }, class: "d-flex"}, method: :post do |form| %>
     <%= form.text_area :content, size: "70x5" %>
     <%= form.submit "Send Message" %>
   <% end %>
