@@ -27,13 +27,12 @@
         <div>
           <h6 class="fw-bold">Contact</h6>
           <hr />
-          <div class="d-flex gap-2" data-controller="message-button">
-            <span>
+          <div class="d-flex gap-2">
+            <%= link_to user_messages_path(@user) do %>
               <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
-            </span>
-            <span>
+            <% end %>
               <i class="primary fa-regular fa-envelope" title="Email"></i>
-            </span>
+
           </div>
         </div>
       </div>
