@@ -1,14 +1,14 @@
-<div class="modal fade" id="favoritedUsersModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="favoritedUsersModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="favoritedUsersLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="favoritedUsersLabel" style="color: black">Favorited By</h5>
+        <h5 class="modal-title" id="favoritedUsersLabel" style="color: black">Followers</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <ul class="list-group">
-          <% @user.favorited_by_type('User').each do |favorited_by| %>
-            <li class="list-group-item"><%= favorited_by.favoritor.name %> (@<%= favorited_by.favoritor.username %>)</li>
+          <% @user.user_favoritors.each do |follower| %>
+            <%= link_to follower.name, user_path(follower) %>
           <% end %>
         </ul>
       </div>
