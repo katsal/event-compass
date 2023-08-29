@@ -17,19 +17,20 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
 
-  def follow
-    puts "following"
-    @user = User.find(params[:id])
-    authorize @user
-    current_user.favorite(@user)
-    redirect_to @user, notice: 'You are now following this user.'
-  end
+    def follow
+      puts "following"
+      @user = User.find(params[:id])
+      authorize @user
+      current_user.favorite(@user)
+      redirect_to @user, notice: 'You are now following this user.'
+    end
 
-  def unfollow
-    @user = User.find(params[:id])
-    authorize @user
-    current_user.unfavorite(@user)
+    def unfollow
+      @user = User.find(params[:id])
+      authorize @user
+      current_user.unfavorite(@user)
 
-    redirect_to @user, notice: 'You have unfollowed this user.'
+      redirect_to @user, notice: 'You have unfollowed this user.'
+    end
   end
 end

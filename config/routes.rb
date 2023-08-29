@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users, only: [:show] do
-
+    resources :messages, only: [:create, :index]
     member do
       post 'follow' => 'users#follow'
       delete 'unfollow' => 'users#unfollow'
@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   end
 
 
-    resources :messages, only: [:create, :index]
-  end
-  
+
+
+
 
   resources :comments, only: [:create]
   resources :lists, only: [:new, :create, :show]
