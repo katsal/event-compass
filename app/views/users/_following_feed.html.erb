@@ -1,0 +1,15 @@
+<% if @user == current_user %>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade py-3 show active" id="following-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
+      <% if @user == current_user %>
+        <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" }, class: "card-trip-create-comment" %>
+        <%= render 'modal_comment' %>
+      <% end %>
+      <% @user_comments.each do |comment| %>
+        <% if @user.favorited_by?(current_user) %>
+          <%= render 'shared/comment', comment: comment %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
