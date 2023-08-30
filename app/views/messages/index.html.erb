@@ -1,14 +1,15 @@
 <div class="container col-6" data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
   <h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
     <ul class="message-list" data-messages-subscription-target="messages">
-    <% @messages.each do |message| %>
-      <%= render "message", message: message %>
-    <% end %>
-  </ul>
+      <% @messages.each do |message| %>
+        <%= render "message", message: message, user: current_user %>
+      <% end %>
+    </ul>
 
-  <%= form_with url: "messages", html: { data: { action: "turbo:submit-end->messages-subscription#resetForm" }, class: "d-flex"}, method: :post do |form| %>
-    <%= form.text_area :content, size: "70x5" %>
-    <%= form.submit "Send Message" %>
+  <%= form_with url: "messages", html: { data: { action: "turbo:submit-end->messages-subscription#resetForm" }, class: "d-flex mb-2"}, method: :post do |form| %>
+    <%= form.text_area :content %>
+    <div><%= form.submit "Send", class: "btn-flat-message mx-2 p-2 border-0 rounded"%></div>
+
   <% end %>
 
 </div>

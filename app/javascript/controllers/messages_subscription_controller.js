@@ -9,7 +9,11 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "MessagesChannel", id: this.userIdValue },
-      { received: data => this.messagesTarget.insertAdjacentHTML("beforeend", data) }
+      {
+        received: data => {
+          this.messagesTarget.insertAdjacentHTML("beforeend", data)
+        }
+      }
     )
     console.log(`Subscribed to the chatroom with the id ${this.userIdValue}.`)
   }
