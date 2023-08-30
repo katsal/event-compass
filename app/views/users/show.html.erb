@@ -6,7 +6,7 @@
         <div class="m-auto">
           <div class="d-flex gap-3 align-items-center flex-column" style="position:relative">
             <% if @user.my_photo.attached? %>
-              <%= cl_image_path(@user.my_photo.key) %>
+              <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
             <% else %>
               <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:80px" %>
             <% end %>
@@ -30,7 +30,7 @@
             <%= link_to user_messages_path(@user) do %>
               <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
             <% end %>
-              <i class="primary fa-regular fa-envelope" title="Email"></i>
+            <i class="primary fa-regular fa-envelope" title="Email"></i>
             <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
               <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
                 <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
@@ -65,9 +65,7 @@
               <%= link_to "", new_list_path, class: 'card-link' %>
             </div>
           <% end %>
-
         </div>
-
       </div>
       <% if @user == current_user%>
         <div class="btn btn-secondary" style="margin-top: 8px; width: 18rem; position:relative">

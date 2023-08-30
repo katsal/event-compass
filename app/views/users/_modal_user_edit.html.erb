@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @user do |f| %>
-          <%= f.input :photo, as: :file, label: false %>
+          <%= f.input :my_photo, as: :file, label: false %>
           <%= f.button :submit, "Upload", class: 'btn btn-flat' %>
         <% end %>
       </div>
