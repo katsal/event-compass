@@ -1,13 +1,17 @@
- 
 <div class="card-comment">
   <div class="card-comment-infos">
-
-    <% if @user && @user.my_photo.attached? %>
-      <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
-
-    <% else %>
-      <%= image_tag "totaro.png", alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
-    <% end %>
+    <div class="gap">
+      <% if @user && @user.my_photo.attached? %>
+        <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
+      <% else %>
+        <%= image_tag "totaro.png", alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
+      <% end %>
+      <% if comment.user == current_user %>
+        <%= link_to comment_path(comment), data: { comment_id: comment.id, turbo_method: :delete, turbo_confirm: "Delete this comment ?" } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      <% end %>
+    </div>
     <div>
       <div class="header">
         <h2><%= @user ? comment.event.name : comment.user.name %></h2>
@@ -26,7 +30,7 @@
         <% else %>
           <div class="upvotes btn">
             <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
-              <%= comment.votes_for.size %>
+            <%= comment.votes_for.size %>
           </div>
         <% end %>
       </div>

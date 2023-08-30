@@ -37,12 +37,18 @@ class CommentsController < ApplicationController
     end
   end
 
-
-
-
-
-
-
+  def destroy
+    @comment = Comment.find(params[:id])
+    # raise
+    authorize @comment
+    if @comment.destroy
+      flash[:notice] = "Comment deleted"
+      redirect_to event_path(@comment.event_id)
+    else
+      flash[:notice] = "Error in deleting the comment"
+      redirect_to root
+    end
+  end
 
   private
 
