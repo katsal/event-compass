@@ -13,7 +13,7 @@
               <%= link_to list.name, event_event_lists_path(@event, list_id: list.id), class: "btn event-button", data: { turbo_method: :post } %>
             <%end%>
           <%end%>
-          <%= link_to "Create New List", new_list_path, class: "btn btn-secondary"%>
+          <%= link_to "Create New List", new_list_path(return_to: event_url(@event)), class: "btn btn-secondary" %>
         </div>
       </div>
       ...

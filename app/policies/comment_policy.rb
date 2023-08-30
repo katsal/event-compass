@@ -10,4 +10,8 @@ class CommentPolicy < ApplicationPolicy
     user.present?
   end
 
+  def vote?
+    user.present?
+  end
+
 end
