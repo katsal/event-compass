@@ -18,4 +18,8 @@ class ListPolicy < ApplicationPolicy
     user.present?
   end
 
+  def destroy?
+    return record.user == user
+  end
+
 end
