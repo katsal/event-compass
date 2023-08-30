@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments, only: [:create]
+  resources :comments, only: [:create] do
+    member do
+      post 'vote' => 'comments#vote'
+    end
+  end
+
   resources :lists, only: [:new, :create, :show]
 
   # resources :user_chats, only: [:index, :destroy]
