@@ -78,6 +78,15 @@ kostas_acc.save!
 
   if user.save!
     puts "Created user: #{user.email}"
+
+    # Generate a random number of users to favorite
+    num_favorites = rand(1..User.count - 1) # Ensure at least 1 favorite
+
+    # Randomly select other users to favorite for this user
+    users_to_favorite = User.where.not(id: user.id).sample(num_favorites)
+    users_to_favorite.each do |favorited_user|
+      user.favorite(favorited_user)
+    end
   else
     puts "Failed to create user: #{user.email} - Errors: #{user.errors.full_messages.join(', ')}"
   end

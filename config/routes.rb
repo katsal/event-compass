@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :messages, only: [:create, :index]
+    member do
+      post 'follow' => 'users#follow'
+      delete 'unfollow' => 'users#unfollow'
+    end
   end
 
   resources :comments, only: [:create]
