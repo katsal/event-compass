@@ -159,7 +159,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_031954) do
     t.string "location"
     t.text "introduction"
     t.date "date_of_birth"
-    t.boolean "admin", default: false
+    t.boolean "admin"
     t.text "favoritor_score"
     t.text "favoritor_total"
     t.index ["email"], name: "index_users_on_email", unique: true
