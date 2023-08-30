@@ -12,10 +12,13 @@ export default class extends Controller {
     this.daysTarget.classList.toggle("open")
     const modal = document.querySelectorAll(".flatpickr-calendar")
     console.log(modal[1]);
-    modal[1].style.height="550px"
-    modal[1].style.paddingTop="50px"
+    // modal[1].style.height="550px"
+    modal[1].style.paddingTop="100px"
     const leftarrows = document.querySelector(".flatpickr-prev-month")
-    leftarrows.style.top="50px"
+    leftarrows.style.top="95px"
+
+    const rightarrows = document.querySelector(".flatpickr-next-month")
+    rightarrows.style.top="95px"
 
   }
 }
