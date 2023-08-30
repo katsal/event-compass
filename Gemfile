@@ -90,3 +90,5 @@ gem "faker", "~> 3.2"
 gem "geocoder", "~> 1.8"
 
 gem 'acts_as_favoritor'
+
+gem 'acts_as_votable'

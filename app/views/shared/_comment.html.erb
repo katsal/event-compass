@@ -9,10 +9,47 @@
       <%= image_tag "totaro.png", alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
     <% end %>
     <div>
-      <h2><%= @user ? comment.event.name : comment.user.name %></h2>
+      <div class="header">
+        <h2><%= @user ? comment.event.name : comment.user.name %></h2>
+        <% if current_user %>
+          <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
+            <%= f.hidden_field :vote_type, value: "upvote" %>
+            <button type="submit" class="upvote-button upvotes">
+              <% if current_user.voted_for?(comment) %>
+                <i class="fa-solid fa-thumbs-up fa-flip-horizontal"></i>
+              <% else %>
+                <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+              <% end %>
+              <%= comment.votes_for.size %>
+            </button>
+          <% end %>
+        <% else %>
+          <div class="upvotes btn">
+            <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+              <%= comment.votes_for.size %>
+          </div>
+        <% end %>
+      </div>
       <p><%= comment.comment %></p>
     </div>
   </div>
   <% photo = comment.photos.first %>
   <%= cl_image_tag(photo.key) if photo.present? %>
 </div>
+<script>
+  $(document).on("ajax:success", ".vote-form", function(event, data, status, xhr) {
+    var $form = $(this);
+    var $upvoteButton = $form.find(".upvote-button");
+    var $upvoteCount = $form.find(".upvote-count");
+
+    // Update vote count
+    $upvoteCount.text(data.votes_count);
+
+    // Toggle upvote icon
+    if (data.voted_for) {
+      $upvoteButton.find("i").removeClass("fa-regular").addClass("fa-solid");
+    } else {
+      $upvoteButton.find("i").removeClass("fa-solid").addClass("fa-regular");
+    }
+  });
+</script>

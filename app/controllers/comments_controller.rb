@@ -11,6 +11,39 @@ class CommentsController < ApplicationController
     end
   end
 
+  def vote
+    @comment = Comment.find(params[:id])
+    authorize @comment
+
+    vote_type = comment_params[:vote_type]
+
+    if current_user.voted_for?(@comment)
+      @comment.unliked_by current_user
+    else
+      @comment.liked_by current_user
+    end
+
+    # Determine the redirection URL based on the context
+    redirect_url = if request.referer&.include?(user_path(current_user))
+                     user_path(current_user)
+                   elsif request.referer&.include?(event_path(@comment.event))
+                     event_path(@comment.event)
+                   else
+                     root_path
+                   end
+
+    respond_to do |format|
+      format.html { redirect_to redirect_url }
+    end
+  end
+
+
+
+
+
+
+
+
   private
 
   def comment_params
