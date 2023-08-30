@@ -1,0 +1,38 @@
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item input {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-item {
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 48%;
+  font-size: 12px;
+  text-align: left;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+  margin-right: 2%;
+
+  label {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+//  changes when radio button is clicked
+.category-item input:checked+label {
+  background-color: #fca311;
+  border-radius: 2%;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

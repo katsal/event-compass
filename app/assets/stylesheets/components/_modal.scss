@@ -95,3 +95,18 @@
   position: relative; /* Add relative positioning to the link */
   z-index: 1; /* Ensure the link is clickable */
 }
+
+
+.vertical-line {
+  width: 0px;
+  /* Use only border style */
+  height: 100%;
+  float: left;
+  border: 1px inset;
+  /* This is default border style for <hr> tag */
+}
+
+.font-numbers {
+  font-size: x-large;
+  text-decoration: none;
+}

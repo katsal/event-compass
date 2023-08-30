@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_one_attached :my_photo
   acts_as_favoritor
   acts_as_favoritable
+  acts_as_voter
+
+  STATUS = ["solo adventurer", "social butterfly"]
 
   def admin
     @admin

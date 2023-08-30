@@ -14,17 +14,5 @@
     <%= f.button "Festival", class: "btn-flat-category", name: "category", value: "Festival", data: { controller: "category-filter", category_filter_target: "button" } %>
     <%= f.button "Fireworks", class: "btn-flat-category", name: "category", value: "Fireworks", data: { controller: "category-filter", category_filter_target: "button" } %>
     <%= f.button "Clear filters", class: "btn-flat-category-clear", name: "category", value: nil, data: { controller: "category-filter", category_filter_target: "button" } %>
-    <%= f.text_field :q,
-          class: "form-control",
-          placeholder: "Tokyo...",
-          value: params[:q],
-          hidden: true
-        %>
-    <%= f.text_field :opening_date,
-            as: :string,
-            value: params[:opening_date],
-            data: { controller: "datepicker" },
-            class: "form-control",
-            hidden: true %>
   <% end %>
 </div>
