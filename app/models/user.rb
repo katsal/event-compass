@@ -14,6 +14,8 @@ class User < ApplicationRecord
   acts_as_favoritor
   acts_as_favoritable
 
+  STATUS = ["solo adventurer", "social butterfly"]
+
   def admin
     @admin
   end

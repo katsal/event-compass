@@ -17,3 +17,18 @@
 .event-button:hover {
   background-color: #0056b3;
 }
+
+
+.vertical-line {
+  width: 0px;
+  /* Use only border style */
+  height: 100%;
+  float: left;
+  border: 1px inset;
+  /* This is default border style for <hr> tag */
+}
+
+.font-numbers {
+  font-size: x-large;
+  text-decoration: none;
+}
