@@ -1,9 +1,12 @@
+ 
 <div class="card-comment">
   <div class="card-comment-infos">
+
     <% if @user && @user.my_photo.attached? %>
       <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
+
     <% else %>
-      <%= image_tag "totaro.png", alt: "Le Wagon", class:"card-trip-user avatar-bordered" %>
+      <%= image_tag "totaro.png", alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
     <% end %>
     <div>
       <h2><%= @user ? comment.event.name : comment.user.name %></h2>
@@ -13,4 +16,3 @@
   <% photo = comment.photos.first %>
   <%= cl_image_tag(photo.key) if photo.present? %>
 </div>
-<%# # this page needs a 'comment' variable to be passed to it %>
