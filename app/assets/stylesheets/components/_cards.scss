@@ -129,7 +129,25 @@
   border-radius: 15px;
   padding: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
+
+.card-trip-users {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #FF914D;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: black;
+}
+
+.fa-yen-sign {
+  font-size: 12px; /* Adjust the size as needed */
+ /* Add spacing between icon and text */
+}
+
 
 .card-trip-create-comment {
   background-color: #FF914D;
