@@ -8,17 +8,20 @@ class MessagesController < ApplicationController
   end
 
   def create
-    # content
-    # sender
-    # recipient
-    # raise
     @message = Message.new(sender: current_user, recipient: @recipient, content: params[:content])
     authorize @message
-    if @message.save!
-      redirect_to user_messages_path
+    if @message.save
+      MessagesChannel.broadcast_to(
+        current_user,
+        render_to_string(partial: "messages/message", locals: {message: @message, user: current_user})
+      )
+      MessagesChannel.broadcast_to(
+        @recipient,
+        render_to_string(partial: "messages/message", locals: {message: @message, user: @recipient})
+      )
+      head :ok
     else
-      # flash[:error] = "Message could not be sent."
-      # puts "Message errors: #{message.errors.full_messages.inspect}"
+
       render "messages", status: :unprocessable_entity
     end
   end
@@ -29,7 +32,4 @@ class MessagesController < ApplicationController
     @recipient = User.find(params[:user_id])
   end
 
-  # def message_params
-  #   params.require(:message).permit(:recipient, :sender, :content)
-  # end
 end

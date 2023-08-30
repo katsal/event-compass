@@ -6,18 +6,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :update] do
     resources :messages, only: [:create, :index]
     member do
       post 'follow' => 'users#follow'
       delete 'unfollow' => 'users#unfollow'
     end
   end
-
-
-
-
-
 
   resources :comments, only: [:create]
   resources :lists, only: [:new, :create, :show]
@@ -29,6 +24,6 @@ Rails.application.routes.draw do
   # end
 
   resources :events, only: [:new, :create, :show, :index] do
-    resources :event_lists, only: [:create]
+    resources :event_lists, only: [:create, :destroy]
   end
 end

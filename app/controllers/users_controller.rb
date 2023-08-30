@@ -16,24 +16,35 @@ class UsersController < ApplicationController
                             .distinct
     @comment = Comment.new
     @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
-
-
-
-
-    def follow
-      puts "following"
-      @user = User.find(params[:id])
-      authorize @user
-      current_user.favorite(@user)
-      redirect_to @user, notice: 'You are now following this user.'
-    end
-
-    def unfollow
-      @user = User.find(params[:id])
-      authorize @user
-      current_user.unfavorite(@user)
-
-      redirect_to @user, notice: 'You have unfollowed this user.'
-    end
   end
+
+  def follow
+    puts "following"
+    @user = User.find(params[:id])
+    authorize @user
+    current_user.favorite(@user)
+    redirect_to @user, notice: 'You are now following this user.'
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    authorize @user
+    current_user.unfavorite(@user)
+
+    redirect_to @user, notice: 'You have unfollowed this user.'
+  end
+
+  def update
+    @user = User.find(params[:id])
+    authorize @user
+    @user.update(user_params)
+    redirect_to user_path(@user)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:my_photo)
+  end
+
 end

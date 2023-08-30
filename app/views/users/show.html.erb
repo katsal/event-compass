@@ -6,7 +6,7 @@
         <div class="m-auto">
           <div class="d-flex gap-3 align-items-center flex-column" style="position:relative">
             <% if @user.my_photo.attached? %>
-              <%= cl_image_path(@user.my_photo.key) %>
+              <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
             <% else %>
               <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:80px" %>
             <% end %>

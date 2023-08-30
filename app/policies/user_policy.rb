@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     return true
   end
 
+  def update?
+    record.user == user
+  end
+
 def follow?
   return true
 end
