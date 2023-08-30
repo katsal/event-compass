@@ -23,6 +23,17 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @user = @list.user
+    authorize @list
+    if @list.destroy
+      redirect_to user_path(@user)
+    else
+      render 'users/show', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def list_params
