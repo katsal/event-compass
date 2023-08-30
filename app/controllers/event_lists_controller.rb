@@ -15,6 +15,17 @@ class EventListsController < ApplicationController
     end
   end
 
+  def destroy
+    @event_list = EventList.find_by(list_id: params[:id],event_id: params[:event_id])
+    authorize @event_list
+    if @event_list.destroy
+      redirect_to list_path(@event_list.list)
+    else
+      render 'lists/show', status: :unprocessable_entity
+    end
+
+  end
+
   private
 
   def event_list_params

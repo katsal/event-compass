@@ -59,7 +59,12 @@
   <div class="show-map">
     <h3> Event Location</h3>
     <%= render 'shared/map', markers: @markers%>
-  </div>
   <%= render 'modal' %>
-</div>
+  <div>
+    <h3>User Comments</h3>
+    <% @user_comments.each do |comment| %>
+      <%= render 'shared/comment', comment: comment %>
+    <% end %>
+  </div>
+  </div>
 </div>

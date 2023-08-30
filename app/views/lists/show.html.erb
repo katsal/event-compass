@@ -13,15 +13,22 @@
           </h2>
           <div class="card-trip-infos">
             <div class="card-trip-header">
-              <h2><%= eventfinder.event.name %></h2>
+              <%= link_to eventfinder.event.name, event_path(eventfinder.event), class: "text-decoration-none text-dark"%>
             </div>
             <div class="pt-3">
-              <div class="event-dates">
-                <i class="primary fa-regular fa-calendar"></i>
+              <div class="event-dates d-flex flex-row gap-2">
+                <div>
+                  <i class="primary fa-regular fa-calendar"></i>
+                </div>
                 <div>
                   <span><%= eventfinder.event.start_date.strftime('%d %B') %></span>
                   <% if eventfinder.event.end_date %>
                     <span> - <%= eventfinder.event.end_date.strftime('%d %B') %></span>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to event_event_list_path(eventfinder.event), data: { turbo_method: :delete, turbo_confirm: "Delete This event ?" } do %>
+                    <i class="fa-solid fa-trash-can card-list-event-delete" style="color: #FF914D;"></i>
                   <% end %>
                 </div>
               </div>
@@ -29,7 +36,6 @@
           </div>
         </div>
       </div>
-      <%= link_to "", event_path(eventfinder.event), class: 'card-link' %>
     <% end %>
     <% unless @list.event_lists.any? %>
       <h1>Sorry, no events found.</h1>

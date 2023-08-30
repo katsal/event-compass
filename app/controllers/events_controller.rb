@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     authorize @event
-
+    @user_comments = Comment.all.where(event_id: @event).order(created_at: :desc)
     @markers = [@event].compact.map do |event|  # Use @event instead of @events
       {
         lat: event.latitude,
