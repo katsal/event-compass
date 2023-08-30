@@ -51,9 +51,11 @@
 }
 
 .btn-flat-search:hover {
-  background: #F08400; /* Adjusted orange color */
+  background: #F08400;
+  /* Adjusted orange color */
   color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Adding a subtle shadow */
 }
 
 .btn-flat-external {
@@ -67,9 +69,11 @@
 }
 
 .btn-flat-external:hover {
-  background: #81b1ff; /* Adjusted orange color */
+  background: #81b1ff;
+  /* Adjusted orange color */
   color: black;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Adding a subtle shadow */
 }
 
 
@@ -83,54 +87,101 @@
 }
 
 .category-filters {
-  text-align: center; /* Center the buttons horizontally */
+  text-align: center;
+  /* Center the buttons horizontally */
 }
 
 .btn-flat-category {
-  color: #FF914D; /* Orange text color */
+  color: #FF914D;
+  /* Orange text color */
   padding: 8px 24px;
   border-radius: 30px;
-  background: white; /* White background */
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Transition background and box-shadow */
+  background: white;
+  /* White background */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Transition background and box-shadow */
   margin-top: 15px;
-  border: 1px solid #FF914D; /* Orange border */
+  border: 1px solid #FF914D;
+  /* Orange border */
   margin-left: 5px;
   margin-right: 5px;
 }
 
 .btn-flat-category:hover {
-  background: #FF914D; /* Orange background on hover */
-  color: white; /* White text color on hover */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow on hover */
+  background: #FF914D;
+  /* Orange background on hover */
+  color: white;
+  /* White text color on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow on hover */
 }
 
 .selected-category {
-  color: white; /* White text color for selected */
+  color: white;
+  /* White text color for selected */
   padding: 8px 24px;
   border-radius: 30px;
-  background: #FF914D; /* Orange background for selected */
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Transition background and box-shadow */
+  background: #FF914D;
+  /* Orange background for selected */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Transition background and box-shadow */
   margin-top: 15px;
-  border: none; /* Remove border for selected */
+  border: none;
+  /* Remove border for selected */
   margin-left: 5px;
   margin-right: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for selected */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow for selected */
 }
 
 .btn-flat-category-clear {
-  color: #FF914D; /* Orange text color */
+  color: #FF914D;
+  /* Orange text color */
   padding: 8px 24px;
   border-radius: 30px;
-  background: black; /* Black background */
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transition background, border-color, and box-shadow */
+  background: black;
+  /* Black background */
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  /* Transition background, border-color, and box-shadow */
   margin-top: 15px;
-  border: 1px solid #FF914D; /* Orange border */
+  border: 1px solid #FF914D;
+  /* Orange border */
   margin-left: 5px;
   margin-right: 5px;
 }
 
 .btn-flat-category-clear:hover {
-  color: #FF914D; /* White text color on hover */
-  background: white; /* Light gray background on hover */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+  color: #FF914D;
+  /* White text color on hover */
+  background: white;
+  /* Light gray background on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Shadow on hover */
+}
+
+
+
+.btn-user-edit {
+  color: #FF914D;
+  /* Orange text color */
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: white;
+  /* White background */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Transition background and box-shadow */
+  margin-top: 15px;
+  border: 1px solid #FF914D;
+  /* Orange border */
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-user-edit:hover {
+  background: #FF914D;
+  /* Orange background on hover */
+  color: white;
+  /* White text color on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow on hover */
 }
