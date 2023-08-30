@@ -6,9 +6,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <ul class="list-group">
+        <ul class="list-group user-list">
           <% @user.user_favoritors.each do |follower| %>
-            <%= link_to follower.name, user_path(follower) %>
+            <li class="list-group-item user-card">
+              <%= link_to user_path(follower), class: "card-link-modal" do %>
+                <div class="user-info">
+                  <% if follower.my_photo.present? %>
+                    <img src="<%= cl_image_path(follower.my_photo.key) %>">
+                  <% else %>
+                    <%= image_tag 'totaro.png', class: "avatar" %>
+                  <% end %>
+                  <span><%= follower.name %></span>
+                </div>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div>
