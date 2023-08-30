@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
 
+
+
+
     def follow
       puts "following"
       @user = User.find(params[:id])
