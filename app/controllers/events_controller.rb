@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     @events = @events.where.not(user: current_user) if current_user&.admin?
     @events = policy_scope(@events)
 
+
     if params[:q].present?
       @events = @events.global_search(params[:q])
     end
@@ -26,7 +27,19 @@ class EventsController < ApplicationController
       @events = @events.joins(:category).where(category: { name: params[:category] })
     end
 
+
+    if params[:order] == "date"
+      @events = @events.order(:start_date)
+    elsif params[:order] == "popularity"
+      @events = @events
+        .joins("LEFT JOIN event_lists ON event_lists.event_id = events.id")
+        .group("events.id")
+        .order("COUNT(event_lists.id) DESC")
+    end
+
     @markers = get_markers(@events)
+
+
   end
 
   def show

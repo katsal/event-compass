@@ -23,7 +23,6 @@ class EventListsController < ApplicationController
     else
       render 'lists/show', status: :unprocessable_entity
     end
-
   end
 
   private

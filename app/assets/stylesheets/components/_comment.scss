@@ -38,6 +38,27 @@
   align-items: flex-start;
 }
 
+.card-comment-infos .header .upvotes {
+  background-color: orange;
+  border-radius: 5px;
+  // padding: 4px;
+  margin-left: 4px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.card-comment-infos .header .upvotes .hover {
+  text-decoration-color: white;
+}
+
+  .card-comment .card-comment-infos .header {
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 .avatar {
   width: 40px;

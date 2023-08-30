@@ -16,7 +16,6 @@ class UsersController < ApplicationController
                             .distinct
     @comment = Comment.new
     @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
-
   end
 
   def follow
@@ -37,15 +36,19 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.status = params[:user][:status] if params[:user][:status]
     authorize @user
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Details updated succesfully.'
+    else
+      render 'users/show', status: :unprocessable_entity
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:my_photo)
+    params.require(:user).permit(:my_photo, :status)
   end
 
 end

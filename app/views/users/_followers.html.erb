@@ -1,13 +1,25 @@
+<div>
+  <div class="d-flex">
+    <div class="d-flex flex-column">
+      <p class= "mb-0" >Followers</p>
+      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoritedUsersModal" } , class: "align-self-center font-numbers" do %>
+        <%= @follower_count %>
+      <% end %>
+    </div>
+    <div class="mx-2 vertical-line" style="height: 60px;"></div>
+    <div class="d-flex flex-column">
+      <p class= "mb-0">Following</p>
+      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoriteUsersModal" } , class: "align-self-center font-numbers" do %>
+        <%= @following_count %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
 <% if current_user && current_user != @user %>
   <% if current_user.favorited?(@user) %>
-    <%= link_to 'Unfollow', unfollow_user_path(@user), data: {turbo_method: :delete} %>
+    <%= link_to 'Unfollow', unfollow_user_path(@user), data: {turbo_method: :delete}, style: "color:#FF914D;" %>
   <% else %>
-    <%= link_to 'Follow', follow_user_path(@user), data: {turbo_method: :post} %>
+    <%= link_to 'Follow', follow_user_path(@user), data: {turbo_method: :post}, style: "color:#FF914D;" %>
   <% end %>
-<% end %>
-<%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoriteUsersModal" } do %>
-  <%= @following_count %> Following
-<% end %>
-<%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoritedUsersModal" } do %>
-  <%= @follower_count %> Followers
 <% end %>
