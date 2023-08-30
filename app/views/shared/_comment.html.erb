@@ -8,7 +8,7 @@
       <% end %>
       <% if comment.user == current_user %>
         <%= link_to comment_path(comment), data: { comment_id: comment.id, turbo_method: :delete, turbo_confirm: "Delete this comment ?" } do %>
-          <i class="fa-solid fa-trash-can"></i>
+          <i class="fa-solid fa-trash-can" style="color: #FF914D;"></i>
         <% end %>
       <% end %>
     </div>
