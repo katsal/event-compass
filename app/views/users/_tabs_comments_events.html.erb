@@ -1,30 +1,40 @@
-<ul class="nav tabs-underlined" id="myTab" role="tablist">
+<ul class="nav tabs-underlined d-flex flex-row" id="myTab" role="tablist">
+  <% if @user == current_user %>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined fw-bold" id="following-tab" data-bs-toggle="tab" data-bs-target="#following-tab-pane" role="tab" aria-controls="following-tab-pane" aria-selected="false">Your Feed</span>
+    </li>
+  <% end %>
   <li class="nav-item" role="presentation">
-    <span class="nav-link tab-underlined active fw-bold" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" role="tab" aria-controls="bookings-tab-pane" aria-selected="true">Your Story</span>
+    <span class="nav-link tab-underlined fw-bold active" id="my-posts-tab" data-bs-toggle="tab" data-bs-target="#my-posts-tab-pane" role="tab" aria-controls="my-posts-tab-pane" aria-selected="true">
+      <%= @user == current_user ? "Your Posts" : "#{@user.name}'s Posts" %>
+    </span>
   </li>
   <li class="nav-item" role="presentation">
-    <span class="nav-link tab-underlined fw-bold" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" role="tab" aria-controls="requests-tab-pane" aria-selected="false">Your Diary</span>
+    <span class="nav-link tab-underlined fw-bold" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" role="tab" aria-controls="events-tab-pane" aria-selected="false">Your Diary</span>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade py-3 show active" id="comments-tab-pane" role="tabpanel" aria-labelledby="bookings-tab" tabindex="0">
-    <% if @user == current_user%>
-      <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" } , class: "card-trip-create-comment"%>
+  <div class="tab-pane fade py-3" id="following-tab-pane" role="tabpanel" aria-labelledby="following-tab" tabindex="0">
+    <%= render 'following_feed' %>
+  </div>
+  <div class="tab-pane fade py-3 show active" id="my-posts-tab-pane" role="tabpanel" aria-labelledby="my-posts-tab" tabindex="0">
+    <% if @user == current_user %>
+      <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" } , class: "card-trip-create-comment" %>
       <%= render 'modal_comment' %>
-    <% end%>
+    <% end %>
     <% @user_comments.each do |comment| %>
       <%= render 'shared/comment', comment: comment %>
     <% end %>
   </div>
-  <div class="tab-pane fade py-3 " id="events-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
+  <div class="tab-pane fade py-3" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
     <div class="d-flex flex-column">
-      <h5 >Rewind</h5>
+      <h5>Rewind</h5>
       <div class="d-flex flex-wrap">
         <%= render 'shared/past_events' %>
       </div>
     </div>
     <div class="d-flex flex-column">
-      <h5 >What's Ahead</h5>
+      <h5>What's Ahead</h5>
       <div class="d-flex flex-wrap">
         <%= render 'shared/upcoming_events' %>
       </div>

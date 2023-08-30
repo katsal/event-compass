@@ -1,0 +1,4 @@
+<li class="messages <%= message.sender == user ? 'sender' : 'recipient' %>">
+  <div class="msgcontent"><%= message.content %></div>
+  <div class="msgdatetime"><%= message.created_at.strftime("%d-%m-%Y %I:%M %p") %></div>
+</li>

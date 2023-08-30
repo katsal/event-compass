@@ -16,10 +16,25 @@ class ListsController < ApplicationController
     # binding.pry
     authorize @list
     if @list.save
-      # redirect_to list_path(@list.id)
-      redirect_to events_path
+      if params[:return_to].present?
+        puts "Return to: #{params[:return_to]}"
+        redirect_to URI.decode_www_form_component(params[:return_to])
+      else
+        redirect_to events_path
+      end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @user = @list.user
+    authorize @list
+    if @list.destroy
+      redirect_to user_path(@user)
+    else
+      render 'users/show', status: :unprocessable_entity
     end
   end
 
