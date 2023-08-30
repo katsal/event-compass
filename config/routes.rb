@@ -14,11 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
-
-
-
   resources :comments, only: [:create]
   resources :lists, only: [:new, :create, :show]
 
@@ -29,6 +24,6 @@ Rails.application.routes.draw do
   # end
 
   resources :events, only: [:new, :create, :show, :index] do
-    resources :event_lists, only: [:create]
+    resources :event_lists, only: [:create, :destroy]
   end
 end
