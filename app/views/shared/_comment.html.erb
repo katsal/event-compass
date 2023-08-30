@@ -6,11 +6,22 @@
       <%= image_tag "totaro.png", alt: "Le Wagon", class:"card-trip-user avatar-bordered" %>
     <% end %>
     <div>
-      <h2><%= @user ? comment.event.name : comment.user.name %></h2>
+      <div class="header">
+        <h2><%= @user ? comment.event.name : comment.user.name %></h2>
+        <div>
+          <% if current_user.voted_for? comment %>
+            <i class="fa-solid fa-thumbs-up fa-flip-horizontal"></i>
+            <%else%>
+          <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+          <% end %>
+          <%= comment.votes_for.size %> upvotes
+        </div>
+      </div>
       <p><%= comment.comment %></p>
     </div>
   </div>
   <% photo = comment.photos.first %>
   <%= cl_image_tag(photo.key) if photo.present? %>
 </div>
-<%# # this page needs a 'comment' variable to be passed to it %>
+
+<%# # this page needs a 'comment' variable (comment instance) to be passed to it %>
