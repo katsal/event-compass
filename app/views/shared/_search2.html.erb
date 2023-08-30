@@ -1,0 +1,43 @@
+<div class="search">
+  <%= form_with url: events_path, method: :get, class: "search" do |f| %>
+    <div class="search-bar-container">
+      <%= f.text_field :q,
+          class: "form-control",
+          placeholder: "Tokyo...",
+          value: params[:q]
+      %>
+    </div>
+
+
+
+    <div data-controller="daysrange">
+        <%= f.text_field :opening_date,
+          as: :string,
+          value: params[:opening_date],
+          data: { controller: "datepicker",
+                  action: "click->daysrange#showDays",
+                  daysrange_target: "calendar"
+                },
+          placeholder: "Choose dates",
+          class: "form-control"
+        %>
+      <div
+        data-daysrange-target="days",
+        class="flatpickr-calendar rangeMode animate arrowTop arrowLeft"
+      >
+        <% dates = [['Today', Date.today], ['Tomorrow', Date.tomorrow], ['Test', Date.parse("2023-9-3")]] %>
+
+        <%= select_tag :opening_date, options_for_select(dates, params[:opening_date])%>
+
+        <%= radio_button_tag(:opening_date, Date.parse("2023-9-3")) %>
+        <%= label_tag(:opening_date, 'Today') %>
+
+
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center">
+      <button id="combined-search-btn" class="btn btn-flat-search">Search</button>
+    </div>
+  <% end %>
+</div>

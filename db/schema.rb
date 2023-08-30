@@ -160,6 +160,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_072329) do
     t.string "name"
     t.string "location"
     t.text "introduction"
+    t.date "date_of_birth"
     t.boolean "admin", default: false
     t.text "favoritor_score"
     t.text "favoritor_total"
