@@ -13,8 +13,11 @@
       <% end %>
     </div>
     <div>
-      <div class="header">
-        <h2><%= @user ? comment.event.name : comment.user.name %></h2>
+      <div class="header d-flex">
+        <h2 class="mr-3"><%= comment.user.name %></h2>
+        <p>
+          <%= link_to comment.event.name, event_path(comment.event) %>
+        </p>
         <% if current_user %>
           <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
             <%= f.hidden_field :vote_type, value: "upvote" %>
