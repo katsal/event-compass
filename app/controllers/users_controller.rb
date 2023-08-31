@@ -55,10 +55,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_social
+    @user = User.find(params[:id])
+    authorize @user
+    @user.update(user_params)
+    head :ok
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:my_photo, :status)
+    params.require(:user).permit(:my_photo, :social)
   end
 
 end

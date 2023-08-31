@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       post 'follow' => 'users#follow'
       delete 'unfollow' => 'users#unfollow'
+      patch 'update_social'
     end
   end
 
