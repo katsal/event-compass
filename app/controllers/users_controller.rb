@@ -46,7 +46,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.status = params[:user][:status] if params[:user][:status]
     authorize @user
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Details updated succesfully.'
