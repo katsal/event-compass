@@ -16,10 +16,15 @@
     <%= javascript_importmap_tags %>
     <meta charset="UTF-8">
   </head>
-  <body><%= render "shared/navbar"%>
-    <%= render "shared/flashes" %>
-    <%= yield %>
-    <footer>
+  <body>
+  <div class="content">
+    <div class="content-inside">
+      <%= render "shared/navbar"%>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
+  </div>
+    <footer class="footer">
       <div class="footer-top">
         <div class="container">
           <div class="row">
