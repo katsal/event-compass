@@ -25,7 +25,7 @@
         tabindex="-1",style="top: 504.188px; left: 498.5px; right: auto; height: 550px; padding-top: 50px;">
         <ul class="text-dark mt-3">
 
-          <div class="checkbox">
+          <div class="checkbox" style = "height: 39px">
             <%= check_box_tag(:opening_date, Date.today, false, id: "opening_date_today") %>
             <%= label_tag(:opening_date, 'Today', for: "opening_date_today") %>
           </div>
@@ -46,6 +46,9 @@
 
             <%= check_box_tag(:opening_date, "#{next_saturday},#{next_sunday}", false, id: "opening_date_thiswknd") %>
             <%= label_tag(:opening_date, 'This weekend', for: "opening_date_thiswknd")%>
+            <%= hidden_field_tag(:opening_date_start, next_saturday, id: "opening_date_start", "data-date": next_saturday) %>
+            <%= hidden_field_tag(:opening_date_end, next_sunday, id: "opening_date_end", "data-date": next_sunday) %>
+
           </div>
 
         </ul>

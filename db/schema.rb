@@ -155,11 +155,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_072329) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "date_of_birth"
     t.string "name"
     t.string "location"
     t.text "introduction"
     t.boolean "admin", default: false
+    t.date "date_of_birth"
+
+
     t.text "favoritor_score"
     t.text "favoritor_total"
     t.string "status"

@@ -14,8 +14,12 @@
   object-fit: cover;
 }
 
-.card-comment-infos > img {
+.card-comment-infos .gap {
   margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
 }
 
 
@@ -82,4 +86,8 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.delete {
+  color: orange;
 }
