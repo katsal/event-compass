@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   def users_verb(count)
     count == 1 ? "is" : "are"
