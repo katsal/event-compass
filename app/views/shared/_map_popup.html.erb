@@ -1,8 +1,8 @@
 <div class="card">
   <%= image_tag event.img_url, class: "card-img-top" %>
   <div class="card-body">
-    <p class="card-text"><strong><%= event.name %></strong></p>
-    <p class="card-text"><strong>Location: </strong><%= event.location %></p>
-    <p class="card-text"><strong>Price: </strong><%= event.price %></p>
+    <p class="card-text mb-1"><strong><%= event.name %></strong></p>
+    <p class="card-text mb-1"><i class="fa-solid fa-location-dot" style="color: #ff914d;"> </i>: <%= event.location %></p>
+    <p class="card-text"><i class="fa-solid fa-yen-sign" style="color: #fd904c;"></i>: <%= event.price.gsub("¥", "")%></p>
   </div>
 </div>
