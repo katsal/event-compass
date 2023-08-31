@@ -55,16 +55,15 @@
   <%= render 'modal_attendees' %>
   <div class="similar-events">
   </div>
-  THE ABOVE IS A CAROUSEL
-  <div class="show-map">
-    <h3> Event Location</h3>
-    <%= render 'shared/map', markers: @markers%>
-  <%= render 'modal' %>
   <div>
     <h3>User Comments</h3>
     <% @user_comments.each do |comment| %>
       <%= render 'shared/comment', comment: comment %>
     <% end %>
   </div>
+  <div class="show-map">
+    <h3> Event Location</h3>
+    <%= render 'shared/map', markers: @markers%>
+    <%= render 'modal' %>
   </div>
 </div>

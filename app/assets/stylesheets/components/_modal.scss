@@ -5,17 +5,95 @@
 .event-button {
   display: block;
   width: 100%;
-  background-color: #007bff;
-  color: white;
+  background-color: #FF914D;
+  color: black;
+  font-weight: bold;
   border: none;
   padding: 10px 20px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .event-button:hover {
-  background-color: #0056b3;
+  background-color: #f77321;
+}
+
+.btn-secondary {
+  margin-top: 10px;
+  background-color:#000000;
+  transition: background-color 0.3s ease;
+  color: #FF914D;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Optional: If you want to remove the default button border */
+  transform-origin: center center; /* Set the transform origin to the center */
+}
+
+
+.btn-secondary:hover {
+  opacity: 0.8; /* Reduce opacity on hover */
+  background-color: #000000; /* Maintain the background color */
+  color: #FF914D;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow on hover */
+  transform: scale(1.05); /* Slightly scale up the button on hover */
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 50vh;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-content: center;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  text-align:start;
+  text-decoration: none;
+  color: black;
+}
+
+.user-info a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.modal-content {
+  align-items: center;
+}
+
+.card-link-modal {
+  display: block;
+  height: 100%;
+  width: 103%;
+  text-decoration: none;
+  position: relative; /* Add relative positioning to the link */
+  z-index: 1; /* Ensure the link is clickable */
 }
 
 

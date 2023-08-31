@@ -1,7 +1,7 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
-
+  height: 40px;
 }
 .avatar-large {
   width: 56px;
@@ -21,6 +21,8 @@
 
 .avatar img {
   border: #fca311 1px solid;
+  border-radius: 50%;
+  object-fit:cover;
 }
 
 .avatar img:hover {

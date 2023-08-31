@@ -19,7 +19,7 @@
   </div>
   <div class="tab-pane fade py-3 show active" id="my-posts-tab-pane" role="tabpanel" aria-labelledby="my-posts-tab" tabindex="0">
     <% if @user == current_user %>
-      <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" } , class: "card-trip-create-comment" %>
+      <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" } , class: "card-trip-create-comment m-5" %>
       <%= render 'modal_comment' %>
     <% end %>
     <% @user_comments.each do |comment| %>
