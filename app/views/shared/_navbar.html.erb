@@ -15,7 +15,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.my_photo.attached? %>
-                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path(current_user.my_photo.key) %>"/>
+                <img class="avatar" src="<%= cl_image_path(current_user.my_photo.key) %>"/>
               <% else %>
                 <%= image_tag 'totaro.png', class: "avatar" %>
               <% end %>
