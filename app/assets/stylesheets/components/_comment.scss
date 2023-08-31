@@ -2,10 +2,11 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 400px;
+  width: auto;
   border-radius: 5px;
   border-width: light;
   margin-bottom: 8px;
+  position: relative;
 }
 
 .card-comment > img {
@@ -25,15 +26,39 @@
 
 
 .card-comment h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 0;
+  margin: 3px;
 }
 
 .card-comment p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
-  margin: 0;
+  margin: 3px;
+}
+
+#comment-link {
+  text-decoration: none;
+  color:#FF914D;
+}
+
+#comment-link a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fca311;
+  transition: width 0.3s;
+}
+
+#comment-link a:hover {
+  color: #fca311;
+}
+
+#comment-link a:hover::before {
+  width: 100%;
 }
 
 
@@ -44,13 +69,16 @@
 }
 
 .card-comment-infos .header .upvotes {
-  background-color: orange;
+  background-color:#FF914D;
   border-radius: 5px;
   // padding: 4px;
   margin-left: 4px;
   display: flex;
   gap: 5px;
   align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .card-comment-infos .header .upvotes .hover {

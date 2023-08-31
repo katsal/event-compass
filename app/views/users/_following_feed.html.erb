@@ -8,11 +8,13 @@
           <%= render 'modal_comment' %>
         <% end %>
         <br>
-        <% current_user.all_favorites.each do |f| %>
-          <% User.find(f.favoritable_id).comments.each do |c| %>
-            <%= render 'shared/comment', comment: c %>
+        <% @comments_and_event_lists_ordered.each do |comment| %>
+          <% if comment.is_a? Comment %>
+            <%= render 'shared/comment', comment: comment%>
+          <% else%>
+            <%= "#{comment.list.user.name} has added #{comment.event.name} to their list." %>
           <%end%>
-        <% end %>
+        <%end%>
       </div>
     </div>
   </div>
