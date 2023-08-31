@@ -17,7 +17,7 @@
               <% if current_user.my_photo.attached? %>
                 <img class="avatar" src="<%= cl_image_path(current_user.my_photo.key) %>"/>
               <% else %>
-                <%= image_tag 'totaro.png', class: "avatar" %>
+                <%= image_tag "https://source.unsplash.com/random/?profile-picture", class:"avatar" %>
               <% end %>
             </a>
             <div class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">

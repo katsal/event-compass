@@ -1,10 +1,11 @@
 <div class="card-comment">
   <div class="card-comment-infos">
     <div class="gap">
-      <% if @user && @user.my_photo.attached? %>
-        <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
+      <% random_image_url = "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&comment_#{comment.user.id}_#{comment.user.name}" %>
+      <% if comment.user && comment.user.my_photo.attached? %>
+        <%= cl_image_tag(comment.user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
       <% else %>
-        <%= image_tag "totaro.png", alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
+        <%= image_tag random_image_url, alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
       <% end %>
       <% if comment.user == current_user %>
         <%= link_to comment_path(comment), data: { comment_id: comment.id, turbo_method: :delete, turbo_confirm: "Delete this comment ?" } do %>

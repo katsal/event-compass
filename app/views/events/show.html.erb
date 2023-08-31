@@ -39,7 +39,7 @@
               <% if user.my_photo.attached? %>
                 <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
               <% else %>
-                <%= image_tag 'default_avatar.svg', alt: 'Default Avatar', class: 'avatar' %>
+                <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
               <% end %>
             </div>
           <% end %>

@@ -8,52 +8,13 @@
       %>
     </div>
 
-    <div data-controller="daysrange">
-        <%= f.text_field :opening_date,
-          as: :string,
-          value: params[:opening_date],
-          data: { controller: "datepicker",
-                  action: "click->daysrange#showDays",
-                  daysrange_target: "calendar"
-                },
-          placeholder: "Choose dates",
-          class: "form-control"
-        %>
-      <div
-        data-daysrange-target="days",
-        class="flatpickr-calendar rangeMode animate arrowTop arrowLeft",
-        tabindex="-1",style="top: 504.188px; left: 498.5px; right: auto; height: 550px; padding-top: 50px;">
-        <ul class="text-dark mt-3">
-
-          <div class="checkbox" style = "height: 39px">
-            <%= check_box_tag(:opening_date, Date.today, false, id: "opening_date_today") %>
-            <%= label_tag(:opening_date, 'Today', for: "opening_date_today") %>
-          </div>
-
-          <div class="checkbox">
-            <%= check_box_tag(:opening_date, Date.tomorrow, false, id: "opening_date_tomorrow") %>
-            <%= label_tag(:opening_date, 'Tomorrow', for: "opening_date_tomorrow")%>
-          </div>
-
-          <div class="checkbox">
-            <% today = Date.today %>
-
-            <% days_until_saturday = (6 - today.wday + 7) % 7 %>
-            <% next_saturday = today + days_until_saturday %>
-
-            <% days_until_sunday = (7 - today.wday) % 7 %>
-            <% next_sunday = today + days_until_sunday %>
-
-            <%= check_box_tag(:opening_date, "#{next_saturday},#{next_sunday}", false, id: "opening_date_thiswknd") %>
-            <%= label_tag(:opening_date, 'This weekend', for: "opening_date_thiswknd")%>
-            <%= hidden_field_tag(:opening_date_start, next_saturday, id: "opening_date_start", "data-date": next_saturday) %>
-            <%= hidden_field_tag(:opening_date_end, next_sunday, id: "opening_date_end", "data-date": next_sunday) %>
-
-          </div>
-
-        </ul>
-      </div>
-    </div>
+      <%= f.text_field :opening_date,
+        as: :string,
+        value: params[:opening_date],
+        data: { controller: "datepicker"},
+        placeholder: "Choose dates",
+        class: "form-control"
+      %>
 
     <div class="d-flex flex-column justify-content-center">
       <button id="combined-search-btn" class="btn btn-flat-search">Search</button>

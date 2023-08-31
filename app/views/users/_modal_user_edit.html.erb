@@ -15,20 +15,6 @@
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector'},
             collection: User::STATUS %>
-          <%= f.collection_radio_buttons(:status, [["solo adventurer", "solo adventurer"], ["social butterfly", "social butterfly"]], :first, :last, include_hidden: false, :checked => ["solo adventurer"], collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'} ) do |input| %>
-            <%= input.radio_button %>
-            <%= input.label do |l| %>
-              <% if input.value == "solo adventurer" %>
-                <i class="fa-solid fa-person"></i>
-                <p>solo adventurer</p>
-              <% else %>
-                <i class="fa-solid fa-people-group"></i>
-                <p>social butterfly</p>
-              <% end %>
-            <% end %>
-          <% end %>
           <%= f.button :submit, "Update", class: 'btn-user-edit' %>
         <% end %>
       </div>

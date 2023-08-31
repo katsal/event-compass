@@ -46,7 +46,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.status = params[:user][:status] if params[:user][:status]
     authorize @user
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Details updated succesfully.'
@@ -55,10 +54,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_social
+    @user = User.find(params[:id])
+    authorize @user
+    @user.update(user_params)
+    head :ok
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:my_photo, :status)
+    params.require(:user).permit(:my_photo, :social)
   end
 
 end

@@ -6,86 +6,57 @@
         <div class="m-auto">
           <div class="d-flex gap-3 align-items-center flex-column" style="position:relative">
             <% if @user.my_photo.attached? %>
-              <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
+              <%= cl_image_tag(@user.my_photo.key, class:"avatar-bordered border-dark") %>
             <% else %>
-              <%= image_tag "totaro.png", alt: "Le Wagon", class:"avatar-bordered border-dark", style: "width:80px" %>
+              <%= image_tag "https://source.unsplash.com/random/?profile-picture", alt: "Le Wagon", class:"avatar-bordered border-dark" %>
             <% end %>
             <div class="d-flex gap-2">
               <h5 class="card-title fw-bold"><%= @user.name.capitalize %></h5>
               <div>
-                <% if @user.status == User::STATUS[0] %>
-                  <i class="fa-solid fa-person" title= <%=User::STATUS[0]%>></i>
-                <% else %>
-                  <i class="fa-solid fa-people-group" title= <%=User::STATUS[1]%>></i>
+                <% if @user.social %>
+                  <i class="fa-solid fa-people-group" title= 'Chatty Mingler' ></i>
+                <% elsif  !@user.social %>
+                  <i class="fa-solid fa-person" title= 'Solo Maverick '></i>
                 <% end %>
               </div>
-                  </div>
-                  <p class="text-muted"><%= @user.location %></p>
-                  <div>
-                    <%= render 'followers'%>
-                    <%= render 'modal_following'%>
-                    <%= render 'modal_followers'%>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h6 class="fw-bold">About</h6>
-                <hr />
-                <div class="d-flex gap-2">
-                  <p><%= @user.introduction %></p>
-                </div>
-              </div>
-              <div>
-                <h6 class="fw-bold">Contact</h6>
-                <hr />
-                <div class="d-flex gap-2">
-                  <%= link_to user_messages_path(@user) do %>
-                    <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
-                  <% end %>
-                  <i class="primary fa-regular fa-envelope" title="Email"></i>
-                  <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
-                    <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
-                      <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
-                    <% end %>
-                    <%= render 'modal_user_edit' %>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <p class="text-muted"><%= @user.location %></p>
+            <div>
+              <%= render 'followers'%>
+              <%= render 'modal_following'%>
+              <%= render 'modal_followers'%>
             </div>
           </div>
-          <div class="d-flex flex-column flex-fill gap-4">
-            <div>
-              <%= render 'tabs_comments_events' %>
-            </div>
-            <div>
-              <h5 class="fw-bold">My Lists</h5>
-              <div class="d-flex row-direction flex-wrap gap-2">
-                <% @user.lists.each do |list| %>
-                  <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
-                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                    <div class="card-body d-flex justify-content-center">
-                      <%= link_to list.name, list_path(list), class: 'card-title text-center text-dark-emphasis text-decoration-none'%>
-                      <% if @user == current_user%>
-                        <div>
-                          <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Delete this list ?" } do %>
-                            <i class="fa-solid fa-trash-can card-list-event-delete" style="color: #FF914D;"></i>
-                          <% end %>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-                <% if @user == current_user%>
-                  <div class="card shadow-sm" style="width: 12rem; background-color:#fefefe; position:relative">
-                    <div class="card-body d-flex justify-content-center">
-                      <%= link_to  new_list_path, class: 'card-title text-center text-dark-emphasis' , class: "m-0" do %>
-                        <i class="fa-solid fa-plus" style="color: #4f668d;"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+        </div>
+        <div>
+          <h6 class="fw-bold">About</h6>
+          <hr />
+          <div class="d-flex gap-2">
+            <p><%= @user.introduction %></p>
+          </div>
+        </div>
+        <div>
+          <h6 class="fw-bold">Contact</h6>
+          <hr />
+          <div class="d-flex gap-2">
+            <%= link_to user_messages_path(@user) do %>
+              <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i>
+            <% end %>
+            <i class="primary fa-regular fa-envelope" title="Email"></i>
+            <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
+              <%= link_to '#', style: "color: #FF914D;", data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
+                <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
+              <% end %>
+              <%= render 'modal_user_edit' %>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-flex flex-column flex-fill gap-4">
+      <div>
+        <%= render 'tabs_comments_events' %>
+      </div>
+    </div>
+  </div>
+</div>
