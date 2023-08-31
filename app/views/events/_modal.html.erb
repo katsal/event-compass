@@ -8,6 +8,9 @@
       <div class="modal-body">
         <div class="event-buttons">
           <% if current_user%>
+            <%= simple_form_for current_user, url: update_social_user_path(current_user), data: { controller: 'autosave' }, method: :patch do |f| %>
+              <%= f.input :social, as: :boolean, label: "Feeling social?", input_html: { class: "toggle" , data: { action: 'change->autosave#save' }} %>
+            <% end %>
             <% current_user.lists.each do |list|%>
               <%= link_to list.name, event_event_lists_path(@event, list_id: list.id), class: "btn event-button", data: { turbo_method: :post } %>
             <%end%>

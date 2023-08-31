@@ -23,4 +23,8 @@ def unfollow?
   return true
 end
 
+def update_social?
+  record == user
+end
+
 end
