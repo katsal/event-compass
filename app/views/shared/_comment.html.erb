@@ -16,8 +16,11 @@
     <div>
       <div class="header d-flex">
         <h2 class="mr-3"><%= comment.user.name %></h2>
-        <p id="comment-link">
-          <%= link_to comment.event.name, event_path(comment.event) %>
+        <p class="comment-link">
+          <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
+            <%= comment.event.name %>
+            <i class="fa-solid fa-link" style="color: #ff914e;"></i>
+          <% end %>
         </p>
         <% if current_user %>
           <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
