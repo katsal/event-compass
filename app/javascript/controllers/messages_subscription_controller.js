@@ -22,7 +22,7 @@ export default class extends Controller {
 
     // console.log(this.element.offsetHeight);
 
-    window.scrollTo(0, this.element.offsetHeight);
+    // window.scrollTo(0, this.element.offsetHeight);
 
 
 
