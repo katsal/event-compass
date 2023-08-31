@@ -14,7 +14,7 @@
                   <% if follower.my_photo.present? %>
                     <img src="<%= cl_image_path(follower.my_photo.key) %>">
                   <% else %>
-                    <%= image_tag 'totaro.png', class: "avatar" %>
+                    <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{follower.id}", alt: 'Default Avatar', class: 'avatar' %>
                   <% end %>
                   <span><%= follower.name %></span>
                 </div>
