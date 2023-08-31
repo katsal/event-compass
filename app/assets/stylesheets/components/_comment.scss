@@ -45,29 +45,31 @@
   font-size: 16px;
   opacity: .7;
   margin: 3px;
+  text-decoration: none;
 }
 
-#comment-link {
+.comment-link a {
+  position: relative;
   text-decoration: none;
   color: #FF914D;
 }
 
-#comment-link a::before {
+.comment-link a::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #fca311;
+  background-color: #f5650c;
   transition: width 0.3s;
 }
 
-#comment-link a:hover {
+.comment-link a:hover {
   color: #fca311;
 }
 
-#comment-link a:hover::before {
+.comment-link a:hover::before {
   width: 100%;
 }
 
