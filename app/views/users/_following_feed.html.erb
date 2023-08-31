@@ -3,7 +3,7 @@
     <div class="tab-pane fade py-3 show active" id="following-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
       <% if @user == current_user %>
         <div class="d-flex flex-column justify-content-between">
-          <%= link_to "Post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" }, class: "card-trip-create-comment " %>
+          <%= link_to "Create a post", '#', data: { bs_toggle: "modal", bs_target: "#eventPostModal" }, class: "btn-flat-comment" %>
           <br>
           <%= render 'modal_comment' %>
         <% end %>
@@ -12,7 +12,9 @@
           <% if comment.is_a? Comment %>
             <%= render 'shared/comment', comment: comment%>
           <% else%>
-            <%= "#{comment.list.user.name} has added #{comment.event.name} to their list." %>
+            <div class="event-add-message">
+              <%= "#{comment.list.user.name} has added #{comment.event.name} to their list." %>
+            </div>
           <%end%>
         <%end%>
       </div>
