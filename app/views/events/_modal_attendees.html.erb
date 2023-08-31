@@ -2,22 +2,29 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Other users going:</h5>
+        <h5 class="modal-title" id="staticBackdropLabel" style="color: black">Other users going:</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="event-buttons">
+        <ul class="list-group user-list">
           <% @event.lists.flat_map(&:user).sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
-            <div class="user-button">
-              <%= link_to user_path(user), class: "btn event-button", style: "background-color: #5c6ac4" do %>
-                <%= user.name %>
-                <% if user.favorited_by?(current_user) %>
-                  <%= raw('<i class="fa-solid fa-user-group fa-xl"></i>').html_safe %>
-                <% end %>
+            <li class="list-group-item user-card">
+              <%= link_to user_path(user), class: "card-link-modal" do %>
+                <div class="user-info">
+                  <% if user.my_photo.attached? %>
+                    <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
+                  <% else %>
+                    <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
+                  <% end %>
+                  <span><%= user.name %></span>
+                  <% if user.favorited_by?(current_user) %>
+                    <%= raw('<i class="fa-solid fa-user-group fa-xl"></i>').html_safe %>
+                  <% end %>
+                </div>
               <% end %>
-            </div>
+            </li> <!-- This was missing -->
           <% end %>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
