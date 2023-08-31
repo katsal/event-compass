@@ -7,8 +7,15 @@
       </div>
       <div class="modal-body">
         <div class="event-buttons">
-          <% @event.lists.flat_map(&:user).each do |user| %>
-          <%= link_to user.name, user_path(user), class: "btn event-button", style: "background-color: #5c6ac4"%>
+          <% @event.lists.flat_map(&:user).sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
+            <div class="user-button">
+              <%= link_to user_path(user), class: "btn event-button", style: "background-color: #5c6ac4" do %>
+                <%= user.name %>
+                <% if user.favorited_by?(current_user) %>
+                  <%= raw('<i class="fa-solid fa-user-group fa-xl"></i>').html_safe %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
