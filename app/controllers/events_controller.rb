@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  include Pagy::Backend
 
   def index
     # Condition to make sure to select events that has come to an end by today.
@@ -54,6 +55,7 @@ class EventsController < ApplicationController
         marker_html: render_to_string(partial: "shared/map_marker", locals: { event: event })
       }
     end
+    @pagy, @comments = pagy(@user_comments, items: 10)
   end
 
   def ical_calendar_url(event)

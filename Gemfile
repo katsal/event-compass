@@ -92,3 +92,5 @@ gem "geocoder", "~> 1.8"
 gem 'acts_as_favoritor'
 
 gem 'acts_as_votable'
+
+gem 'pagy', '~> 6.0' # omit patch digit

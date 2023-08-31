@@ -57,9 +57,10 @@
   </div>
   <div>
     <h3>User Comments</h3>
-    <% @user_comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <%= render 'shared/comment', comment: comment %>
     <% end %>
+    <%== pagy_nav(@pagy) %>
   </div>
   <div class="show-map">
     <h3> Event Location</h3>
