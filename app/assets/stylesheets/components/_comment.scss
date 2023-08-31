@@ -18,7 +18,8 @@
   margin-right: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Center vertically */
+  align-items: center;
   align-self: stretch;
 }
 
