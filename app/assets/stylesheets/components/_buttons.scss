@@ -185,3 +185,29 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   /* Box shadow on hover */
 }
+
+.btn-flat-comment {
+  color: #FF914D;
+  /* Orange text color */
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: white;
+  /* White background */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Transition background and box-shadow */
+  border: 1px solid #FF914D;
+  /* Orange border */
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-flat-comment:hover {
+  background: #FF914D;
+  /* Orange background on hover */
+  color: white;
+  /* White text color on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow on hover */
+}

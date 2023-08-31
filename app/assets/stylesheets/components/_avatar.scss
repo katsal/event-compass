@@ -52,3 +52,9 @@ i.primary {
   margin-left: 0px;
   z-index: 1;
 }
+
+.avatar-bordered.border-dark {
+  height: 150px;
+  width: 150px;
+object-fit: cover;
+}

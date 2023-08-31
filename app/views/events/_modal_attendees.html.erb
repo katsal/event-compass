@@ -2,15 +2,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Other users going:</h5>
+        <h5 class="modal-title" id="staticBackdropLabel" style="color: black">Other users going:</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="event-buttons">
+        <ul class="list-group user-list">
           <% @event.lists.flat_map(&:user).each do |user| %>
-          <%= link_to user.name, user_path(user), class: "btn event-button", style: "background-color: #5c6ac4"%>
+            <li class="list-group-item user-card">
+              <%= link_to user_path(user), class: "card-link-modal" do %>
+                <div class="user-info">
+                  <% if user.my_photo.attached? %>
+                    <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
+                  <% else %>
+                    <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
+                  <% end %>
+                  <span><%= user.name %></span>
+                </div>
+              <% end %>
+            </li>
           <% end %>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
