@@ -13,6 +13,13 @@
             <%= render 'shared/comment', comment: c %>
           <%end%>
         <% end %>
+        <% current_user.lists.each do |list| %>
+          <% list.events.each do |event| %>
+            <% event.comments.each do |comment| %>
+              <%= render 'shared/comment', comment: comment %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
