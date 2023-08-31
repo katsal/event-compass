@@ -1,15 +1,33 @@
-<div class="container col-6" data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
-  <h1> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %> <%= @recipient.name %></h1>
-    <ul class="message-list" data-messages-subscription-target="messages">
-      <% @messages.each do |message| %>
-        <%= render "message", message: message, user: current_user %>
-      <% end %>
-    </ul>
+<div class="container msg-container col-8 d-flex flex-column border shadow p-2 my-4 bg-body rounded"
+style="background-image: linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6)), url(https://files.123freevectors.com/wp-content/original/112045-orange-and-green-blurred-background-vector.jpg);"
+data-controller="messages-subscription" data-messages-subscription-user-id-value="<%= current_user.id %>">
 
-  <%= form_with url: "messages", html: { data: { action: "turbo:submit-end->messages-subscription#resetForm" }, class: "d-flex mb-2"}, method: :post do |form| %>
-    <%= form.text_area :content %>
-    <div><%= form.submit "Send", class: "btn-flat-message mx-2 p-2 border-0 rounded"%></div>
 
-  <% end %>
+  <div class="flex-start mt-4">
+  <h1 class="border shadow p-2 mb-0 bg-body rounded">
+    <% if @recipient.my_photo.attached? %>
+      <%= cl_image_tag @recipient.my_photo.key, class: "avatar" %>
+    <% else %>
+      <%= image_tag "totaro.png", class:"avatar"%>
+    <% end %>
+    <%= @recipient.name %>
+    <p class="text-secondary fs-6 fst-italic onlinetext mb-0">online</p>
+  </h1>
 
+    <div class="mt-4">
+      <ul class="message-list" data-messages-subscription-target="messages">
+        <% @messages.each do |message| %>
+          <%= render "message", message: message, user: current_user %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+    <div class="flex-end">
+    <%= form_with url: "messages", html: { data: { action: "turbo:submit-end->messages-subscription#resetForm" }, class: "d-flex"}, method: :post do |form| %>
+      <%= form.text_area :content, class:"border shadow p-2 mb-2 bg-body rounded" %>
+      <div><%= form.submit "Send", class: "btn-flat-message mt-1 p-3 border-0 rounded text-white"%></div>
+
+    <% end %>
+    </div>
 </div>
