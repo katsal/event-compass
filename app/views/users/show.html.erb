@@ -41,10 +41,8 @@
           <div class="d-flex gap-3 align-items-center">
             <%= link_to user_messages_path(@user) do %>
             <i class="fa-solid fa-comment-dots fa-xl" style="color: #f9904d;" title="Let's chat"></i>
-            <%# <i class="primary fa-regular fa-comment-dots" title="Lets chat" ></i> %>
             <% end %>
             <i class="fa-solid fa-envelope fa-xl" style="color: #f9904d;" title="Email"></i>
-            <%# <i class="primary fa-regular fa-envelope" title="Email"></i> %>
             <div data-controller="photo-toggle" style="position:absolute; top:5px; right:10px">
               <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#userEditModal" } do %>
                 <i class="primary fa-solid fa-pen" title="Edit Profile"></i>
