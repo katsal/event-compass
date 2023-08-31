@@ -8,23 +8,13 @@
           <%= render 'modal_comment' %>
         <% end %>
         <br>
-        <% current_user.all_favorites.each do |f| %>
-          <% User.find(f.favoritable_id).comments.each do |c| %>
-            <%= render 'shared/comment', comment: c %>
-          <% end %>
-        <% end %>
-        <% current_user.lists.each do |list| %>
-          <% list.events.each do |event| %>
-            <% event.comments.each do |comment| %>
-              <%= render 'shared/comment', comment: comment %>
-            <% end %>
-          <% end %>
-          <% list.events.sort_by(&:created_at).reverse_each do |event| %>
-            <div class="feed-entry">
-              <%= "#{list.user.name} has added #{event.name} to their list." %>
-            </div>
-          <% end %>
-        <% end %>
+        <% @comments_and_event_lists_ordered.each do |comment| %>
+          <% if comment.is_a? Comment %>
+            <%= render 'shared/comment', comment: comment%>
+          <% else%>
+            <%= "#{comment.list.user.name} has added #{comment.event.name} to their list." %>
+          <%end%>
+        <%end%>
       </div>
     </div>
   </div>

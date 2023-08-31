@@ -26,15 +26,39 @@
 
 
 .card-comment h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 0;
+  margin: 3px;
 }
 
 .card-comment p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
-  margin: 0;
+  margin: 3px;
+}
+
+#comment-link {
+  text-decoration: none;
+  color:#FF914D;
+}
+
+#comment-link a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fca311;
+  transition: width 0.3s;
+}
+
+#comment-link a:hover {
+  color: #fca311;
+}
+
+#comment-link a:hover::before {
+  width: 100%;
 }
 
 

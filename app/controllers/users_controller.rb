@@ -16,6 +16,16 @@ class UsersController < ApplicationController
                             .distinct
     @comment = Comment.new
     @user_comments = Comment.all.where(user_id: @user).order(created_at: :desc)
+
+    current_following = current_user.favorited_users
+    current_following_lists = current_following.map { |user| user.lists}.flatten
+    current_following_event_lists =  current_following_lists.map { |list| list.event_lists}.flatten
+
+    following_users_comments = current_user.favorited_users.map { |user| user.comments}.flatten
+    my_events_comments = current_user.lists.map { |list| list.events.map {|event| event.comments}}.flatten
+
+    @comments_and_event_lists_ordered = following_users_comments + my_events_comments + current_following_event_lists
+    @comments_and_event_lists_ordered = @comments_and_event_lists_ordered.sort_by{ |comment| comment.created_at}
   end
 
   def follow

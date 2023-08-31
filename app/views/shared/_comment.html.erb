@@ -15,7 +15,7 @@
     <div>
       <div class="header d-flex">
         <h2 class="mr-3"><%= comment.user.name %></h2>
-        <p>
+        <p id="comment-link">
           <%= link_to comment.event.name, event_path(comment.event) %>
         </p>
         <% if current_user %>
