@@ -38,3 +38,9 @@ i.primary {
 
   display: flex; /* Adjust the size as needed */
 }
+
+.avatar-bordered.border-dark {
+  height: 150px;
+  width: 150px;
+object-fit: cover;
+}
