@@ -101,7 +101,7 @@
   display: flex;
   align-items: flex-start;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 
 
@@ -151,4 +151,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.timestamp {
+  position: absolute;
+  top: 13px;
+  right: 75px;
 }
