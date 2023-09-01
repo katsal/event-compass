@@ -10,13 +10,14 @@
         <br>
         <% @comments_and_event_lists_ordered.each do |comment| %>
           <% if comment.is_a? Comment %>
-            <%= render 'shared/comment', comment: comment%>
-          <% else%>
+            <%= render 'shared/comment', comment: comment %>
+          <% else %>
             <div class="event-add-message">
               <%= "#{comment.list.user.name} has added #{comment.event.name} to their list." %>
             </div>
-          <%end%>
-        <%end%>
+          <% end %>
+        <% end %>
+        <%# <%= pagy_nav(@pagy) %>
       </div>
     </div>
   </div>

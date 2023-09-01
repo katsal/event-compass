@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include Pagy::Backend
   def show
     @user = User.find(params[:id])
     @follower_count = @user.favoritors.count
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
 
     @comments_and_event_lists_ordered = following_users_comments + my_events_comments + current_following_event_lists
     @comments_and_event_lists_ordered = @comments_and_event_lists_ordered.sort_by{ |comment| comment.created_at}
+
   end
 
   def follow
