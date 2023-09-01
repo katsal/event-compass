@@ -17,7 +17,8 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       center: [139.6917, 35.6895],
-      zoom: 4
+      zoom: 4,
+      focusAfterOpen: false
     })
 
     this.#addMarkersToMap()
@@ -32,7 +33,7 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       // Create a popup
-      const popup = new mapboxgl.Popup().setHTML(marker.popup_html)
+      const popup = new mapboxgl.Popup({focusAfterOpen: false}).setHTML(marker.popup_html)
       // to define marker.popup_html go back to your controller
 
       // Create a custom marker
