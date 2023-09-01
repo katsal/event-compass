@@ -7,7 +7,7 @@ class ListPolicy < ApplicationPolicy
   end
 
   def show?
-    return record.user == user
+    user.present?
   end
 
   def new?
