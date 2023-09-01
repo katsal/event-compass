@@ -2,14 +2,14 @@
   <div class="d-flex">
     <div class="d-flex flex-column">
       <p class= "mb-0" >Followers</p>
-      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoritedUsersModal" } , class: "align-self-center font-numbers" do %>
+      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoritedUsersModal" } , class: "followers align-self-center font-numbers" do %>
         <%= @follower_count %>
       <% end %>
     </div>
     <div class="mx-2 vertical-line" style="height: 60px;"></div>
     <div class="d-flex flex-column">
       <p class= "mb-0">Following</p>
-      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoriteUsersModal" } , class: "align-self-center font-numbers" do %>
+      <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#favoriteUsersModal" } , class: "followers align-self-center font-numbers" do %>
         <%= @following_count %>
       <% end %>
     </div>
