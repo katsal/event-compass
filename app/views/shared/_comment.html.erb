@@ -16,7 +16,6 @@
     <div>
       <div class="header d-flex">
         <h2 class="mr-5"><%= comment.user.name %></h2>
-        <p class="timestamp"><%= comment.created_at.strftime('%-m/%-d/%y') %></p>
         <% if current_user %>
           <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
             <%= f.hidden_field :vote_type, value: "upvote" %>
@@ -43,6 +42,7 @@
         <% end %>
       </small>
       <p><%= comment.comment %></p>
+      <p class="timestamp" style="font-size: 12px"><%= comment.created_at.strftime('%e %B at %H:%M') %></p>
     </div>
   </div>
   <% photo = comment.photos.first %>
