@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <ul class="list-group user-list">
-          <% @event.lists.flat_map(&:user).uniq.sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
+          <% @event.lists.flat_map(&:user).uniq.sort_by { |user| [current_user && user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
             <li class="list-group-item user-card">
               <%= link_to user_path(user), class: "card-link-modal" do %>
                 <div class="user-info d-flex justify-content-between">
@@ -18,7 +18,7 @@
                       <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
                     <% end %>
                     <span><%= user.name %></span>
-                    <% if user.favorited_by?(current_user) %>
+                    <% if current_user && user.favorited_by?(current_user) %>
                       <%= raw('<i class="fa-solid fa-star fa-xl" style="color: #FF914D;"></i>').html_safe %>
                     <% end %>
                   </div>
