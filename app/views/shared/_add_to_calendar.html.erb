@@ -1,4 +1,5 @@
 <add-to-calendar-button
+  class="calendar-container"
   name="<%= event.name %>"
   options="'Apple','Google'"
   location="<%= event.location %>"
@@ -7,6 +8,6 @@
   startTime="<%= event.start_date.strftime('%H:%M') %>"
   endTime="<%= event.end_date.strftime('%H:%M') %>"
   timeZone="Asia/Tokyo"
-   buttonStyle="date"
-   lightMode="bodyScheme"
+  buttonStyle="date"
+  lightMode="bodyScheme"
 ></add-to-calendar-button>
