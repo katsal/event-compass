@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<div class="container col-6">
+<div class="container col-8">
   <div class="event-summary">
     <a href="javascript:history.go(-1);" style="display: inline-flex; align-items: flex-start; margin: 5px 0; text-decoration: none;">
       <i class="fa-solid fa-arrow-left" style="color: #000000; font-size: 150%;"></i>
@@ -28,6 +28,7 @@
     </a>
     <h2>Event Summary</h2>
     <p><%=@event.description%></p>
+
   </div>
   <div class="attendance">
     <div>
@@ -55,16 +56,19 @@
   <%= render 'modal_attendees' %>
   <div class="similar-events">
   </div>
-  <div>
-    <h3>User Comments</h3>
-    <% @comments.each do |comment| %>
-      <%= render 'shared/comment', comment: comment %>
-    <% end %>
-    <%== pagy_nav(@pagy) %>
-  </div>
-  <div class="show-map">
-    <h3> Event Location</h3>
-    <%= render 'shared/map', markers: @markers%>
-    <%= render 'modal' %>
+
+  <div class="d-flex">
+    <div style="width:50%;">
+      <h3>User Comments</h3>
+      <% @comments.each do |comment| %>
+        <%= render 'shared/comment', comment: comment %>
+      <% end %>
+      <%== pagy_nav(@pagy) %>
+    </div>
+    <div class="show-map" style="width:50%;">
+      <%# <h3> Event Location</h3> %>
+      <%= render 'shared/map', markers: @markers%>
+      <%= render 'modal' %>
+    </div>
   </div>
 </div>
