@@ -5,10 +5,12 @@
 .event-button {
   display: block;
   width: 100%;
-  background-color: #FF914D;
+  background-color: white;
   color: black;
   font-weight: bold;
-  border: none;
+  border: 1px solid;
+  border-color: #FF914D;
+  color: #FF914D;
   padding: 10px 20px;
   margin-bottom: 7px;
   cursor: pointer;
@@ -16,7 +18,7 @@
 }
 
 .event-button:hover {
-  background-color: #f77321;
+  background-color: #FF914D;
 }
 
 .btn-secondary {

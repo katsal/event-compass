@@ -27,9 +27,9 @@
             <%= f.hidden_field :vote_type, value: "upvote" %>
             <button type="submit" class="upvote-button upvotes">
               <% if current_user.voted_for?(comment) %>
-                <i class="fa-solid fa-thumbs-up fa-flip-horizontal"></i>
+                <i class="fa-solid fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
               <% else %>
-                <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+                <i class="fa-regular fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
               <% end %>
               <%= comment.votes_for.size %>
             </button>
