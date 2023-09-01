@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <ul class="list-group user-list">
-          <% @event.lists.flat_map(&:user).sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
+          <% @event.lists.flat_map(&:user).uniq.sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
             <li class="list-group-item user-card">
               <%= link_to user_path(user), class: "card-link-modal" do %>
                 <div class="user-info d-flex justify-content-between">
