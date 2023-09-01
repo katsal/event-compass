@@ -10,19 +10,29 @@
           <% @event.lists.flat_map(&:user).sort_by { |user| [user.favorited_by?(current_user) ? 0 : 1, user.name] }.each do |user| %>
             <li class="list-group-item user-card">
               <%= link_to user_path(user), class: "card-link-modal" do %>
-                <div class="user-info">
-                  <% if user.my_photo.attached? %>
-                    <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
-                  <% else %>
-                    <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
-                  <% end %>
-                  <span><%= user.name %></span>
-                  <% if user.favorited_by?(current_user) %>
-                    <%= raw('<i class="fa-solid fa-user-group fa-xl"></i>').html_safe %>
-                  <% end %>
+                <div class="user-info d-flex justify-content-between">
+                  <div>
+                    <% if user.my_photo.attached? %>
+                      <%= image_tag user.my_photo, alt: 'User Avatar', class: 'avatar' %>
+                    <% else %>
+                      <%= image_tag "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&#{user.id}", alt: 'Default Avatar', class: 'avatar' %>
+                    <% end %>
+                    <span><%= user.name %></span>
+                    <% if user.favorited_by?(current_user) %>
+                      <%= raw('<i class="fa-solid fa-star fa-xl" style="color: #FF914D;"></i>').html_safe %>
+                    <% end %>
+                  </div>
+                  <div class="align-self-center px-2">
+                    <% if user.social %>
+                      <p style="color: #FF914D;" class="mb-0">Chatty Mingler</p>
+                    <% elsif !user.social %>
+                      <p style="color: #FF914D;" class="mb-0">Solo Maverick</p>
+                    <% end %>
+                  </div>
                 </div>
               <% end %>
-            </li> <!-- This was missing -->
+            </li>
+            <!-- This was missing -->
           <% end %>
         </ul>
       </div>
