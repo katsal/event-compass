@@ -168,8 +168,9 @@ elapsed_time = end_time - run_start_time
 puts "Time elapsed: #{elapsed_time} seconds"
 
 
+
 users.each do |user|
-  num_favorites = [rand(1..(User.count/5)), User.count - 1].min
+  num_favorites = [rand(15..25), rand(25..45), rand(46..200)].sample
   users_to_favorite = (users - [user]).sample(num_favorites)
 
   user.favorites.destroy_all # Clear existing favorites
@@ -177,6 +178,7 @@ users.each do |user|
     user.favorite(favorited_user)
   end
 end
+
 
 
 puts "Followers assigned"
@@ -390,8 +392,22 @@ EventList.destroy_all
 events = Event.all
 lists = List.all
 
+events_1 = events.each_slice(events.size/1.25).to_a[0]
+events_2 = events.each_slice(events.size/10).to_a[8]
+events_3 = events.each_slice(events.size/10).to_a[9]
+
+
 2400.times do
-  event_id = events.sample.id
+  x = rand(1..10)
+  case x
+  when 1..8
+    event_id = events_1.sample.id
+  when 9
+    event_id = events_2.sample.id
+  when 10
+    event_id = events_3.sample.id
+  end
+
   list_id = lists.sample.id
 
   event_list = EventList.new(event_id: event_id, list_id: list_id)
@@ -406,7 +422,6 @@ end_time = Time.now
 elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
-
 
 comments =[
   "🤷‍♀️ The event was okay, I suppose. Some aspects were decent, but nothing stood out as particularly impressive. It might be worth another visit in the future.",
@@ -482,8 +497,22 @@ comments =[
   "Fail. 🚫",
 ]
 
+events_1 = events.each_slice(events.size/1.25).to_a[0]
+events_2 = events.each_slice(events.size/10).to_a[8]
+events_3 = events.each_slice(events.size/10).to_a[9]
+
+
 1600.times do
-  event_id = events.sample.id
+  x = rand(1..10)
+  case x
+  when 1..8
+    event_id = events_1.sample.id
+  when 9
+    event_id = events_2.sample.id
+  when 10
+    event_id = events_3.sample.id
+  end
+
   comment = comments.sample
   user_id = users.sample.id
 
@@ -500,16 +529,31 @@ elapsed_time = end_time - run_start_time
 puts "Time elapsed: #{elapsed_time} seconds"
 
 
+comments = Comment.all
+
+comments_1 = comments.each_slice(comments.size/1.25).to_a[0]
+comments_2 = comments.each_slice(comments.size/10).to_a[8]
+comments_3 = comments.each_slice(comments.size/10).to_a[9]
+
+
 15000.times do
 
-  Comment.all.sample.liked_by users.sample
+  x = rand(1..10)
+  case x
+  when 1..8
+    comment = comments_1.sample
+  when 9
+    comment = comments_2.sample
+  when 10
+    comment = comments_3.sample
+  end
+
+  comment.liked_by users.sample
 
 end
 
+
 puts "Upvotes created"
-
-
-
 puts "Created #{Event.count} events!"
 puts "Created #{EventList.count} event lists!"
 puts "Created #{List.count} lists!"
