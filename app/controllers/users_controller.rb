@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     my_events_comments = current_user.lists.map { |list| list.events.map {|event| event.comments}}.flatten
 
     @comments_and_event_lists_ordered = following_users_comments + my_events_comments + current_following_event_lists
-    @comments_and_event_lists_ordered = @comments_and_event_lists_ordered.sort_by{ |comment| comment.created_at}
+    @comments_and_event_lists_ordered = @comments_and_event_lists_ordered.sort_by { |comment| comment.created_at }
+    @comments_and_event_lists_ordered.reverse!
 
   end
 

@@ -16,7 +16,6 @@
     <div>
       <div class="header d-flex">
         <h2 class="mr-5"><%= comment.user.name %></h2>
-
         <% if current_user %>
           <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
             <%= f.hidden_field :vote_type, value: "upvote" %>
@@ -36,12 +35,12 @@
           </div>
         <% end %>
       </div>
-        <small class="comment-link">
-          <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
-            <%= truncate(comment.event.name, length: 30, separator: ' ') %>
-            <i class="fa-solid fa-link ml-2" style="color: #ff914e;"></i>
-          <% end %>
-        </small>
+      <small class="comment-link">
+        <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
+          <%= truncate(comment.event.name, length: 30, separator: ' ') %>
+          <i class="fa-solid fa-link ml-2" style="color: #ff914e;"></i>
+        <% end %>
+      </small>
       <p><%= comment.comment %></p>
       <p class="timestamp" style="font-size: 12px"><%= comment.created_at.strftime('%e %B at %H:%M') %></p>
     </div>
