@@ -6,13 +6,13 @@
     <% @events.first(6).each do |event| %>
       <div class="card-trip">
         <div class="card-trip-users">
-          <i class="fa-solid fa-users" style="color: #FF914D;"></i>
-          <span class="user-count ml-5">
+          <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+          <span class="user-count ml-5 text-white">
             <% attending_count = event.event_lists.count %>
             <%= attending_count %>
           </span>
         </div>
-        <h2 class="card-trip-pricing">
+        <h2 class="card-trip-pricing text-white">
           <% if event.start_date == event.end_date %>
             <span><%= event.start_date.strftime('%e %b') %></span>
           <% else %>

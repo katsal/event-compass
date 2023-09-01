@@ -14,9 +14,9 @@
       <p class="info-box"><i class="fa-solid fa-tag" style="color: #ff914d;"></i>: <strong><%=@event.category.name%></strong></p>
       <p class="info-box"><i class="fa-solid fa-location-dot" style="color: #ff914d;"> </i>: <%= @event.location %></p>
       <%= link_to '#', class: "btn-flat-search", data: { bs_toggle: "modal", bs_target: "#addToList" } do %>
-        Attend
+        Wishlist
       <% end %>
-      <%= link_to 'More info', events_path, class: "btn-flat-external m-1 mb-3" %>
+      <%= link_to 'More info', events_path, class: "btn-flat-search m-1 mb-3" %>
     </div>
   </div>
 </div>
