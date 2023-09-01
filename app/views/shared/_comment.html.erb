@@ -3,7 +3,7 @@
     <div class="gap">
       <% random_image_url = "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&comment_#{comment.user.id}_#{comment.user.name}" %>
       <% if comment.user && comment.user.my_photo.attached? %>
-        <%= cl_image_tag(comment.user.my_photo.key, class:"avatar-bordered border-dark" , style: "width:80px") %>
+        <%= cl_image_tag(comment.user.my_photo.key, class:"card-trip-user avatar-bordered") %>
       <% else %>
         <%= image_tag random_image_url, alt: "Le Wagon", class: "card-trip-user avatar-bordered" %>
       <% end %>
@@ -15,13 +15,14 @@
     </div>
     <div>
       <div class="header d-flex">
-        <h2 class="mr-3"><%= comment.user.name %></h2>
-        <p class="comment-link">
+        <h2 class="mr-5"><%= comment.user.name %></h2>
+        <small class="comment-link">
           <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
-            <%= comment.event.name %>
-            <i class="fa-solid fa-link" style="color: #ff914e;"></i>
+            <%= truncate(comment.event.name, length: 30, separator: ' ') %>
+            <i class="fa-solid fa-link ml-2" style="color: #ff914e;"></i>
           <% end %>
-        </p>
+        </small>
+        <p class="timestamp"><%= comment.created_at.strftime('%e %B at %H:%M') %></p>
         <% if current_user %>
           <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
             <%= f.hidden_field :vote_type, value: "upvote" %>
