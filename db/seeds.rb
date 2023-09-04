@@ -217,7 +217,7 @@ list_names = [
 ]
 
 
-1200.times do
+200.times do
   user_id = users.sample.id
   name = list_names.sample
   location = Faker::Address.city
@@ -397,7 +397,7 @@ events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
 
-2400.times do
+400.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -502,7 +502,7 @@ events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
 
-1600.times do
+200.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -536,7 +536,7 @@ comments_2 = comments.each_slice(comments.size/10).to_a[8]
 comments_3 = comments.each_slice(comments.size/10).to_a[9]
 
 
-15000.times do
+1000.times do
 
   x = rand(1..10)
   case x
