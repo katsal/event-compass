@@ -502,7 +502,7 @@ events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
 
-200.times do
+100.times do
   x = rand(1..10)
   case x
   when 1..8
