@@ -1,4 +1,4 @@
-<div class="card-comment">
+<div class="card-comment px-0">
   <div class="card-comment-infos">
     <div class="gap">
       <% random_image_url = "https://source.unsplash.com/random/?profile-picture&t=#{Time.now.to_i}&comment_#{comment.user.id}_#{comment.user.name}" %>
@@ -13,38 +13,43 @@
         <% end %>
       <% end %>
     </div>
-    <div>
-      <div class="header d-flex">
-        <h2 class="mr-5"><%= comment.user.name %></h2>
-        <% if current_user %>
-          <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
-            <%= f.hidden_field :vote_type, value: "upvote" %>
-            <button type="submit" class="upvote-button upvotes">
-              <% if current_user.voted_for?(comment) %>
-                <i class="fa-solid fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
-              <% else %>
-                <i class="fa-regular fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
-              <% end %>
+    <div class="dflex flex-column">
+      <div>
+        <div class="header d-flex">
+          <% if current_user %>
+            <%= form_for(comment, url: vote_comment_path(comment), method: :post, remote: true, class: 'vote-form') do |f| %>
+              <%= f.hidden_field :vote_type, value: "upvote" %>
+              <button type="submit" class="upvote-button upvotes">
+                <% if current_user.voted_for?(comment) %>
+                  <i class="fa-solid fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
+                <% else %>
+                  <i class="fa-regular fa-thumbs-up fa-flip-horizontal" style="color: #ffffff"></i>
+                <% end %>
+                <%= comment.votes_for.size %>
+              </button>
+            <% end %>
+          <% else %>
+            <div class="upvotes btn">
+              <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
               <%= comment.votes_for.size %>
-            </button>
+            </div>
           <% end %>
-        <% else %>
-          <div class="upvotes btn">
-            <i class="fa-regular fa-thumbs-up fa-flip-horizontal"></i>
-            <%= comment.votes_for.size %>
+          <div class="d-flex flex-column">
+            <p><%= comment.comment %></p>
+            <small class="comment-link">
+              <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
+                <%= truncate(comment.event.name, length: 30, separator: ' ') %>
+                <i class="fa-solid fa-link ml-2" style="color: #ff914e;"></i>
+              <% end %>
+            </small>
           </div>
-        <% end %>
+        </div>
       </div>
-      <small class="comment-link">
-        <%= link_to event_path(comment.event), class: 'text-decoration-none' do %>
-          <%= truncate(comment.event.name, length: 30, separator: ' ') %>
-          <i class="fa-solid fa-link ml-2" style="color: #ff914e;"></i>
-        <% end %>
-      </small>
-      <p><%= comment.comment %></p>
-      <br>
-      <p class="timestamp" style="font-size: 12px"><%= comment.created_at.strftime('%e %B at %H:%M') %></p>
     </div>
+  </div>
+  <div class="d-flex justify-content-between px-2" >
+    <p style="font-size: 12px; font-style: italic;"><%= comment.user.name %></p>
+    <p style="font-size: 12px; font-style: italic;"><%= comment.created_at.strftime('%e %B at %H:%M') %></p>
   </div>
   <% photo = comment.photos.first %>
   <%= cl_image_tag(photo.key) if photo.present? %>
