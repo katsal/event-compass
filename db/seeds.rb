@@ -135,7 +135,7 @@ intros = [
   "Hey, fellow adventurers! Finding purpose in the pursuit of new horizons."
 ]
 
-400.times do
+100.times do
   email = Faker::Internet.unique.email
   name = Faker::Name.unique.name
   introduction = intros.sample
@@ -217,7 +217,7 @@ list_names = [
 ]
 
 
-200.times do
+100.times do
   user_id = users.sample.id
   name = list_names.sample
   location = Faker::Address.city
@@ -397,7 +397,7 @@ events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
 
-400.times do
+100.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -536,7 +536,7 @@ comments_2 = comments.each_slice(comments.size/10).to_a[8]
 comments_3 = comments.each_slice(comments.size/10).to_a[9]
 
 
-1000.times do
+200.times do
 
   x = rand(1..10)
   case x
