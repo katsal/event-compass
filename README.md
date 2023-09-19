@@ -1,6 +1,6 @@
 # EVENT COMPASS
 
-Ever wondered if we could 
+Ever wondered if we could get to know the popular events at a place? Especially ,for a solo traveller. At event compass(launched for Tokyo) you get to socialise with other fellow travellers and visit an event which is voted popular by fellow travellers. You get to read feeds from travellers you follow too.
 
 <img width="1412" alt="Screenshot 2023-09-19 at 11 13 05 pm" src="https://github.com/katsal/event-compass/assets/129238177/a187c616-b716-465e-a665-c76eaee9439d">
 
